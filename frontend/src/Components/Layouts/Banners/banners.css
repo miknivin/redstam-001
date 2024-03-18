@@ -1,0 +1,46 @@
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 10px);
+  left: auto;
+  background: white !important;
+  padding: 26px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-size: 15px;
+  width: 15px;
+  border-radius: 50%;
+  color: aqua !important;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  font-size: 20px !important;
+  font-weight: bolder;
+  margin: 0 auto;
+}
+
+.swiper-button-prev {
+  background: white !important;
+  padding: 26px;
+  font-size: 15px;
+  width: 15px;
+  border-radius: 50%;
+  color: aqua !important;
+}
+
+.swiper-button-prev:after {
+  font-size: 20px !important;
+  font-weight: bolder;
+  margin: 0 auto;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px !important;
+  border-radius: 3px !important;
+  background-color: azure !important;
+}
+
+.swiper-button-disabled {
+  display: none !important;
+}
