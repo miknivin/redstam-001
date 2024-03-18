@@ -22,11 +22,11 @@ function Banners() {
         autoplay={true}
         pagination={true}
         scrollbar={{ draggable: true }}
-        className="relative w-full md:h-[85lvh]  overflow-hidden "
+        className="relative w-full md:max-h-[80vh] overflow-hidden "
       >
         <SwiperSlide>
           <img
-            className="absolute top-0 bottom-0 right-0 left-0 object-cover"
+            className=" top-0 bottom-0 right-0 left-0 object-cover"
             style={{ width: "100%", height: "100%" }}
             src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(1).png?updatedAt=1710747568470"
             alt=""
@@ -51,7 +51,7 @@ function Banners() {
         </SwiperSlide>
         <SwiperSlide>
         <video
-  className="absolute top-0 bottom-0 right-0 left-0 object-cover"
+  className="top-0 bottom-0 right-0 left-0 object-cover"
   style={{ width: "100%", height: "100%" }}
   autoPlay // Add autoPlay attribute for autoplay
   muted // Add muted attribute to mute the video
