@@ -84,7 +84,7 @@ const PhAuth = () => {
         // Handle login response
         if (loginRes) {
           toast.success("User logged in successfully");
-          console.log('loginres' ,'-', data);
+          console.log("loginres", "-", data);
           navigate(-1);
         } else {
           // Handle login failure

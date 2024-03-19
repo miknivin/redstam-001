@@ -86,7 +86,10 @@ const Cart = () => {
                       </thead>
                       <tbody>
                         {cartItems.map((item) => (
-                          <tr key={item?.product} className="hover rounded-md text-gray-600 hover:text-gray-400">
+                          <tr
+                            key={item?.product}
+                            className="hover rounded-md text-gray-600 hover:text-gray-400"
+                          >
                             <td className="py-4">
                               <div className="flex flex-col md:flex-row items-start gap-2">
                                 <img

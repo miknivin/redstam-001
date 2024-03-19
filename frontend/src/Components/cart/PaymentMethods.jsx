@@ -41,9 +41,9 @@ const PaymentMethods = ({ onMethodSelection }) => {
 
     if (isSuccess) {
       toast.success("COD Order placed");
-      navigate('/order_placed')
+      navigate("/order_placed");
     }
-  }, [error, isSuccess,navigate]);
+  }, [error, isSuccess, navigate]);
 
   const handleMethod = (selectedMethod) => {
     onMethodSelection(selectedMethod);
@@ -67,7 +67,7 @@ const PaymentMethods = ({ onMethodSelection }) => {
         paymentMethod: "COD",
       };
       createNewOrder(orderData);
-      navigate('/order_placed')
+      navigate("/order_placed");
     }
 
     if (selectedMethod === "Card") {
@@ -84,8 +84,6 @@ const PaymentMethods = ({ onMethodSelection }) => {
       stripeCheckoutSession(orderData);
     }
   };
-
-  
 
   return (
     <>

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {},
-  isAuthenticated: true,//need to changed to false this just for testimg purpose
+  isAuthenticated: true, //need to changed to false this just for testimg purpose
   loading: false,
 };
 

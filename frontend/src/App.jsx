@@ -49,42 +49,42 @@ function App() {
         <Toaster position="top-center" />
         <Header />
         <div className="">
-        <ErrorBoundary>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/login" element={<PhAuth />} />
-            {/* <Route path="/register" element={<Register />} /> */}
-            <Route
-              path="/me/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/me/profile" element={<Profile />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route
-              path="/shipping"
-              element={
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route path="/login" element={<PhAuth />} />
+              {/* <Route path="/register" element={<Register />} /> */}
+              <Route
+                path="/me/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/me/profile" element={<Profile />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route
+                path="/shipping"
+                element={
                   <Shipping /> //need to be protected route
-              }
-            />
-            <Route
-              path="/confirm_order"
-              element={
-                  <ConfirmOrder />  //need to be protected route
-              }
-            />
-            <Route
-              path="/order_placed"
-              element={
+                }
+              />
+              <Route
+                path="/confirm_order"
+                element={
+                  <ConfirmOrder /> //need to be protected route
+                }
+              />
+              <Route
+                path="/order_placed"
+                element={
                   <OrderPlaced /> //need to be protected route
-              }
-            />
-            <Route path="*" element={<PageNotFound/>}></Route>
-          </Routes>
+                }
+              />
+              <Route path="*" element={<PageNotFound />}></Route>
+            </Routes>
           </ErrorBoundary>
         </div>
         <Footer />

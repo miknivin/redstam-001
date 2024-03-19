@@ -5,7 +5,11 @@ function Footer() {
     <div>
       <footer className="footer footer-center p-10 bg-gray-950 text-gray-200 ">
         <aside>
-        <img width={200} src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429" alt="" />
+          <img
+            width={200}
+            src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429"
+            alt=""
+          />
           <p className="font-bold">
             {/* Providing reliable tech since 1992 */}
           </p>

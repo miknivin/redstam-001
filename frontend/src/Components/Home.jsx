@@ -13,6 +13,8 @@ import CustomPagination from "./Layouts/CustomPagination.jsx";
 import { useSearchParams } from "react-router-dom";
 import Filters from "./Layouts/Filters.jsx";
 import NoResultPage from "./utilities/NoResultPage.jsx";
+import About from "./Layouts/About.jsx";
+import Mission from "./Layouts/Mission.jsx";
 
 function Home() {
   let [searchParams] = useSearchParams();
@@ -45,12 +47,14 @@ function Home() {
       <div>
         {/* Conditionally render Banners only when there is no keyword */}
         {!keyword && <Banners />}
+        {!keyword && <About />}
         <section id="categories">
           {/* Conditionally render Categories only when there is no keyword */}
           {/* {!keyword && <Categories />} */}
         </section>
         {/* all products section */}
         <section id="products" className="bg-gray-900">
+        <Mission/>
           <div className="text-center">
             {/* <h1 className="text-5xl font-bold py-5 text-base-300">
               {keyword
@@ -68,7 +72,6 @@ function Home() {
                 <Filters />
               </div>
             )} */}
-
             <div className={``}>
               {data?.filteredProducts?.map((product) => (
                 <ProductItem key={product.id} product={product} />

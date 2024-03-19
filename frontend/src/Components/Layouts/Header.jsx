@@ -27,7 +27,13 @@ function Header() {
     <div className="sticky top-0 z-50">
       <div className="navbar bg-black dark:bg-gray-950 pl-8 pr-10 py-4">
         <div className="flex-none">
-          <Link to='/' className="text-xl p-0 text-gray-100"><img width={120} src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429" alt="" /></Link>
+          <Link to="/" className="text-xl p-0 text-gray-100">
+            <img
+              width={120}
+              src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429"
+              alt=""
+            />
+          </Link>
         </div>
         <div className="flex-1 justify-end gap-3">
           <Search />

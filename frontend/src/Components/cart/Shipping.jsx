@@ -38,7 +38,7 @@ const Shipping = () => {
     e.preventDefault();
 
     if (!isValidPhone) {
-      toast.error("Enter valid phone")
+      toast.error("Enter valid phone");
       return;
     }
 
@@ -204,27 +204,27 @@ const Shipping = () => {
                 readOnly
               />
               <div className="relative w-full">
-              <input
-                type="tel"
-                name="floating_phone"
-                id="floating_phone"
-                className={`block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
-                  isValidPhone ? "" : "border-red-500"
-                }`}
-                placeholder=" "
-                onChange={handlePhoneChange}
-                required
-                value={phoneNo}
-              />
-              <label
-                htmlFor="floating_phone"
-                className={`peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${
-                  isValidPhone ? "" : "-translate-y-16 text-red-500"
-                }`}
-              >
-                Phone
-              </label>
-            </div>
+                <input
+                  type="tel"
+                  name="floating_phone"
+                  id="floating_phone"
+                  className={`block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
+                    isValidPhone ? "" : "border-red-500"
+                  }`}
+                  placeholder=" "
+                  onChange={handlePhoneChange}
+                  required
+                  value={phoneNo}
+                />
+                <label
+                  htmlFor="floating_phone"
+                  className={`peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${
+                    isValidPhone ? "" : "-translate-y-16 text-red-500"
+                  }`}
+                >
+                  Phone
+                </label>
+              </div>
             </div>
           </div>
           <button

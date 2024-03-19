@@ -22,7 +22,7 @@ function Banners() {
         autoplay={true}
         pagination={true}
         scrollbar={{ draggable: true }}
-        className="relative w-full md:max-h-[80vh] overflow-hidden rounded-box"
+        className="relative w-full overflow-hidden rounded-box"
       >
         <SwiperSlide>
           <img
@@ -47,11 +47,11 @@ function Banners() {
                 </div>
               </div>
             </div> */}
-          {/* </div> */} 
+          {/* </div> */}
         </SwiperSlide>
         <SwiperSlide>
-        <img
-            className=" object-cover"
+          <img
+            className="object-cover object-right-top"
             style={{ width: "100%", height: "100%" }}
             src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(4).webp?updatedAt=1710831957296"
             alt=""

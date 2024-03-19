@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   return (
-      <>
+    <>
       <div className=" w-ful">
         {/* https://gist.github.com/goodreds/5b8a4a2bf11ff67557d38c5e727ea86c */}
         <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 mb-14 bg-white shadow-xl rounded-lg text-gray-900">
@@ -46,8 +46,8 @@ const Profile = () => {
             {/* <button className="btn btn-accent w-1/2 mx-3">Wishlist</button> */}
           </div>
         </div>
-        </div>
-      </>
+      </div>
+    </>
   );
 };
 
