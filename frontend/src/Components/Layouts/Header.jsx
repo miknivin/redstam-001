@@ -25,9 +25,9 @@ function Header() {
     .toFixed(2);
   return (
     <div className="sticky top-0 z-50">
-      <div className="navbar bg-gray-800 dark:bg-gray-900 px-14 py-4">
+      <div className="navbar bg-black dark:bg-gray-950 pl-8 pr-10 py-4">
         <div className="flex-none">
-          <Link to='/' className="text-xl p-0 text-gray-100">Red stam</Link>
+          <Link to='/' className="text-xl p-0 text-gray-100"><img width={120} src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429" alt="" /></Link>
         </div>
         <div className="flex-1 justify-end gap-3">
           <Search />
@@ -93,7 +93,7 @@ function Header() {
               </div>
             </div>
             {/* </Link> */}
-            {showDropDown && (
+            {/* {showDropDown && (
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
@@ -112,7 +112,7 @@ function Header() {
                   </Link>
                 </li>
               </ul>
-            )}
+            )} */}
           </div>
 
           {/* <div className="w-10 rounded">

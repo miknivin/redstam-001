@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: null,
-  isAuthenticated: false,
-  loading: true,
+  user: {},
+  isAuthenticated: true,//need to changed to false this just for testimg purpose
+  loading: false,
 };
 
 export const userSlice = createSlice({

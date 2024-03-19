@@ -3,7 +3,6 @@ import Metadata from "../Layouts/Metadata";
 import StarRatings from "react-star-ratings";
 import { useDispatch, useSelector } from "react-redux";
 import { caluclateOrderCost } from "../../helpers/helper";
-import { removeCartItem } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "./CheckOutSteps";
 import PaymentMethods from "./PaymentMethods";

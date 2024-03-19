@@ -25,8 +25,8 @@ function ProductItem({ product }) {
 
     dispatch(setCartItem(cartItem));
     toast.success("Item added to Cart");
-    console.log("Cart item");
-    console.log(cartItem);
+    // console.log("Cart item");
+    // console.log(cartItem);
   };
   return (
     <section className="bg-transparent">
@@ -53,22 +53,22 @@ function ProductItem({ product }) {
                 type="radio"
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                type="radio"
+                name="rating-2"
+                className="mask mask-star-2 bg-orange-400"
                 checked
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                type="radio"
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
               />
             </div>
           </div>

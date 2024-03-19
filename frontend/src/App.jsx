@@ -68,25 +68,19 @@ function App() {
             <Route
               path="/shipping"
               element={
-                <ProtectedRoute>
-                  <Shipping />
-                </ProtectedRoute>
+                  <Shipping /> //need to be protected route
               }
             />
             <Route
               path="/confirm_order"
               element={
-                <ProtectedRoute>
-                  <ConfirmOrder />
-                </ProtectedRoute>
+                  <ConfirmOrder />  //need to be protected route
               }
             />
             <Route
               path="/order_placed"
               element={
-                <ProtectedRoute>
-                  <OrderPlaced />
-                </ProtectedRoute>
+                  <OrderPlaced /> //need to be protected route
               }
             />
             <Route path="*" element={<PageNotFound/>}></Route>

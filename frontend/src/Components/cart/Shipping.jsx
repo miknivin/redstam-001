@@ -5,14 +5,13 @@ import { countries } from "countries-list";
 import { saveShippingInfo } from "../../redux/features/cartSlice";
 import Metadata from "../Layouts/Metadata";
 import CheckoutSteps from "./CheckOutSteps";
+import toast from "react-hot-toast";
 
 const Shipping = () => {
   const countriesList = Object.values(countries);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { shippingInfo } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.auth);
-
   const [fullName, setFullName] = useState("");
   const [address, setAddress] = useState("");
   const [state, setState] = useState("");
@@ -21,6 +20,7 @@ const Shipping = () => {
   const [phoneNo, setPhoneNo] = useState("");
   const [country, setCountry] = useState("India");
   const [selectedCountryCode, setSelectedCountryCode] = useState("91");
+  const [isValidPhone, setIsValidPhone] = useState(true); // State to track phone number validity
 
   useEffect(() => {
     if (shippingInfo) {
@@ -36,6 +36,11 @@ const Shipping = () => {
 
   const submiHandler = (e) => {
     e.preventDefault();
+
+    if (!isValidPhone) {
+      toast.error("Enter valid phone")
+      return;
+    }
 
     dispatch(
       saveShippingInfo({
@@ -63,6 +68,15 @@ const Shipping = () => {
     }
   };
 
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    setPhoneNo(value);
+
+    const phoneRegex = /^\d{10}$/;
+
+    setIsValidPhone(phoneRegex.test(value));
+  };
+
   return (
     <>
       <Metadata title={"Enter Shipping Info"}></Metadata>
@@ -81,11 +95,11 @@ const Shipping = () => {
                 placeholder=" "
                 onChange={(e) => setFullName(e.target.value)}
                 value={fullName}
-                required=""
+                required
               />
               <label
                 htmlFor="floating_full_name"
-                className="peer-focus:font-medium absolute text-lg !bg-gray-900 dark:bg-gray-900 px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
               >
                 Full Name
               </label>
@@ -99,11 +113,11 @@ const Shipping = () => {
                 placeholder=" "
                 onChange={(e) => setAddress(e.target.value)}
                 value={address}
-                required=""
+                required
               />
               <label
                 htmlFor="floating_address"
-                className="peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
               >
                 Address
               </label>
@@ -119,11 +133,11 @@ const Shipping = () => {
                 placeholder=" "
                 onChange={(e) => setCity(e.target.value)}
                 value={city}
-                required=""
+                required
               />
               <label
                 htmlFor="floating_city"
-                className="peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
               >
                 City
               </label>
@@ -136,12 +150,12 @@ const Shipping = () => {
                 className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 value={state}
-                required=""
+                required
                 onChange={(e) => setState(e.target.value)}
               />
               <label
                 htmlFor="floating_state"
-                className="peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
               >
                 State
               </label>
@@ -157,18 +171,18 @@ const Shipping = () => {
                 placeholder=" "
                 value={zipCode}
                 onChange={(e) => setZipCode(e.target.value)}
-                required=""
+                required
               />
               <label
                 htmlFor="floating_zip"
-                className="peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-900 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
               >
                 ZIP Code
               </label>
             </div>
             <div className="relative z-0 w-full mb-5 group">
               <select
-                className="select select-bordered w-full"
+                className="select select-bordered w-full bg-gray-900 text-gray-100 border-2 border-gray-300"
                 defaultValue="India"
                 onChange={(e) => handleCountrySelect(e.target.value)}
               >
@@ -186,27 +200,31 @@ const Shipping = () => {
                 type="text"
                 id="floating_code"
                 value={`+${selectedCountryCode}`}
-                className=" w-16 text-sm text-center bg-transparent border-2 rounded-lg"
+                className=" w-16 text-sm text-center bg-transparent text-gray-300 border-2 rounded-lg"
                 readOnly
               />
               <div className="relative w-full">
-                <input
-                  type="tel"
-                  name="floating_phone"
-                  id="floating_phone"
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  onChange={(e) => setPhoneNo(e.target.value)}
-                  required=""
-                  value={phoneNo}
-                />
-                <label
-                  htmlFor="floating_phone"
-                  className="peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                >
-                  Phone
-                </label>
-              </div>
+              <input
+                type="tel"
+                name="floating_phone"
+                id="floating_phone"
+                className={`block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-100 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
+                  isValidPhone ? "" : "border-red-500"
+                }`}
+                placeholder=" "
+                onChange={handlePhoneChange}
+                required
+                value={phoneNo}
+              />
+              <label
+                htmlFor="floating_phone"
+                className={`peer-focus:font-medium absolute text-lg px-3 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-20 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-2/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-200 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${
+                  isValidPhone ? "" : "-translate-y-16 text-red-500"
+                }`}
+              >
+                Phone
+              </label>
+            </div>
             </div>
           </div>
           <button

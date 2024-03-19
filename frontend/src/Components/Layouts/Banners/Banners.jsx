@@ -22,11 +22,11 @@ function Banners() {
         autoplay={true}
         pagination={true}
         scrollbar={{ draggable: true }}
-        className="relative w-full md:max-h-[80vh] overflow-hidden "
+        className="relative w-full md:max-h-[80vh] overflow-hidden rounded-box"
       >
         <SwiperSlide>
           <img
-            className=" top-0 bottom-0 right-0 left-0 object-cover"
+            className=" object-cover"
             style={{ width: "100%", height: "100%" }}
             src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(1).png?updatedAt=1710747568470"
             alt=""
@@ -50,18 +50,12 @@ function Banners() {
           {/* </div> */} 
         </SwiperSlide>
         <SwiperSlide>
-        <video
-  className="top-0 bottom-0 right-0 left-0 object-cover"
-  style={{ width: "100%", height: "100%" }}
-  autoPlay // Add autoPlay attribute for autoplay
-  muted // Add muted attribute to mute the video
-  loop // Add loop attribute to loop the video
->
-  <source
-    src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL.mp4?updatedAt=1710751722541"
-    type="video/mp4"
-  />
-</video>
+        <img
+            className=" object-cover"
+            style={{ width: "100%", height: "100%" }}
+            src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(4).webp?updatedAt=1710831957296"
+            alt=""
+          />
           {/* <div className="h-full w-[85%] mx-auto flex items-center relative">
             <div className="card w-96 glass shadow-xl">
               <div className="card-body">

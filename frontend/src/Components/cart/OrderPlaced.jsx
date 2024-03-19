@@ -1,11 +1,18 @@
 import React, { useEffect } from "react";
 import CheckoutSteps from "./CheckOutSteps";
-
+import { useDispatch } from "react-redux";
+import {clearCart} from "../../redux/features/cartSlice";
 
 const OrderPlaced = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
-  }, []);
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0); 
+
+    // Dispatch the clearCart action when the component mounts
+    dispatch(clearCart());
+  }, [dispatch]); // 
+  
   return (
     <div>
             <div className="sticky top-20 z-10 w-full bg-gray-900 rounded-box mx-auto">
@@ -27,7 +34,7 @@ const OrderPlaced = () => {
               Order Placed
             </h3>
             <p className=" my-2">
-              Thank you for completing your online.
+              Thank you for completing your order.
             </p>
             <p> Have a great day!</p>
             <div className="py-10 text-center">
