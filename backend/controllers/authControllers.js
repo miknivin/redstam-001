@@ -6,77 +6,44 @@ import sendEmail from "../utils/sendEmail.js";
 import sendTokens from "../utils/sendTokens.js";
 import crypto from "crypto"
 //register  user /api/v1/register
+// Register user   =>  /api/v1/register
 export const registerUser = catchAsyncErrors(async (req, res, next) => {
-    const { name, email, phone, password } = req.body;
-
-    // Check if either email or phone is provided
-    if (!email && !phone) {
-        return res.status(400).json({
-            success: false,
-            error: 'Email or phone number is required.'
-        });
+    const { name, email, password } = req.body;
+  
+    const user = await User.create({
+      name,
+      email,
+      password,
+    });
+  
+    sendTokens(user, 201, res);
+  });
+  
+  // Login user   =>  /api/v1/login
+  export const loginUser = catchAsyncErrors(async (req, res, next) => {
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return next(new ErrorHandler("Please enter email & password", 400));
     }
-
-    // Check if user with provided email or phone exists
-    const user = email ? await User.findOne({ email }) : await User.findOne({ phone });
-
-    // If user exists, proceed with sending tokens
-    if (user) {
-        sendTokens(user, 200, res);
-    } else {
-        // If user does not exist, proceed with registration
-        const userData = { name };
-
-        // Include email if provided
-        if (email) userData.email = email;
-
-        // Include phone if provided
-        if (phone) userData.phone = phone;
-
-        // Include password if provided
-        if (password) userData.password = password;
-
-        const newUser = await User.create(userData);
-        sendTokens(newUser, 201, res);
-    }
-});
-
-//login user - /api/v1/login
-export const loginUser = catchAsyncErrors(async (req, res, next) => {
-    const { email, phone, password } = req.body;
-
-    if (!password) {
-        return next(new ErrorHandler('Please enter password', 400));
-    }
-
-    let user;
-    if (phone) {
-        // Login with phone
-        user = await User.findOne({ phone });
-    } else if (email) {
-        // Login with email
-        user = await User.findOne({ email }).select("+password");
-    }
-
+  
+    // Find user in the database
+    const user = await User.findOne({ email }).select("+password");
+  
     if (!user) {
-        return next(new ErrorHandler('Invalid email, phone, or password', 401));
+      return next(new ErrorHandler("Invalid email or password", 401));
     }
-
-    if (phone) {
-        // If login with phone, simply send tokens
-        sendTokens(user, 201, res);
-    } else {
-        // If login with email, check password
-        const isPasswordMatched = await user.comparePassword(password);
-
-        if (!isPasswordMatched) {
-            return next(new ErrorHandler('Invalid password', 401));
-        }
-
-        sendTokens(user, 201, res);
+  
+    // Check if password is correct
+    const isPasswordMatched = await user.comparePassword(password);
+  
+    if (!isPasswordMatched) {
+      return next(new ErrorHandler("Invalid email or password", 401));
     }
-});
-
+  
+    sendTokens(user, 200, res);
+  });
+  
 //forgot password - /api/v1/password/forgot
 export const forgotPassword = catchAsyncErrors(async (req, res, next)=>{
 

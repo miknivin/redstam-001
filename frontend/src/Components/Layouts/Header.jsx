@@ -25,9 +25,9 @@ function Header() {
     .toFixed(2);
   return (
     <div className="sticky top-0 z-50">
-      <div className="navbar bg-black dark:bg-gray-950 pl-8 pr-10 py-4">
+      <div className="py-4 pl-8 pr-10 bg-black navbar dark:bg-gray-950">
         <div className="flex-none">
-          <Link to="/" className="text-xl p-0 text-gray-100">
+          <Link to="/" className="p-0 text-xl text-gray-100">
             <img
               width={120}
               src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429"
@@ -35,7 +35,7 @@ function Header() {
             />
           </Link>
         </div>
-        <div className="flex-1 justify-end gap-3">
+        <div className="justify-end flex-1 gap-3">
           <Search />
           <div className="dropdown dropdown-end">
             <div
@@ -46,7 +46,7 @@ function Header() {
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-100"
+                  className="w-5 h-5 text-gray-100"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -58,7 +58,7 @@ function Header() {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="badge indicator-item bg-red-700 rounded-full p-1 text-white align-middle text-sm">
+                <span className="p-1 text-sm text-white align-middle bg-red-700 rounded-full badge indicator-item">
                   {cartItems.length}
                 </span>
               </div>
@@ -69,7 +69,7 @@ function Header() {
               className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
             >
               <div className="card-body bg-base-300">
-                <span className="font-bold text-lg">
+                <span className="text-lg font-bold">
                   {cartItems.length} Item(s)
                 </span>
                 <span className="text-info">Subtotal: ₹{subtotal}</span>
@@ -99,7 +99,7 @@ function Header() {
               </div>
             </div>
             {/* </Link> */}
-            {/* {showDropDown && (
+            {showDropDown && (
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
@@ -118,12 +118,12 @@ function Header() {
                   </Link>
                 </li>
               </ul>
-            )} */}
+            )}
           </div>
 
           {/* <div className="w-10 rounded">
-                    <button className='btn btn-success font-bold'>Login</button>
-                </div> */}
+            <button className="font-bold btn btn-success">Login</button>
+          </div> */}
         </div>
       </div>
     </div>

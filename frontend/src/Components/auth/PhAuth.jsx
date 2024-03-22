@@ -35,7 +35,7 @@ const PhAuth = () => {
 
   const [register] = useRegisterMutation();
   const [login, { error, data }] = useLoginMutation();
-  const { isLoading } = useGetMeQuery();
+  // const { isLoading } = useGetMeQuery();
   async function onSignup() {
     try {
       setLoading(true);
@@ -107,24 +107,24 @@ const PhAuth = () => {
 
   return (
     <div>
-      <section className="bg-gray-800 flex items-center justify-center min-h-screen">
+      <section className="flex items-center justify-center p-24 bg-gray-800 md:p-48">
         <div>
           <Toaster toastOptions={{ duration: 4000 }} />
 
           {phUser ? (
-            <h2 className="text-center text-white font-medium text-2xl">
+            <h2 className="text-2xl font-medium text-center text-white">
               👍 Login Success
             </h2>
           ) : (
-            <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
+            <div className="flex flex-col gap-4 p-4 rounded-lg w-80">
               {showOTP ? (
                 <>
-                  <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                    <i className="fa-solid fa-shield text-2xl"></i>
+                  <div className="p-4 mx-auto bg-white rounded-full text-emerald-500 w-fit">
+                    <i className="text-2xl fa-solid fa-shield"></i>
                   </div>
                   <label
                     htmlFor="otp"
-                    className="font-bold text-xl text-white text-center"
+                    className="text-xl font-bold text-center text-white"
                   >
                     Enter your OTP
                   </label>
@@ -135,7 +135,6 @@ const PhAuth = () => {
                     otpType="number"
                     disabled={false}
                     autoFocus
-                    secure
                     className="opt-container"
                   ></OTPInput>
                   <ResendOTP />
@@ -151,12 +150,12 @@ const PhAuth = () => {
                 </>
               ) : (
                 <>
-                  <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
-                    <i className="fa-solid fa-phone text-2xl"></i>
+                  <div className="p-4 mx-auto bg-white rounded-full text-emerald-500 w-fit">
+                    <i className="text-2xl fa-solid fa-phone"></i>
                   </div>
                   <label
                     htmlFor=""
-                    className="font-bold text-xl text-white text-center"
+                    className="text-xl font-bold text-center text-white"
                   >
                     Verify your phone number
                   </label>
@@ -170,6 +169,15 @@ const PhAuth = () => {
                       <span className="loading loading-spinner loading-md"></span>
                     )}
                     <span>Send code via SMS</span>
+                  </button>
+                  <button className="flex justify-center  gap-2 transition duration-150 border rounded-lg jus px-4 py-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow">
+                    <img
+                      className="w-6 h-6"
+                      src="https://www.svgrepo.com/show/475656/google-color.svg"
+                      loading="lazy"
+                      alt="google logo"
+                    />
+                    <span>Login with Google</span>
                   </button>
                 </>
               )}

@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Mission from "./Mission";
 
 const About = () => {
   const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
+  }, []);
+
   return (
     <div>
       <section className=" bg-slate-950">
@@ -67,6 +73,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <Mission />
     </div>
   );
 };

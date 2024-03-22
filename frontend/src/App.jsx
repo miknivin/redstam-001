@@ -15,6 +15,11 @@ import ConfirmOrder from "./Components/cart/ConfirmOrder";
 import OrderPlaced from "./Components/cart/OrderPlaced";
 import PageNotFound from "./Components/utilities/PageNotFound";
 import { Component } from "react";
+import Contact from "./Components/contactUs/Contact";
+import Terms from "./Components/t&c/Terms";
+import PrivacyPolicy from "./Components/privacy/PrivacyPolicy";
+import Refund from "./Components/t&c/Refund";
+import About from "./Components/Layouts/About";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -68,13 +73,17 @@ function App() {
               <Route
                 path="/shipping"
                 element={
-                  <Shipping /> //need to be protected route
+                  <ProtectedRoute>
+                    <Shipping />
+                  </ProtectedRoute>
                 }
               />
               <Route
                 path="/confirm_order"
                 element={
-                  <ConfirmOrder /> //need to be protected route
+                  <ProtectedRoute>
+                    <ConfirmOrder />
+                  </ProtectedRoute>
                 }
               />
               <Route
@@ -83,6 +92,11 @@ function App() {
                   <OrderPlaced /> //need to be protected route
                 }
               />
+              <Route path="/about" element={<About />}></Route>
+              <Route path="/contact" element={<Contact />}></Route>
+              <Route path="/terms_and_conditions" element={<Terms />}></Route>
+              <Route path="/privacy_policy" element={<PrivacyPolicy />}></Route>
+              <Route path="/return_and_refund" element={<Refund />}></Route>
               <Route path="*" element={<PageNotFound />}></Route>
             </Routes>
           </ErrorBoundary>

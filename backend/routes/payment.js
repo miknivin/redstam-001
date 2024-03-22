@@ -8,7 +8,7 @@ import { isAuthenticateUser } from "../middlewares/auth.js";
 
 router
   .route("/payment/checkout_session")
-  .post( stripeCheckoutSession);// need to add authenticated user
+  .post(isAuthenticateUser, stripeCheckoutSession);// need to add authenticated user
 
 router.route("/payment/webhook").post(stripeWebhook);
 export default router;

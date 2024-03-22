@@ -15,6 +15,7 @@ import Filters from "./Layouts/Filters.jsx";
 import NoResultPage from "./utilities/NoResultPage.jsx";
 import About from "./Layouts/About.jsx";
 import Mission from "./Layouts/Mission.jsx";
+import AboutHome from "./Layouts/AboutHome.jsx";
 
 function Home() {
   let [searchParams] = useSearchParams();
@@ -38,6 +39,10 @@ function Home() {
     }
   }, [error?.data?.message, isError]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
+  }, []);
+
   if (isLoading) return <Loader />;
   if (!isLoading && data?.filteredProducts.length === 0)
     return <NoResultPage />;
@@ -47,14 +52,13 @@ function Home() {
       <div>
         {/* Conditionally render Banners only when there is no keyword */}
         {!keyword && <Banners />}
-        {!keyword && <About />}
+        {!keyword && <AboutHome />}
         <section id="categories">
           {/* Conditionally render Categories only when there is no keyword */}
           {/* {!keyword && <Categories />} */}
         </section>
         {/* all products section */}
         <section id="products" className="bg-gray-900">
-        <Mission/>
           <div className="text-center">
             {/* <h1 className="text-5xl font-bold py-5 text-base-300">
               {keyword
