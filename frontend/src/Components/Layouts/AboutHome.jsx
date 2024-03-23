@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const AboutHome = () => {
   return (
     <div className=" bg-gray-900">
-      <div class="text-center block relative z-20 mx-auto py-10 ">
+      <div class="text-center block relative z-20 mx-auto pt-10 pb-3 ">
         <h1 class="text-5xl font-light my-2 text-gray-50">
           Embracing Nature's Ancient Wisdom
         </h1>

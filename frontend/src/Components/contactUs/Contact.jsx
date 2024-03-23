@@ -20,7 +20,7 @@ const Contact = () => {
             <Forms />
           </div>
           <div className="lg:mt-0 lg:col-span-5 lg:flex my-3">
-            <ul class="mb-6 md:mb-0 pt-5 md:pt-10 ">
+            <ul class="mb-6 md:mb-0 pt-5 md:pt-14 ">
               <li class="flex">
                 <div class="flex h-10 w-10 items-center justify-center rounded bg-red-900 text-gray-50">
                   <svg
@@ -78,7 +78,7 @@ const Contact = () => {
                     Mobile:+91 8075 666 099
                   </p>
                   <p class="text-gray-400 dark:text-slate-400">
-                    Mail: tailnext@gmail.com
+                    Mail: info@redstam.com
                   </p>
                 </div>
               </li>
@@ -105,11 +105,11 @@ const Contact = () => {
                     Working hours
                   </h3>
                   <p class="text-gray-400 dark:text-slate-400">
-                    Monday - Friday: 08:00 - 17:00
+                    Monday - Friday: 09:00 - 18:00
                   </p>
-                  <p class="text-gray-400 dark:text-slate-400">
+                  {/* <p class="text-gray-400 dark:text-slate-400">
                     Saturday &amp; Sunday: 08:00 - 12:00
-                  </p>
+                  </p> */}
                 </div>
               </li>
             </ul>

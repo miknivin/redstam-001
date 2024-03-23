@@ -13,8 +13,8 @@ const Cart = () => {
     (acc, item) => acc + item.price * item.quantity,
     0,
   );
-  const taxes = subtotal * 0.1; // Assuming taxes are 10% of the subtotal
-  const shipping = 0; // Assuming shipping is free
+  const taxes = subtotal * 0.18;
+  const shipping = 0; 
   const total = subtotal + taxes + shipping;
   const increseQty = (item, quantity) => {
     const newQty = quantity + 1;
