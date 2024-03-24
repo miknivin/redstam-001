@@ -21,6 +21,7 @@ import PrivacyPolicy from "./Components/privacy/PrivacyPolicy";
 import Refund from "./Components/t&c/Refund";
 import About from "./Components/Layouts/About";
 import ShippingPolicy from "./Components/privacy/ShippingPolicy";
+import UpdateProfile from "./Components/user/UpdateProfile";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -69,7 +70,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/me/profile" element={<Profile />} />
+              <Route path="/me/update_profile" element={<UpdateProfile />} />
               <Route path="/cart" element={<Cart />} />
               <Route
                 path="/shipping"
@@ -98,7 +99,10 @@ function App() {
               <Route path="/terms_and_conditions" element={<Terms />}></Route>
               <Route path="/privacy_policy" element={<PrivacyPolicy />}></Route>
               <Route path="/return_and_refund" element={<Refund />}></Route>
-              <Route path="/shipping_and_delivery" element={<ShippingPolicy />}></Route>
+              <Route
+                path="/shipping_and_delivery"
+                element={<ShippingPolicy />}
+              ></Route>
               <Route path="*" element={<PageNotFound />}></Route>
             </Routes>
           </ErrorBoundary>

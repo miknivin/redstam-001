@@ -28,8 +28,8 @@ function Banners() {
           <img
             className=" object-cover"
             style={{ width: "100%", height: "100%" }}
-            src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(1).png?updatedAt=1710747568470"
-            alt=""
+            src="https://ik.imagekit.io/c1jhxlxiy/banner.webp?updatedAt=1711288957508"
+            alt="banner"
           />
           {/* <div className="h-full w-[85%] mx-auto flex items-center relative">
             {/* <div className="card w-96 glass shadow-xl">
@@ -54,7 +54,7 @@ function Banners() {
             className="object-cover object-right-top"
             style={{ width: "100%", height: "100%" }}
             src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(4).webp?updatedAt=1710831957296"
-            alt=""
+            alt="banner1"
           />
           {/* <div className="h-full w-[85%] mx-auto flex items-center relative">
             <div className="card w-96 glass shadow-xl">

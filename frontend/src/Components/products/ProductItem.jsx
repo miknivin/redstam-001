@@ -101,6 +101,7 @@ function ProductItem({ product }) {
                   src={image.url}
                   alt={`Productimg ${index + 1}`}
                   className="rounded-box aspect-square object-cover"
+                  loading="lazy"
                 />
               </SwiperSlide>
             ))}
