@@ -58,7 +58,7 @@ function Home() {
           {/* {!keyword && <Categories />} */}
         </section>
         {/* all products section */}
-        <section id="products" className="bg-gray-900">
+        <section id="products" className="bg-gray-950">
           <div className="text-center">
             {/* <h1 className="text-5xl font-bold py-5 text-base-300">
               {keyword

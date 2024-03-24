@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   }, []);
   return (
     <>
-      <div className=" p-10">
+      <div className=" p-10 bg-gray-950">
         <h2 className=" text-3xl">Privacy Policy</h2>
         <p>Last updated: {/* */}22 March 2024</p>
         <p>
@@ -20,15 +20,15 @@ const PrivacyPolicy = () => {
           the Service, You agree to the collection and use of information in
           accordance with this Privacy Policy.
         </p>
-        <h2 className="subHeadPvcH2">Interpretation and Definitions</h2>
-        <h3 className="subHeadPvc">Interpretation</h3>
+        <h2 className="text-3xl ">Interpretation and Definitions</h2>
+        <h3 className="text-2xl">Interpretation</h3>
         <p>
           The words of which the initial letter is capitalized have meanings
           defined under the following conditions. The following definitions
           shall have the same meaning regardless of whether they appear in
           singular or in plural.
         </p>
-        <h3>Definitions</h3>
+        <h3 className="text-2xl">Definitions</h3>
         <p>For the purposes of this Privacy Policy:</p>
         <ul>
           <li>
@@ -123,11 +123,11 @@ const PrivacyPolicy = () => {
             </p>
           </li>
         </ul>
-        <h2 className="subHeadPvcH2 py-4">
+        <h2 className="text-3xl py-4">
           Collecting and Using Your Personal Data
         </h2>
-        <h3 className="subHeadPvc py-2">Types of Data Collected</h3>
-        <h3 className="subHeadPvc py-2">Personal Data</h3>
+        <h3 className="text-2xl py-2">Types of Data Collected</h3>
+        <h3 className="text-xl py-2">Personal Data</h3>
         <p>
           While using Our Service, We may ask You to provide Us with certain
           personally identifiable information that can be used to contact or
@@ -151,7 +151,7 @@ const PrivacyPolicy = () => {
             <p>Usage Data</p>
           </li>
         </ul>
-        <h3>Usage Data</h3>
+        <h3 className="text-2xl">Usage Data</h3>
         <p>Usage Data is collected automatically when using the Service.</p>
         <p>
           Usage Data may include information such as Your Device's Internet

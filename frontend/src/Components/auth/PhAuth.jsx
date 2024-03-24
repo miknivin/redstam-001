@@ -3,7 +3,12 @@ import OTPInput, { ResendOTP } from "otp-input-react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "../../firebase.config";
-import { RecaptchaVerifier, signInWithPhoneNumber, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import { useLoginMutation } from "../../redux/api/authApi";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +20,6 @@ const PhAuth = () => {
   const [showOTP, setShowOTP] = useState(false);
   const navigate = useNavigate();
   const [login] = useLoginMutation();
-
 
   async function onSignup() {
     try {
@@ -47,21 +51,21 @@ const PhAuth = () => {
 
   const SignUpUsingGoogle = () => {
     const provider = new GoogleAuthProvider();
-  
+
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const user = result.user;
         let userData = { email: user.email };
-  
+
         // Check if the user has a phone number associated with the account
         if (user.phoneNumber) {
           // If phone number is available, use it for login
           userData = { phone: user.phoneNumber };
         }
-  
+
         // Call login function with the appropriate user data
         const loginRes = await login(userData);
-  
+
         if (loginRes && loginRes.data && loginRes.data.token) {
           toast.success("User logged in successfully");
           navigate(-1);
@@ -74,7 +78,6 @@ const PhAuth = () => {
         toast.error("Error Authenticating");
       });
   };
-  
 
   async function onOTPVerify() {
     try {
@@ -165,7 +168,8 @@ const PhAuth = () => {
                 </button>
                 {/* Google sign-in button */}
                 {/* This part should be implemented */}
-                <button className="flex justify-center gap-2 transition duration-150 border rounded-lg jus px-4 py-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow"
+                <button
+                  className="flex justify-center gap-2 transition duration-150 border rounded-lg jus px-4 py-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow"
                   onClick={SignUpUsingGoogle}
                 >
                   <img

@@ -13,7 +13,7 @@ function Header() {
   const { user } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
 
-  const [logout,{isSuccess, error }] = useLazyLogoutQuery();
+  const [logout, { isSuccess, error }] = useLazyLogoutQuery();
 
   const [showDropDown, setShowDropDown] = useState(false);
 

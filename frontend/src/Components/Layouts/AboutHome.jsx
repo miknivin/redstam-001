@@ -18,7 +18,7 @@ const AboutHome = () => {
         </p>
         <Link
           to="about"
-          className="btn bg-red-600 hover:bg-red-400 mx-auto  mt-5 text-white"
+          className="btn bg-red-600 hover:bg-red-400 mx-auto  my-8 text-white"
         >
           Know More
         </Link>

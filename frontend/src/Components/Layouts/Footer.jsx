@@ -41,6 +41,9 @@ function Footer() {
           <Link to="/return_and_refund" className="link link-hover">
             Return & Refund policy
           </Link>
+          <Link to="/shipping_and_delivery" className="link link-hover">
+            Shipping & Delivery
+          </Link>
         </nav>
         <nav>
           <h6 className="footer-title">Contact</h6>
