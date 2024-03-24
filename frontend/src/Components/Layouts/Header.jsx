@@ -35,7 +35,7 @@ function Header() {
     .toFixed(2);
   return (
     <div className="sticky top-0 z-50">
-      <div className="py-4 pl-8 pr-10 bg-black navbar dark:bg-gray-950">
+      <div className="py-4 pl-8 pr-10 bg-black navbar bg-blend-multiply bg-opacity-95">
         <div className="flex-none">
           <Link to="/" className="p-0 text-xl text-gray-100">
             <img
