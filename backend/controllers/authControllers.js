@@ -5,7 +5,7 @@ import ErrorHandler from "../utils/errorHandler.js";
 import sendEmail from "../utils/sendEmail.js";
 import sendTokens from "../utils/sendTokens.js";
 import crypto from "crypto"
-//register  user /api/v1/register
+import { delete_file, upload_file } from "../utils/cloudinary.js";
 // Register user   =>  /api/v1/register
 export const registerUser = catchAsyncErrors(async (req, res, next) => {
     const { name, email, password } = req.body;
@@ -21,29 +21,44 @@ export const registerUser = catchAsyncErrors(async (req, res, next) => {
   
   // Login user   =>  /api/v1/login
   export const loginUser = catchAsyncErrors(async (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, phone } = req.body;
   
-    if (!email || !password) {
-      return next(new ErrorHandler("Please enter email & password", 400));
+    if ((!email && !phone) || (email && phone)) {
+      return next(new ErrorHandler('Please provide either email or phone number', 400));
     }
   
-    // Find user in the database
-    const user = await User.findOne({ email }).select("+password");
+    try {
+      let user;
   
-    if (!user) {
-      return next(new ErrorHandler("Invalid email or password", 401));
+      if (phone) {
+        // If phone number is provided, find the user based on it
+        user = await User.findOne({ phone });
+  
+        if (!user) {
+          // If user with provided phone number is not found, create a new user
+          user = await User.create({ phone });
+        }
+      } else if (email) {
+        // If email is provided, find the user based on it
+        user = await User.findOne({ email });
+  
+        if (!user) {
+          // If user with provided email is not found, create a new user
+          user = await User.create({ email });
+        }
+      }
+  
+    //   if (!user) {
+    //     return next(new ErrorHandler('User not found', 404));
+    //   }
+  
+      // If user found or created, send token
+      sendTokens(user, 200, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
     }
-  
-    // Check if password is correct
-    const isPasswordMatched = await user.comparePassword(password);
-  
-    if (!isPasswordMatched) {
-      return next(new ErrorHandler("Invalid email or password", 401));
-    }
-  
-    sendTokens(user, 200, res);
   });
-  
+
 //forgot password - /api/v1/password/forgot
 export const forgotPassword = catchAsyncErrors(async (req, res, next)=>{
 
@@ -170,7 +185,8 @@ export const updateProfile = catchAsyncErrors(async (req,res,next)=>{
 
     const newUserData = {
         name:req.body.name,
-        email:req.body.email
+        email:req.body.email,
+        phone:req.body.phone
     }
 
     const user = await User.findByIdAndUpdate(req.user._id,newUserData,{
@@ -206,6 +222,24 @@ export const getUserDetails = catchAsyncErrors(async (req,res,next)=>{
         user
     });
 });
+
+// Upload user avatar   =>  /api/v1/me/upload_avatar
+export const uploadAvatar = catchAsyncErrors(async (req, res, next) => {
+    const avatarResponse = await upload_file(req.body.avatar, "Redstam/avatars");
+  
+    // Remove previous avatar
+    if (req?.user?.avatar?.url) {
+      await delete_file(req?.user?.avatar?.public_id);
+    }
+  
+    const user = await User.findByIdAndUpdate(req?.user?._id, {
+      avatar: avatarResponse,
+    });
+  
+    res.status(200).json({
+      user,
+    });
+  });
 
 //update user details for admin => /api/v1/admin/users/:id
 

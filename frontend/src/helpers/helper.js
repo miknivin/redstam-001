@@ -19,7 +19,7 @@ export const caluclateOrderCost = (cartItems) => {
   );
 
   const shippingPrice = itemsPrice > 200 ? 0 : 40;
-  const taxPrice = Number((0.15 * itemsPrice).toFixed(2));
+  const taxPrice = Number((0.18 * itemsPrice).toFixed(2));
   const totalPrice = (itemsPrice + shippingPrice + taxPrice).toFixed(2);
 
   return {
@@ -28,4 +28,16 @@ export const caluclateOrderCost = (cartItems) => {
     taxPrice,
     totalPrice,
   };
+};
+
+
+export const calculateAge = (dateOfBirth) => {
+  const today = new Date();
+  const birthDate = new Date(dateOfBirth);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
 };

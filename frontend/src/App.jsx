@@ -20,6 +20,11 @@ import Terms from "./Components/t&c/Terms";
 import PrivacyPolicy from "./Components/privacy/PrivacyPolicy";
 import Refund from "./Components/t&c/Refund";
 import About from "./Components/Layouts/About";
+import ShippingPolicy from "./Components/privacy/ShippingPolicy";
+import UpdateProfile from "./Components/user/UpdateProfile";
+import MyOrders from "./Components/orders/MyOrders";
+import OrderDetails from "./Components/orders/OrderDetails";
+import Invoice from "./Components/invoices/Invoice";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -40,7 +45,11 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong. Please try again later.</h1>;
+      return (
+        <h1 className="text-4xl p-10">
+          Something went wrong. Please try again later.
+        </h1>
+      );
     }
 
     return this.props.children;
@@ -68,7 +77,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/me/profile" element={<Profile />} />
+              <Route path="/me/update_profile" element={<UpdateProfile />} />
               <Route path="/cart" element={<Cart />} />
               <Route
                 path="/shipping"
@@ -89,7 +98,33 @@ function App() {
               <Route
                 path="/order_placed"
                 element={
-                  <OrderPlaced /> //need to be protected route
+                  <ProtectedRoute>
+                    <OrderPlaced />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/me/orders"
+                element={
+                  <ProtectedRoute>
+                    <MyOrders />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/me/order/:id"
+                element={
+                  <ProtectedRoute>
+                    <OrderDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/invoice/order/:id"
+                element={
+                  <ProtectedRoute>
+                    <Invoice />
+                  </ProtectedRoute>
                 }
               />
               <Route path="/about" element={<About />}></Route>
@@ -97,6 +132,10 @@ function App() {
               <Route path="/terms_and_conditions" element={<Terms />}></Route>
               <Route path="/privacy_policy" element={<PrivacyPolicy />}></Route>
               <Route path="/return_and_refund" element={<Refund />}></Route>
+              <Route
+                path="/shipping_and_delivery"
+                element={<ShippingPolicy />}
+              ></Route>
               <Route path="*" element={<PageNotFound />}></Route>
             </Routes>
           </ErrorBoundary>

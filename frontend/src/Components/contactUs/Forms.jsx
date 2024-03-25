@@ -30,7 +30,7 @@ const Forms = () => {
     // Make both POST requests and race them
     Promise.race([
       fetch(
-        "https://www.privyr.com/api/v1/incoming-leads/0vZfjMQw/scOQiAcg#generic-webhook",
+        "https://www.privyr.com/api/v1/incoming-leads/0vZfjMQw/FvI7yrea#generic-webhook",
         {
           method: "POST",
           mode: "cors", // Use "cors" instead of "no-cors"

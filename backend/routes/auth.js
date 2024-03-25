@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getUserProfile, updatePassword, updateProfile, allUsers, getUserDetails, updateUser, deleteUser } from '../controllers/authControllers.js';
+import { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getUserProfile, updatePassword, updateProfile, allUsers, getUserDetails, updateUser, deleteUser,uploadAvatar } from '../controllers/authControllers.js';
 import { authorizeRoles, isAuthenticateUser } from '../middlewares/auth.js';
 
 
@@ -20,4 +20,5 @@ router
     .put(isAuthenticateUser,authorizeRoles("admin"),updateUser)
     .delete(isAuthenticateUser, authorizeRoles("admin"),deleteUser)
     ;
+router.route("/me/upload_avatar").put(isAuthenticateUser, uploadAvatar);
 export default router;

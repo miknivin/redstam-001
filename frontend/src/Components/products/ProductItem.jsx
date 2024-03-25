@@ -35,7 +35,7 @@ function ProductItem({ product }) {
           <h1 className="max-w-2xl mb-4 text-4xl font-light tracking-tight leading-none text-gray-100 md:text-5xl xl:text-6xl dark:text-white">
             {product.name}
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400 line-clamp-[8]">
             {product.description}
           </p>
           <div className="card-body items-start p-0 my-3">
@@ -101,6 +101,7 @@ function ProductItem({ product }) {
                   src={image.url}
                   alt={`Productimg ${index + 1}`}
                   className="rounded-box aspect-square object-cover"
+                  loading="lazy"
                 />
               </SwiperSlide>
             ))}

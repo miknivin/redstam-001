@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "./Search";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { useGetMeQuery } from "../../redux/api/userApi";
 import { useLazyLogoutQuery } from "../../redux/api/authApi";
 import { useGetMeQuery } from "../../redux/api/userApi";
+import toast from "react-hot-toast";
 // import toast from "react-hot-toast";
 function Header() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Header() {
   const { user } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
 
-  const [logout] = useLazyLogoutQuery();
+  const [logout, { isSuccess, error }] = useLazyLogoutQuery();
 
   const [showDropDown, setShowDropDown] = useState(false);
 
@@ -20,12 +21,26 @@ function Header() {
     logout();
     navigate(0);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      // Show success toast when logout is successful
+      toast.success("Logout successful");
+      navigate(0);
+    }
+
+    if (error) {
+      toast.error(error.message);
+      navigate(0);
+    }
+  }, [isSuccess, navigate, error]);
+
   const subtotal = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
   return (
     <div className="sticky top-0 z-50">
-      <div className="py-4 pl-8 pr-10 bg-black navbar dark:bg-gray-950">
+      <div className="py-4 pl-8 pr-10 bg-black navbar bg-blend-multiply bg-opacity-95">
         <div className="flex-none">
           <Link to="/" className="p-0 text-xl text-gray-100">
             <img
@@ -82,7 +97,7 @@ function Header() {
             </div>
           </div>
           <div className="dropdown dropdown-end">
-            {/* <Link to={user ? "/user" : "/login"}> */}
+            {/* <Link to={user ? "/me/profile" : "/login"}> */}
             <div
               tabIndex={0}
               role="button"

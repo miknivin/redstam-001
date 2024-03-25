@@ -21,9 +21,6 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config({ path: "backend/config/config.env" });
 }
 
-// Connecting to database
-connectDatabase();
-
 app.use(
   express.json({
     limit: "10mb",
@@ -57,17 +54,21 @@ if (process.env.NODE_ENV === "PRODUCTION") {
 // Using error middleware
 app.use(errorMiddleware);
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(
-    `Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode.`
-  );
-});
+// Connecting to database and starting server
+connectDatabase(() => {
+  // console.log("Connected to database successfully!");
+  const server = app.listen(process.env.PORT, () => {
+    console.log(
+      `Server started on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode.`
+    );
+  });
 
-//Handle Unhandled Promise rejections
-process.on("unhandledRejection", (err) => {
-  console.log(`ERROR: ${err}`);
-  console.log("Shutting down server due to Unhandled Promise Rejection");
-  server.close(() => {
-    process.exit(1);
+  // Handle Unhandled Promise rejections
+  process.on("unhandledRejection", (err) => {
+    console.log(`ERROR: ${err}`);
+    console.log("Shutting down server due to Unhandled Promise Rejection");
+    server.close(() => {
+      process.exit(1);
+    });
   });
 });

@@ -27,7 +27,8 @@ const About = () => {
         <div className="gap-16 items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-8 lg:px-6">
           <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl tracking-tight font-light text-gray-50">
-              REDISCOVERING NATURE'S EMBRACE: The Redstam Journey
+              REDISCOVERING NATURE'S EMBRACE:{" "}
+              <span className=" text-red-500">The Redstam Journey</span>
             </h2>
             <p
               className={`mb-4 font-light ${showMore ? "" : "line-clamp-[9]"}  md:text-lg lg:text-xl`}

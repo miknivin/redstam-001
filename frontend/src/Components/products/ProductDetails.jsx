@@ -219,10 +219,10 @@ const ProductDetails = () => {
               <div className="mb-4">
                 <div className="flex items-end gap-2">
                   <span className="text-xl font-bold  md:text-2xl">
-                    ₹{Math.ceil(product.price * 0.5) * quantity}
+                    ₹{Math.ceil(product.price) * quantity}
                   </span>
                   <span className="mb-0.5 text-red-400 line-through">
-                    ₹{Math.ceil(product.price) * quantity}
+                    ₹{Math.ceil(product.price * 2) * quantity}
                   </span>
                 </div>
                 <span className="text-sm text-gray-500">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Metadata from "../Layouts/Metadata";
 import StarRatings from "react-star-ratings";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,11 @@ const ConfirmOrder = () => {
   const handleButtonClick = (newState) => {
     setMethodState(newState);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="">
       <Metadata title={"Confirm Order Info"}></Metadata>

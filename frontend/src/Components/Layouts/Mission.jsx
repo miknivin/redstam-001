@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Mission = () => {
   return (
     <div>
-      <div class="text-center block relative z-20 mx-auto pt-8">
+      <div class="text-center block relative z-20 mx-auto pt-8 bg-gray-950">
         <h1 class="text-5xl font-light my-2 text-gray-50">
           Empowering Wellness Through Nature
         </h1>
@@ -14,7 +14,10 @@ const Mission = () => {
           thrive in body, mind, and soul. Join us on the journey to holistic
           well-being.
         </p>
-        <Link to="/" className="btn bg-red-600 hover mx-auto  my-5 text-white">
+        <Link
+          to="/"
+          className="btn bg-red-600 hover mx-auto  mb-10 mt-5 text-white"
+        >
           Shop now
         </Link>
       </div>

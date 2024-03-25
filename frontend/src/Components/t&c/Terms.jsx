@@ -5,7 +5,7 @@ const Terms = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
   }, []);
   return (
-    <div className="p-8 ">
+    <div className="p-8 bg-gray-950">
       <>
         <h2 className="text-4xl py-3">Terms and Conditions</h2>
         <p>

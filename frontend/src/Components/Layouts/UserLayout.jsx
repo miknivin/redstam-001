@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const UserLayout = ({ children }) => {
   const menuItems = [
@@ -14,14 +14,9 @@ const UserLayout = ({ children }) => {
       icon: "fas fa-user",
     },
     {
-      name: "Upload Avatar",
-      url: "/me/upload_avatar",
-      icon: "fas fa-user-circle",
-    },
-    {
-      name: "Update Password",
-      url: "/me/update_password",
-      icon: "fas fa-lock",
+      name: "Orders",
+      url: "/me/orders",
+      icon: "fa-solid fa-box",
     },
   ];
 
@@ -41,11 +36,12 @@ const UserLayout = ({ children }) => {
         <div className="mx-auto my-5 w-fit">
           <div
             role="tablist"
-            className="tabs tabs-boxed flex justify-center gap-5"
+            className="tabs tabs-boxed flex justify-center gap-5 bg-gray-950"
           >
             {menuItems.map((menuItem, index) => (
-              <button
+              <Link
                 key={index}
+                to={menuItem.url}
                 role="tab"
                 className={`tab ${activeMenuItem.includes(menuItem.url) ? "tab-active border-none" : ""}  w-fit h-fit px-4 py-2 border border-gray-500`}
                 onClick={() => handleMenuItemClick(menuItem.url)}
@@ -57,7 +53,7 @@ const UserLayout = ({ children }) => {
                 <span className=" inline-flex align-middle">
                   <i className={`${menuItem.icon} ps-2`}></i>
                 </span>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,15 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-  setIsAuthenticated,
-  setLoading,
-  setUser,
-} from "../features/userSlice.js";
+import { setIsAuthenticated, setLoading, setUser } from "../features/userSlice";
 
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/api/v1" }),
-  tagTypes: ["User", "AdminUsers", "AdminUser"],
-
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     getMe: builder.query({
       query: () => `/me`,
@@ -17,19 +12,51 @@ export const userApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data);
           dispatch(setUser(data));
           dispatch(setIsAuthenticated(true));
           dispatch(setLoading(false));
         } catch (error) {
-          console.log(error);
-          console.log("Error in get me");
           dispatch(setLoading(false));
+          console.log(error);
         }
       },
       providesTags: ["User"],
     }),
+    updateProfile: builder.mutation({
+      query(body) {
+        return {
+          url: "/me/update",
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["User"],
+    }),
+    uploadAvatar: builder.mutation({
+      query(body) {
+        return {
+          url: "/me/upload_avatar",
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["User"],
+    }),
+    updatePassword: builder.mutation({
+      query(body) {
+        return {
+          url: "/password/update",
+          method: "PUT",
+          body,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetMeQuery } = userApi;
+export const {
+  useGetMeQuery,
+  useUpdateProfileMutation,
+  useUploadAvatarMutation,
+  useUpdatePasswordMutation,
+} = userApi;
