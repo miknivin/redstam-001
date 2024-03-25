@@ -27,7 +27,7 @@ const CustomPagination = ({ resPerPage, filteredProductsCount }) => {
   };
 
   return (
-    <div className="flex justify-center py-5">
+    <div className="flex justify-center py-5 mx-auto">
       {filteredProductsCount > resPerPage && (
         <Pagination
           activePage={currentPage}

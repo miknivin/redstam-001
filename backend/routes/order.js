@@ -9,4 +9,5 @@ router.route('/me/orders').get(isAuthenticateUser,myOrders);
 router.route('/admin/orders').get(isAuthenticateUser,authorizeRoles("admin"),allOrders);
 router.route('/admin/orders/:id').put(isAuthenticateUser,authorizeRoles("admin"),updateOrder);
 router.route('/admin/orders/:id').delete(isAuthenticateUser,authorizeRoles("admin"),deleteOrder);
+
 export default router

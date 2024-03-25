@@ -43,7 +43,7 @@ export const stripeCheckoutSession = catchAsyncErrors(
       // Create a Stripe Checkout session
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        success_url: `${process.env.FRONTEND_URL}/me/orders`,
+        success_url: `${process.env.FRONTEND_URL}/order_placed?order_success=true`,
         cancel_url: `${process.env.FRONTEND_URL}`,
         customer_email: req?.user?.email,
         client_reference_id: req?.user?._id?.toString(),
@@ -130,7 +130,7 @@ export const stripeWebhook = catchAsyncErrors(async (req, res, next) => {
         shippingAmount,
         totalAmount,
         paymentInfo,
-        paymentMethod: "Card",
+        paymentMethod: "Online",
         user,
       };
 

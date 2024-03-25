@@ -28,7 +28,12 @@ function Header() {
       toast.success("Logout successful");
       navigate(0);
     }
-  }, [isSuccess, navigate]);
+
+    if (error) {
+      toast.error(error.message);
+      navigate(0);
+    }
+  }, [isSuccess, navigate, error]);
 
   const subtotal = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
@@ -92,7 +97,7 @@ function Header() {
             </div>
           </div>
           <div className="dropdown dropdown-end">
-            {/* <Link to={user ? "/user" : "/login"}> */}
+            {/* <Link to={user ? "/me/profile" : "/login"}> */}
             <div
               tabIndex={0}
               role="button"

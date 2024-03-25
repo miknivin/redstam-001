@@ -3,6 +3,7 @@ import OTPInput, { ResendOTP } from "otp-input-react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "../../firebase.config";
+import './phlogin.css'
 import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
@@ -12,16 +13,25 @@ import {
 import { toast, Toaster } from "react-hot-toast";
 import { useLoginMutation } from "../../redux/api/authApi";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { calculateAge } from "../../helpers/helper";
 
 const PhAuth = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const navigate = useNavigate();
   const [login] = useLoginMutation();
 
   async function onSignup() {
+    const userAge = calculateAge(selectedDate);
+    if (userAge < 18) {
+      toast.error('You must be at least 18 years old to sign up.');
+      return;
+    }
     try {
       setLoading(true);
       const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {});
@@ -42,6 +52,8 @@ const PhAuth = () => {
       setLoading(false);
       if (error.code === "auth/too-many-requests") {
         toast.error("Too many requests. Please try again later.");
+      } else if (error.code === "auth/argument-error" || error.code ==="auth/invalid-phone-number") {
+        toast.error("Invalid Phone no or Phone no is Empty. Please check your input.");
       } else {
         toast.error(error.message);
         console.error(error);
@@ -51,12 +63,15 @@ const PhAuth = () => {
 
   const SignUpUsingGoogle = () => {
     const provider = new GoogleAuthProvider();
-
+    const userAge = calculateAge(selectedDate);
+    if (userAge < 18) {
+      toast.error("You must be at least 18 years old to sign up.");
+      return;
+    }
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const user = result.user;
         let userData = { email: user.email };
-
         // Check if the user has a phone number associated with the account
         if (user.phoneNumber) {
           // If phone number is available, use it for login
@@ -156,6 +171,8 @@ const PhAuth = () => {
                   Verify your phone number
                 </label>
                 <PhoneInput country={"in"} value={ph} onChange={setPh} />
+                <div className="mt-1 mb-0">Date of birth</div>
+                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} maxDate={new Date()} showYearDropdown scrollableMonthYearDropdown scrollableYearDropdown />
                 <div className="mt-5" id="recaptcha"></div>
                 <button
                   onClick={onSignup}

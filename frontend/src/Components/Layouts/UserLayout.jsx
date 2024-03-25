@@ -14,9 +14,9 @@ const UserLayout = ({ children }) => {
       icon: "fas fa-user",
     },
     {
-      name: "Upload Avatar",
-      url: "/me/upload_avatar",
-      icon: "fas fa-user-circle",
+      name: "Orders",
+      url: "/me/orders",
+      icon: "fa-solid fa-box",
     },
   ];
 

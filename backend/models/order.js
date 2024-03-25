@@ -91,7 +91,7 @@ const orderSchema = new mongoose.Schema({
     },
     deliveredAt:Date
 },
-{timeStamps:true}
+{timestamps:true}
 );
 
 export default mongoose.model("Order",orderSchema)

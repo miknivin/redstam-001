@@ -1,0 +1,72 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px;
+}
+
+.dataTables_wrapper {
+  color: #fdfdfd;
+}
+
+[data-test="table-foot"] {
+  display: none;
+}
+
+[data-test="datatable-head"] {
+  font-size: 15px;
+  color: #e7e7e7;
+}
+
+.dataTables_wrapper .mdb-datatable-filter input[type="text"] {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.custom-select {
+  background-color: gray;
+}
+
+@media (max-width: 767px) {
+  .dataTables_wrapper .mdb-datatable-filter input[type="text"] {
+    width: 140px;
+  }
+}
+
+.dataTables_info {
+  color: #005cb9;
+}
+/* .table.table-bordered.table-hover.table-striped.dataTable {
+  overflow-x: scroll;
+}
+
+@media (min-width: 1024px) {
+  .table.table-bordered.table-hover.table-striped.dataTable {
+    overflow-x: auto;
+  }
+} */
+
+.table {
+  border-radius: 10px !important;
+}
+
+/* Default table styles */
+.table-bordered {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Border styles for table cells */
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6; /* Default border color */
+  padding: 0.75rem; /* Default padding */
+  vertical-align: top; /* Align content to the top by default */
+}
+
+/* Border styles for table header cells */
+.table-bordered th {
+  border-top-width: 2px; /* Increase border width for header cells */
+  text-align: left; /* Align text to the left by default */
+}

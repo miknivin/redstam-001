@@ -1,8 +1,6 @@
 import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
-import order from "../models/order.js";
 import Order from "../models/order.js";
-import Products from "../models/product.js";
-import { getResetPasswordTemplate } from "../utils/emailTemplate.js";
+import products from "../models/product.js";
 import ErrorHandler from "../utils/errorHandler.js";
 
 
@@ -52,7 +50,7 @@ export const myOrders = catchAsyncErrors(async (req,res,next)=>{
 
 // Get order details => /api/v1/orders/:id
 export const getOrderDetails = catchAsyncErrors(async (req,res,next)=>{
-    const order = await Order.findById(req.params.id).populate("user","name email");
+    const order = await Order.findById(req.params.id).populate("user","name email phone");
     if (!order) {
         return next(new ErrorHandler("No Order found with this Id",404))
     }
@@ -88,7 +86,7 @@ export const updateOrder = catchAsyncErrors(async (req,res,next)=>{
     }
 
     order?.orderItems?.forEach(async (item)=>{
-        const product = await Products.findById(item?.product?.toString());
+        const product = await products.findById(item?.product?.toString());
         if(!product){
             return next(new ErrorHandler("No Product found with this ID",404));
         }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   useCreateNewOrderMutation,
@@ -8,6 +8,7 @@ import {
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { caluclateOrderCost } from "../../helpers/helper";
+import { clearCart } from "../../redux/features/cartSlice";
 
 const PaymentMethods = ({ onMethodSelection }) => {
   const [method, setMethod] = useState("");
@@ -17,6 +18,8 @@ const PaymentMethods = ({ onMethodSelection }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
 
   const [createNewOrder, { error, isSuccess }] = useCreateNewOrderMutation();
+
+  const dispatch = useDispatch();
 
   const [
     stripeCheckoutSession,
@@ -41,9 +44,10 @@ const PaymentMethods = ({ onMethodSelection }) => {
 
     if (isSuccess) {
       toast.success("COD Order placed");
-      navigate("/order_placed");
+      dispatch(clearCart());
+      navigate("/order_placed?order_success=true");
     }
-  }, [error, isSuccess, navigate]);
+  }, [error, isSuccess, navigate, dispatch]);
 
   const handleMethod = (selectedMethod) => {
     onMethodSelection(selectedMethod);
@@ -67,7 +71,6 @@ const PaymentMethods = ({ onMethodSelection }) => {
         paymentMethod: "COD",
       };
       createNewOrder(orderData);
-      navigate("/order_placed");
     }
 
     if (selectedMethod === "Card") {
@@ -95,14 +98,21 @@ const PaymentMethods = ({ onMethodSelection }) => {
             onClick={() => handleMethod("Card")}
             disabled={isLoading}
           >
-            Pay with{" "}
-            <span className=" inline-flex gap-2 ms-2 align-middle items-center justify-center">
-              <i className="fa-brands fa-google-pay text-xl"></i>{" "}
-              <i className="fa-brands fa-cc-visa text-xl"></i>{" "}
-              <i className="fa-brands fa-cc-mastercard text-xl"></i>
-              <i className="fa-brands fa-apple-pay text-xl"></i>
-            </span>
+            {isLoading ? (
+              <span className="loading loading-spinner loading-sm"></span>
+            ) : (
+              <>
+                Pay with{" "}
+                <span className=" inline-flex gap-2 ms-2 align-middle items-center justify-center">
+                  <i className="fa-brands fa-google-pay text-xl"></i>{" "}
+                  <i className="fa-brands fa-cc-visa text-xl"></i>{" "}
+                  <i className="fa-brands fa-cc-mastercard text-xl"></i>
+                  <i className="fa-brands fa-apple-pay text-xl"></i>
+                </span>
+              </>
+            )}
           </button>
+
           <button
             type="button"
             className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 me-2 mb-2"

@@ -1,17 +1,29 @@
 import React, { useEffect } from "react";
-import CheckoutSteps from "./CheckOutSteps";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../../redux/features/cartSlice";
+import CheckoutSteps from "./CheckOutSteps";
+import toast from "react-hot-toast";
 
 const OrderPlaced = () => {
+  const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
-  useEffect(() => {
-    // Scroll to the top of the page when the component mounts
-    window.scrollTo(0, 0);
+  const navigate = useNavigate();
 
-    // Dispatch the clearCart action when the component mounts
-    dispatch(clearCart());
-  }, [dispatch]); //
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const orderSuccess = searchParams.get("order_success");
+
+  useEffect(() => {
+    if (orderSuccess) {
+      dispatch(clearCart());
+      toast.success("Order placed successfully!");
+    } else {
+      navigate("/");
+    }
+  }, [dispatch, orderSuccess, navigate]);
 
   return (
     <div>
@@ -36,12 +48,12 @@ const OrderPlaced = () => {
             <p className=" my-2">Thank you for completing your order.</p>
             <p> Have a great day!</p>
             <div className="py-10 text-center">
-              <a
-                href="/"
+              <Link
+                to="/me/orders?order_success=true"
                 className="px-12 bg-green-600 hover:bg-green-500 text-white font-semibold py-3"
               >
-                GO BACK
-              </a>
+                All Orders
+              </Link>
             </div>
           </div>
         </div>

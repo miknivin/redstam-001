@@ -6,75 +6,78 @@ import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 
 const UpdateProfile = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [updateProfile, { isLoading, error, isSuccess }] =
+  const [updateProfile, { isLoading, error, isSuccess }] =
     useUpdateProfileMutation();
 
-    const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
-    useEffect(() => {
-        if (user) {
-          setName(user?.name);
-          setEmail(user?.email);
-          setPhone(user?.phone)
-        }
-    
-        if (error) {
-          toast.error(error?.data?.message);
-        }
-    
-        if (isSuccess) {
-            setName(user?.name); // Update name and email again, in case they were changed during the update
-            setEmail(user?.email);
-            setPhone(user?.phone); 
-          toast.success("User Updated");
-          navigate("/me/profile");
-        }
-      }, [user, error, isSuccess, navigate]);
-      const submitHandler = (e) => {
-        e.preventDefault();
-    
-        // Validation logic
-        if (!validateEmail(email)) {
-            toast.error("Invalid email address");
-            return;
-        }
-    
-        if (!validatePhone(phone)) {
-            toast.error("Invalid phone number");
-            return;
-        }
-    
-        const userData = {
-            name,
-            email,
-            phone
-        };
-    
-        updateProfile(userData);
+  useEffect(() => {
+    if (user) {
+      setName(user?.name);
+      setEmail(user?.email);
+      setPhone(user?.phone);
+    }
+
+    if (error) {
+      toast.error(error?.data?.message);
+    }
+
+    if (isSuccess) {
+      setName(user?.name); // Update name and email again, in case they were changed during the update
+      setEmail(user?.email);
+      setPhone(user?.phone);
+      toast.success("User Updated");
+      navigate("/me/profile");
+    }
+  }, [user, error, isSuccess, navigate]);
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    // Validation logic
+    if (!validateEmail(email)) {
+      toast.error("Invalid email address");
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      toast.error("Invalid phone number");
+      return;
+    }
+
+    const userData = {
+      name,
+      email,
+      phone,
     };
-    
-    const validateEmail = (email) => {
-        // Simple email validation regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-    
-    const validatePhone = (phone) => {
-        // Simple phone number validation regex
-        const phoneRegex = /^\d{10}$/;
-        return phoneRegex.test(phone);
-    };
-    
+
+    updateProfile(userData);
+  };
+
+  const validateEmail = (email) => {
+    // Simple email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    // Simple phone number validation regex
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+  };
+
   return (
     <UserLayout>
       <div className="max-w-md mx-auto">
-        <form className=" bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={submitHandler}>
+        <form
+          className=" bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={submitHandler}
+        >
           <div class="relative">
             <input
               type="text"
@@ -129,7 +132,7 @@ const UpdateProfile = () => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-             {isLoading ? "Updating..." : "Update"}
+              {isLoading ? "Updating..." : "Update"}
             </button>
           </div>
         </form>

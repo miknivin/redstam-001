@@ -13,8 +13,6 @@ import CustomPagination from "./Layouts/CustomPagination.jsx";
 import { useSearchParams } from "react-router-dom";
 import Filters from "./Layouts/Filters.jsx";
 import NoResultPage from "./utilities/NoResultPage.jsx";
-import About from "./Layouts/About.jsx";
-import Mission from "./Layouts/Mission.jsx";
 import AboutHome from "./Layouts/AboutHome.jsx";
 
 function Home() {
@@ -35,7 +33,7 @@ function Home() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(error?.data?.message);
+      toast.error("Error Getting Products try refreshing the page");
     }
   }, [error?.data?.message, isError]);
 
