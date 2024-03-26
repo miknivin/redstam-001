@@ -102,7 +102,7 @@ const Cart = () => {
                                 </span>
                               </div>
                             </td>
-                            <td className="py-4">${item?.price}</td>
+                            <td className="py-4">₹{item?.price}</td>
                             <td className="py-4">
                               <div className="flex items-center flex-col justify-center">
                                 <button
@@ -130,7 +130,7 @@ const Cart = () => {
                               </div>
                             </td>
                             <td className="py-4">
-                              $
+                              ₹
                               {Math.round(item.price * item.quantity * 100) /
                                 100}
                             </td>
@@ -154,20 +154,20 @@ const Cart = () => {
                     <h2 className="text-lg font-semibold mb-4">Summary</h2>
                     <div className="flex justify-between mb-2">
                       <span>Subtotal</span>
-                      <span>${subtotal.toFixed(2)}</span>
+                      <span>₹{subtotal.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between mb-2">
                       <span>Taxes</span>
-                      <span>${taxes.toFixed(2)}</span>
+                      <span>₹{taxes.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between mb-2">
                       <span>Shipping</span>
-                      <span>${shipping.toFixed(2)}</span>
+                      <span>₹{shipping.toFixed(2)}</span>
                     </div>
                     <hr className="my-2" />
                     <div className="flex justify-between mb-2">
                       <span className="font-semibold">Total</span>
-                      <span className="font-semibold">${total.toFixed(2)}</span>
+                      <span className="font-semibold">₹{total.toFixed(2)}</span>
                     </div>
                     <button
                       onClick={checkoutHandler}
