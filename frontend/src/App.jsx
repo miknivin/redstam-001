@@ -14,7 +14,7 @@ import Shipping from "./Components/cart/Shipping";
 import ConfirmOrder from "./Components/cart/ConfirmOrder";
 import OrderPlaced from "./Components/cart/OrderPlaced";
 import PageNotFound from "./Components/utilities/PageNotFound";
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
 import Contact from "./Components/contactUs/Contact";
 import Terms from "./Components/t&c/Terms";
 import PrivacyPolicy from "./Components/privacy/PrivacyPolicy";
@@ -25,7 +25,8 @@ import UpdateProfile from "./Components/user/UpdateProfile";
 import MyOrders from "./Components/orders/MyOrders";
 import OrderDetails from "./Components/orders/OrderDetails";
 import Invoice from "./Components/invoices/Invoice";
-
+import Modals from "./Components/utilities/Modals";
+import Login from "./Components/auth/login";
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -57,6 +58,24 @@ class ErrorBoundary extends Component {
 }
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const userConfirmed = localStorage.getItem("userConfirmed");
+    if (!userConfirmed) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closeModal = () => {
+    localStorage.setItem("userConfirmed", "true");
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 1000);
+  };
   return (
     <Router>
       <div className="App">
@@ -67,7 +86,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/products/:id" element={<ProductDetails />} />
-              <Route path="/login" element={<PhAuth />} />
+              <Route path="/login" element={<Login />} />
               {/* <Route path="/register" element={<Register />} /> */}
               <Route
                 path="/me/profile"
@@ -138,6 +157,7 @@ function App() {
               ></Route>
               <Route path="*" element={<PageNotFound />}></Route>
             </Routes>
+            <Modals isOpen={isModalOpen} onRequestClose={closeModal} />
           </ErrorBoundary>
         </div>
         <Footer />

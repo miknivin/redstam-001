@@ -72,7 +72,7 @@ const MyOrders = () => {
       const lastSixDigits = order?._id.substring(order._id.length - 6); // Extract last 6 digits
       orders.rows.push({
         id: lastSixDigits,
-        amount: `$${order?.totalAmount}`,
+        amount: `₹${order?.totalAmount}`,
         status: order?.paymentInfo?.status?.toUpperCase(),
         orderStatus: order?.orderStatus,
         actions: (

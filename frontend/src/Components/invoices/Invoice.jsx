@@ -28,7 +28,7 @@ const Invoice = () => {
 
       const pdfWidth = pdf.internal.pageSize.getWidth();
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, 0);
-      pdf.save(`invoice_${order?._id}.pdf`);
+      pdf.save(`invoice_₹{order?._id}.pdf`);
     });
   };
 
@@ -38,10 +38,7 @@ const Invoice = () => {
     <div>
       <Metadata title={"Order Invoice"} />
       <div className=" w-full flex justify-center items-center">
-        <button
-          onClick={handleDownload}
-          className="btn btn-success my-3"
-        >
+        <button onClick={handleDownload} className="btn btn-success my-3">
           Download
         </button>
       </div>
@@ -72,14 +69,17 @@ const Invoice = () => {
         <div className="flex justify-between mb-6">
           <h1 className="text-lg font-bold">Invoice</h1>
           <div className="text-gray-700 flex-wrap w-40">
-            <div >
-             <span className=" font-semibold">Date:</span> {new Date(order?.createdAt).toLocaleString("en-US")}
+            <div>
+              <span className=" font-semibold">Date:</span>{" "}
+              {new Date(order?.createdAt).toLocaleString("en-US")}
             </div>
             <div>
-              <span className=" font-semibold">Invoice #</span>{order?._id && order._id.substring(order._id.length - 6)}
+              <span className=" font-semibold">Invoice #</span>
+              {order?._id && order._id.substring(order._id.length - 6)}
             </div>
             <div>
-                 <span className=" font-semibold">Status</span>  {paymentInfo?.status}
+              <span className=" font-semibold">Status</span>{" "}
+              {paymentInfo?.status}
             </div>
           </div>
         </div>
@@ -120,13 +120,13 @@ const Invoice = () => {
                   {item?.name}
                 </td>
                 <td className="text-left text-gray-700 text-sm">
-                  ${item?.price}
+                  ₹{item?.price}
                 </td>
                 <td className="text-left text-gray-700 text-sm">
                   {item?.quantity}
                 </td>
                 <td className="text-left text-gray-700 text-sm">
-                  ${item?.price * item?.quantity}
+                  ₹{item?.price * item?.quantity}
                 </td>
               </tr>
             ))}
@@ -137,24 +137,24 @@ const Invoice = () => {
                 Sub-total
               </td>
               <td colSpan={4} className="text-right font-bold text-gray-700">
-                ${order?.itemsPrice}
+                ₹{order?.itemsPrice}
               </td>
             </tr>
 
             <tr>
               <td className="text-left font-bold text-gray-700 text-sm">
-                TAX 15%
+                TAX 18%
               </td>
               <td colSpan={4} className="text-right font-bold text-gray-700">
-                ${order?.taxAmount}
+                ₹{order?.taxAmount}
               </td>
             </tr>
             <tr>
               <td className="text-left font-bold text-gray-700 text-sm">
-                TAX 18%
+                Shipping
               </td>
               <td colSpan={4} className="text-right font-bold text-gray-700">
-                ${order?.shippingAmount}
+                ₹{order?.shippingAmount}
               </td>
             </tr>
             <tr>
@@ -162,7 +162,7 @@ const Invoice = () => {
                 GRAND TOTAL
               </td>
               <td colSpan={4} className="text-right font-bold text-gray-700">
-                ${order?.totalAmount}
+                ₹{order?.totalAmount}
               </td>
             </tr>
           </tfoot>

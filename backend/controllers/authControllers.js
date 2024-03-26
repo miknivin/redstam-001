@@ -19,45 +19,71 @@ export const registerUser = catchAsyncErrors(async (req, res, next) => {
     sendTokens(user, 201, res);
   });
   
-  // Login user   =>  /api/v1/login
-  export const loginUser = catchAsyncErrors(async (req, res, next) => {
-    const { email, phone } = req.body;
+// Login user   =>  /api/v1/login
+export const loginUser = catchAsyncErrors(async (req, res, next) => {
+    const { email, password } = req.body;
   
-    if ((!email && !phone) || (email && phone)) {
-      return next(new ErrorHandler('Please provide either email or phone number', 400));
+    if (!email || !password) {
+      return next(new ErrorHandler("Please enter email & password", 400));
     }
   
-    try {
-      let user;
+    // Find user in the database
+    const user = await User.findOne({ email }).select("+password");
   
-      if (phone) {
-        // If phone number is provided, find the user based on it
-        user = await User.findOne({ phone });
-  
-        if (!user) {
-          // If user with provided phone number is not found, create a new user
-          user = await User.create({ phone });
-        }
-      } else if (email) {
-        // If email is provided, find the user based on it
-        user = await User.findOne({ email });
-  
-        if (!user) {
-          // If user with provided email is not found, create a new user
-          user = await User.create({ email });
-        }
-      }
-  
-    //   if (!user) {
-    //     return next(new ErrorHandler('User not found', 404));
-    //   }
-  
-      // If user found or created, send token
-      sendTokens(user, 200, res);
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
+    if (!user) {
+      return next(new ErrorHandler("Invalid email or password", 401));
     }
+  
+    // Check if password is correct
+    const isPasswordMatched = await user.comparePassword(password);
+  
+    if (!isPasswordMatched) {
+      return next(new ErrorHandler("Invalid email or password", 401));
+    }
+  
+    sendTokens(user, 200, res);
   });
+  
+
+  // Login user   =>  /api/v1/login
+// export const loginUser = catchAsyncErrors(async (req, res, next) => {
+// const { email, phone } = req.body;
+
+// if ((!email && !phone) || (email && phone)) {
+//     return next(new ErrorHandler('Please provide either email or phone number', 400));
+// }
+
+// try {
+//     let user;
+
+//     if (phone) {
+//     // If phone number is provided, find the user based on it
+//     user = await User.findOne({ phone });
+
+//     if (!user) {
+//         // If user with provided phone number is not found, create a new user
+//         user = await User.create({ phone });
+//     }
+//     } else if (email) {
+//     // If email is provided, find the user based on it
+//     user = await User.findOne({ email });
+
+//     if (!user) {
+//         // If user with provided email is not found, create a new user
+//         user = await User.create({ email });
+//     }
+//     }
+
+// //   if (!user) {
+// //     return next(new ErrorHandler('User not found', 404));
+// //   }
+
+//     // If user found or created, send token
+//     sendTokens(user, 200, res);
+// } catch (error) {
+//     return next(new ErrorHandler(error.message, 500));
+// }
+// });
 
 //forgot password - /api/v1/password/forgot
 export const forgotPassword = catchAsyncErrors(async (req, res, next)=>{

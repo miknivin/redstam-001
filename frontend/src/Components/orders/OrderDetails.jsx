@@ -120,7 +120,7 @@ const OrderDetails = () => {
                   Amount Paid
                 </th>
                 <td className="border border-gray-300 px-4 py-2">
-                  ${totalAmount}
+                  ₹{totalAmount}
                 </td>
               </tr>
             </tbody>
@@ -153,7 +153,7 @@ const OrderDetails = () => {
                 </div>
 
                 <div className="w-full lg:w-1/6 mt-2 lg:mt-0">
-                  <p>${item?.price}</p>
+                  <p>₹{item?.price}</p>
                 </div>
 
                 <div className="w-full lg:w-2/6 mt-2 lg:mt-0">

@@ -3,7 +3,7 @@ import OTPInput, { ResendOTP } from "otp-input-react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { auth } from "../../firebase.config";
-import './phlogin.css'
+import "./phlogin.css";
 import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
@@ -29,7 +29,7 @@ const PhAuth = () => {
   async function onSignup() {
     const userAge = calculateAge(selectedDate);
     if (userAge < 18) {
-      toast.error('You must be at least 18 years old to sign up.');
+      toast.error("You must be at least 18 years old to sign up.");
       return;
     }
     try {
@@ -52,8 +52,13 @@ const PhAuth = () => {
       setLoading(false);
       if (error.code === "auth/too-many-requests") {
         toast.error("Too many requests. Please try again later.");
-      } else if (error.code === "auth/argument-error" || error.code ==="auth/invalid-phone-number") {
-        toast.error("Invalid Phone no or Phone no is Empty. Please check your input.");
+      } else if (
+        error.code === "auth/argument-error" ||
+        error.code === "auth/invalid-phone-number"
+      ) {
+        toast.error(
+          "Invalid Phone no or Phone no is Empty. Please check your input.",
+        );
       } else {
         toast.error(error.message);
         console.error(error);
@@ -172,7 +177,14 @@ const PhAuth = () => {
                 </label>
                 <PhoneInput country={"in"} value={ph} onChange={setPh} />
                 <div className="mt-1 mb-0">Date of birth</div>
-                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} maxDate={new Date()} showYearDropdown scrollableMonthYearDropdown scrollableYearDropdown />
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  maxDate={new Date()}
+                  showYearDropdown
+                  scrollableMonthYearDropdown
+                  scrollableYearDropdown
+                />
                 <div className="mt-5" id="recaptcha"></div>
                 <button
                   onClick={onSignup}
