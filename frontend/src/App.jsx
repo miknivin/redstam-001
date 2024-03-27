@@ -60,21 +60,21 @@ class ErrorBoundary extends Component {
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
-    const userConfirmed = localStorage.getItem("userConfirmed");
+    const userConfirmed = false
     if (!userConfirmed) {
       const timer = setTimeout(() => {
         setIsModalOpen(true);
-      }, 4000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, []);
 
   const closeModal = () => {
-    localStorage.setItem("userConfirmed", "true");
+    // localStorage.setItem("userConfirmed", "true");
     setTimeout(() => {
       setIsModalOpen(false);
-    }, 1000);
+    }, 800);
   };
   return (
     <Router>

@@ -7,7 +7,7 @@ const Mission = () => {
         <h1 class="text-5xl font-light my-2 text-gray-50">
           Empowering Wellness Through Nature
         </h1>
-        <p className="text-lg w-full md:w-3/4 mx-auto font-light">
+        <p className="text-lg w-full md:w-3/4 mx-auto font-light text-gray-300">
           At REDSTAM, we fuse ancient wisdom with modern science to unlock
           nature's secrets for vibrant living. Our ethical practices ensure
           harmony with the planet, while our products empower individuals to
@@ -16,7 +16,7 @@ const Mission = () => {
         </p>
         <Link
           to="/"
-          className="btn bg-red-600 hover mx-auto  mb-10 mt-5 text-white"
+          className="btn bg-red-600 hover:bg-red-700/70 mx-auto  mb-10 mt-5 text-white"
         >
           Shop now
         </Link>

@@ -8,7 +8,7 @@ const AboutHome = () => {
         <h1 class="text-5xl font-light my-2 text-gray-50">
           Embracing Nature's Ancient Wisdom
         </h1>
-        <p className="text-lg w-full md:w-3/4 mx-auto font-light">
+        <p className="text-lg w-full md:w-3/4 mx-auto font-light text-gray-200 ">
           In the heart of a pristine natural sanctuary, where the whispers of
           ancient knowledge echo through time, REDSTAM stands as a testament to
           the enduring power of nature's healing embrace. Founded upon the

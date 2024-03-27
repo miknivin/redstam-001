@@ -68,7 +68,7 @@ const Cart = () => {
         <div>
           <div className="bg-gray-900 lg:h-screen py-8">
             <div className="container max-w-screen-xl mx-auto px-4">
-              <h1 className="text-2xl font-semibold mb-4">
+              <h1 className="text-2xl font-semibold mb-4 text-gray-300">
                 Your Cart: {cartItems.length}
               </h1>
               <div className="flex flex-col lg:flex-row gap-4">
