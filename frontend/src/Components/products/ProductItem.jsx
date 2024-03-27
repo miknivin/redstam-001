@@ -35,7 +35,7 @@ function ProductItem({ product }) {
           <h1 className="max-w-2xl mb-4 text-4xl font-light tracking-tight leading-none text-gray-100 md:text-5xl xl:text-6xl dark:text-white">
             {product.name}
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400 line-clamp-[8]">
+          <p className="max-w-2xl mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-200 line-clamp-[8]">
             {product.description}
           </p>
           <div className="card-body items-start p-0 my-3">
@@ -81,7 +81,7 @@ function ProductItem({ product }) {
             </button>
             <Link
               to={`products/${product._id}`}
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-200 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-200 border border-gray-300 rounded-lg hover:bg-gray-700 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
             >
               Know more
             </Link>

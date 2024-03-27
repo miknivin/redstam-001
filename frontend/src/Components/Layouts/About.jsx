@@ -15,7 +15,7 @@ const About = () => {
           <h1 class="text-5xl font-light my-2 text-gray-50">
             Embracing Nature's Ancient Wisdom
           </h1>
-          <p className="text-lg w-full md:w-3/4 mx-auto font-light">
+          <p className="text-lg w-full md:w-3/4 mx-auto font-light text-gray-200">
             In the heart of a pristine natural sanctuary, where the whispers of
             ancient knowledge echo through time, REDSTAM stands as a testament
             to the enduring power of nature's healing embrace. Founded upon the
@@ -31,7 +31,7 @@ const About = () => {
               <span className=" text-red-500">The Redstam Journey</span>
             </h2>
             <p
-              className={`mb-4 font-light ${showMore ? "" : "line-clamp-[9]"}  md:text-lg lg:text-xl`}
+              className={`mb-4 font-light text-gray-200 ${showMore ? "" : "line-clamp-[9]"}  md:text-lg lg:text-xl`}
             >
               From the moment our story began, we have been guided by a profound
               respect for the wisdom of our ancestors, who understood the
