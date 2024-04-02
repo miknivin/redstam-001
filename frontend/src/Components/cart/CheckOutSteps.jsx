@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const CheckoutSteps = ({
   shipping,
@@ -8,8 +7,8 @@ const CheckoutSteps = ({
   orderPlaced,
 }) => {
   return (
-    <div className="checkout-progress flex justify-center mx-auto items-center p-4 bg-gray-900">
-      <ul className="steps steps-horizontal font-light text-xs md:text-sm text-gray-50">
+    <div className="checkout-progress flex justify-center mx-auto items-center p-4 bg-base-200 dark:bg-gray-900">
+      <ul className="steps steps-horizontal font-light text-xs md:text-sm text-gray-950 dark:text-gray-50">
         <li className={`step ${shipping ? "step-success" : ""}`}>Shipping</li>
         <li className={`step ${confirmOrder ? "step-success" : ""}`}>
           Confirm Order

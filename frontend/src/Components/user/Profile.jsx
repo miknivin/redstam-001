@@ -20,13 +20,11 @@ const Profile = () => {
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     if (!file) {
-      // No file selected, handle the error gracefully
       console.error("No file selected");
       return;
     }
 
     if (!file.type.startsWith("image/")) {
-      // Not an image file, handle the error gracefully
       console.error("Selected file is not an image");
       return;
     }
@@ -41,6 +39,7 @@ const Profile = () => {
     };
 
     reader.readAsDataURL(file);
+    console.log(reader, "--reader");
   };
 
   const handleUploadClick = () => {

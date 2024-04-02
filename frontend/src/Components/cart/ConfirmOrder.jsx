@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Metadata from "../Layouts/Metadata";
 import StarRatings from "react-star-ratings";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { caluclateOrderCost } from "../../helpers/helper";
-import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "./CheckOutSteps";
 import PaymentMethods from "./PaymentMethods";
 
 const ConfirmOrder = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);
   const [methodState, setMethodState] = useState("");
-  const { user } = useSelector((state) => state.auth);
   const { itemsPrice, shippingPrice, taxPrice, totalPrice } =
     caluclateOrderCost(cartItems);
   const handleButtonClick = (newState) => {
@@ -29,11 +25,11 @@ const ConfirmOrder = () => {
       <div className="sticky top-20 z-10 w-full bg-gray-900 rounded-box mx-auto">
         <CheckoutSteps shipping confirmOrder methodState={methodState} />
       </div>
-      <section className="py-24 relative bg-gray-900 dark:bg-gray-900 ">
+      <section className="py-24 relative bg-base-100 dark:bg-gray-900 ">
         <div className="w-full max-w-screen-lg px-4 md:px-5 lg-6 mx-auto ">
           <div className="flex items-start flex-col gap-6 xl:flex-row justify-center">
-            <div className="w-full max-w-sm md:max-w-3xl xl:max-w-sm flex items-start flex-col gap-8 max-xl:mx-auto bg-none">
-              <div className="p-6 border border-gray-200 rounded-3xl w-full group transition-all duration-500 hover:border-gray-400 text-gray-200">
+            <div className="w-full max-w-sm md:max-w-3xl xl:max-w-sm flex items-start flex-col gap-8 max-xl:mx-auto ">
+              <div className="p-6 border border-gray-200 rounded-3xl bg-gray-950 w-full group transition-all duration-500 hover:border-gray-400 text-gray-200">
                 <h2 className="font-bold text-3xl leading-10 pb-6 border-b border-gray-200 ">
                   Order Summary
                 </h2>
@@ -63,7 +59,7 @@ const ConfirmOrder = () => {
                 </div>
                 <div className="total flex items-center justify-between pt-6">
                   <p className="font-normal text-xl leading-8 ">Subtotal</p>
-                  <h5 className="font-bold text-2xl leading-9 text-yellow-800 dark:text-yellow-500">
+                  <h5 className="font-bold text-2xl leading-9 text-yellow-500">
                     ₹{totalPrice}
                   </h5>
                 </div>

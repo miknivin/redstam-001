@@ -4,16 +4,16 @@ import "swiper/css/pagination";
 import "swiper/swiper-bundle.css";
 import Metadata from "./Layouts/Metadata";
 import { useGetProductsQuery } from "../redux/api/productsApi.js";
-import Categories from "./Layouts/Categories.jsx";
 import ProductItem from "./products/ProductItem.jsx";
-import Loader from "./Layouts/Loader.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import CustomPagination from "./Layouts/CustomPagination.jsx";
 import { useSearchParams } from "react-router-dom";
 import Filters from "./Layouts/Filters.jsx";
 import NoResultPage from "./utilities/NoResultPage.jsx";
 import AboutHome from "./Layouts/AboutHome.jsx";
+import CategoryFilter from "./Layouts/CategoryFilter.jsx";
+import SkeletonHero from "./utilities/SkeletonHero.jsx";
 
 function Home() {
   let [searchParams] = useSearchParams();
@@ -29,7 +29,9 @@ function Home() {
   category != null && (params.category = category);
   ratings != null && (params.ratings = ratings);
 
-  const { data, isLoading, isError, error } = useGetProductsQuery(params);
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
+
+  const { data, isError, error, refetch } = useGetProductsQuery(params);
 
   useEffect(() => {
     if (isError) {
@@ -41,7 +43,22 @@ function Home() {
     window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
   }, []);
 
-  if (isLoading) return <Loader />;
+  // useEffect(() => {
+  //   if (category !== null) {
+  //     // Set isLoading to true before refetching
+  //     setIsLoading(true);
+  //     // Fetch products again with updated params
+  //     refetch()
+  //       .then(() => {
+  //         setIsLoading(false);
+  //       })
+  //       .catch(() => {
+  //         setIsLoading(false);
+  //         toast.error("Error Getting Products try refreshing the page");
+  //       });
+  //   }
+  // }, [category, refetch]);
+  // if (isLoading) return <Loader />;
   if (!isLoading && data?.filteredProducts.length === 0)
     return <NoResultPage />;
   return (
@@ -53,10 +70,10 @@ function Home() {
         {!keyword && <AboutHome />}
         <section id="categories">
           {/* Conditionally render Categories only when there is no keyword */}
-          {/* {!keyword && <Categories />} */}
+          {/* {!keyword && <CategoryFilter />} */}
         </section>
         {/* all products section */}
-        <section id="products" className="bg-gray-950">
+        <section id="products" className=" bg-base-100 dark:bg-gray-950 ">
           <div className="text-center">
             {/* <h1 className="text-5xl font-bold py-5 text-base-300">
               {keyword
@@ -74,11 +91,15 @@ function Home() {
                 <Filters />
               </div>
             )} */}
-            <div className={``}>
-              {data?.filteredProducts?.map((product) => (
-                <ProductItem key={product.id} product={product} />
-              ))}
-            </div>
+            {isLoading ? (
+              <SkeletonHero />
+            ) : (
+              <div className={``}>
+                {data?.filteredProducts?.map((product) => (
+                  <ProductItem key={product.id} product={product} />
+                ))}
+              </div>
+            )}
           </div>
           <CustomPagination
             resPerPage={data?.resPerPage}

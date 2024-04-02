@@ -4,6 +4,19 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import { connectDatabase } from "./config/dbConnect.js";
 import errorMiddleware from "./middlewares/errors.js";
+import cors from "cors";
+
+// Use CORS middleware to allow requests from frontend URL
+const allowedOrigins = process.env.FRONTEND_URL.split(",").map((url) => url.trim());
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 
 import path from "path";
 // import { fileURLToPath } from "url";
@@ -50,6 +63,7 @@ if (process.env.NODE_ENV === "PRODUCTION") {
     res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
   });
 }
+app.use(express.urlencoded({ extended: false }));
 
 // Using error middleware
 app.use(errorMiddleware);

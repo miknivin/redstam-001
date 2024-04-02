@@ -4,5 +4,11 @@
 
 body {
   font-family: "Outfit", sans-serif !important;
-  background-color: rgb(13, 13, 13);
+  background-color: #14181E; /* Default background color */
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #030712; /* Dark mode background color */
+  }
 }

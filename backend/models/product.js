@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema({
     },
     ratings:{
         type: Number,
-        default:0
+        default:4
     },
     images: [
         {
@@ -36,23 +36,15 @@ const productSchema = new mongoose.Schema({
         required: [true, "Please enter product category"],
         enum: {
           values: [
-            "Electronics",
-            "Cameras",
-            "Laptops",
-            "Accessories",
-            "Headphones",
-            "Food",
-            "Books",
-            "Sports",
-            "Outdoor",
-            "Home",
+            "Soaps",
+            "Tea",
           ],
           message: "Please select correct category",
         },
     },
     seller:{
         type: String,
-        required:[true,'Please Enter seller details']
+        required:[false]
     },
     stock:{
         type:Number,
@@ -82,7 +74,7 @@ const productSchema = new mongoose.Schema({
     user: {
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required:true
+        required:false
     },
 }, {timestamps:true})
 

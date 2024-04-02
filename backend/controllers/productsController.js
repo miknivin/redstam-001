@@ -2,7 +2,7 @@ import products from '../models/product.js'
 import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
 import APIFilters from '../utils/apiFilters.js';
-
+import { delete_file, upload_file } from "../utils/cloudinary.js";
 export const getProducts = catchAsyncErrors(async (req, res, next) => {
     const resPerPage = req.query.resPerPage || 4;
     const apiFilters = new APIFilters(products, req.query).search().filter();;
@@ -22,18 +22,43 @@ export const getProducts = catchAsyncErrors(async (req, res, next) => {
     });
   });
 
-//create a new product
-export const newProduct = catchAsyncErrors( async (req,res,next)=>{
+// Create new Product => /api/v1/admin/products
+export const newProduct = catchAsyncErrors(async (req, res) => {
+    req.body.user = req.user._id;
 
-   req.body.user = req.user._id;
-   const product = await products.create(req.body)
+    // Upload images to Cloudinary
+    const uploader = async (image) => {
+        const result = await upload_file(image, "lonicera/products");
+        return result.public_id; // Extracting public_id from the Cloudinary response
+    };
 
-   res.status(200).json({
-    product
-   })
-}
-);
+    const uploadPromises = req.body.images.map(uploader);
 
+    try {
+        // Wait for all uploads to finish
+        const publicIds = await Promise.all(uploadPromises);
+
+        // Construct image objects with URLs and public IDs
+        const images = publicIds.map((public_id, index) => ({
+            public_id,
+            url: req.body.images[index], // Assuming req.body.images contains URLs of uploaded images
+        }));
+
+        // Add the array of image objects to the product data
+        req.body.images = images;
+
+        // Create the product with the updated product object
+        const product = await products.create(req.body);
+
+        res.status(200).json({
+            product,
+        });
+    } catch (error) {
+        return res.status(400).json({ success: false, error: error.message });
+    }
+});
+
+  
 //to fetch a product details by id 
 export const getProductById = catchAsyncErrors( async (req,res,next)=>{
     
@@ -48,6 +73,16 @@ export const getProductById = catchAsyncErrors( async (req,res,next)=>{
     })
 }
 );
+
+// Get products - ADMIN   =>  /api/v1/admin/products
+export const getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+    const allProducts = await products.find();
+  
+    res.status(200).json({
+      allProducts,
+    });
+  });
+  
 //to update a particular product
 export const updateProductById = catchAsyncErrors( async (req,res)=>{
     
@@ -64,23 +99,72 @@ export const updateProductById = catchAsyncErrors( async (req,res)=>{
     })
 });
 
-//to Delete a particular product
-export const deleteProductById = catchAsyncErrors( async (req,res)=>{
-    
-    const productById = await products.findById(req?.params?.id)
 
-    if(!productById){
-        return next(new ErrorHandler("Product not found",404))
+// Upload product images   =>  /api/v1/admin/products/:id/upload_images
+export const uploadProductImages = catchAsyncErrors(async (req, res) => {
+    let product = await products.findById(req?.params?.id);
+  
+    if (!product) {
+      return next(new ErrorHandler("Product not found", 404));
     }
-
- await productById.deleteOne()
-
+  
+    const uploader = async (image) => upload_file(image, "lonicera/products");
+  
+    const urls = await Promise.all((req?.body?.images).map(uploader));
+  
+    product?.images?.push(...urls);
+    await product?.save();
+  
     res.status(200).json({
-        message:'Product Deleted'
-    })
-}
-);
+      product,
+    });
+  });
 
+// Delete product image   =>  /api/v1/admin/products/:id/delete_image
+export const deleteProductImage = catchAsyncErrors(async (req, res) => {
+    let product = await products.findById(req?.params?.id);
+    console.log("delete controller", req.body);
+
+    if (!product) {
+      return next(new ErrorHandler("Product not found", 404));
+    }
+  
+    const isDeleted = await delete_file(req.body.imgId);
+  
+    if (isDeleted) {
+      product.images = product?.images?.filter(
+        (img) => img.public_id !== req.body.imgId
+      );
+       console.log("deleted"); 
+      await product?.save();
+    }
+  
+    res.status(200).json({
+      product,
+    });
+  });
+  
+
+// Delete product   =>  /api/v1/admin/products/:id
+export const deleteProduct = catchAsyncErrors(async (req, res) => {
+    const product = await products.findById(req?.params?.id);
+  
+    if (!product) {
+      return next(new ErrorHandler("Product not found", 404));
+    }
+  
+    // Deleting image associated with product
+    for (let i = 0; i < product?.images?.length; i++) {
+      await delete_file(product?.images[i].public_id);
+    }
+  
+    await product.deleteOne();
+  
+    res.status(200).json({
+      message: "Product Deleted",
+    });
+  });
+  
 //Create/update product review => api/v1/reviews
 export const createProductReview = catchAsyncErrors( async (req,res,next)=>{
     

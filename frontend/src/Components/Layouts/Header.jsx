@@ -26,7 +26,7 @@ function Header() {
     if (isSuccess) {
       // Show success toast when logout is successful
       toast.success("Logout successful");
-      navigate(0);
+      navigate("/");
     }
 
     if (error) {
@@ -40,7 +40,7 @@ function Header() {
     .toFixed(2);
   return (
     <div className="sticky top-0 z-50">
-      <div className="py-4 pl-8 pr-10 bg-black navbar bg-blend-multiply bg-opacity-95">
+      <div className="py-4 pl-8 pr-10 bg-base-300 navbar bg-blend-multiply bg-opacity-95">
         <div className="flex-none">
           <Link to="/" className="p-0 text-xl text-gray-100">
             <img
@@ -61,7 +61,7 @@ function Header() {
               <div className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 text-gray-100"
+                  className="w-5 h-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -120,6 +120,12 @@ function Header() {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
               >
                 <li>
+                  {user?.role === "admin" && (
+                    <Link className="dropdown-item" to="/admin/products">
+                      {" "}
+                      Dashboard{" "}
+                    </Link>
+                  )}
                   <Link
                     to={user ? "/me/profile" : "/login"}
                     className="justify-between"

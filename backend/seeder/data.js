@@ -1,48 +1,118 @@
 export default [
   {
-    name: "Red Stam Herbal Honey",
-    price: 500,
-    description: "Herbal Honey, a nectar of rejuvenation, is a meticulously curated blend of nature's most potent botanicals, carefully infused into the liquid gold of pure honey. This elixir of vitality is a true testament to our reverence for the earth's bounty, offering a delightful and nourishing way to embrace the healing properties of nature's ancient remedies." ,
-    ratings: 0,
+    name: "Lonicera’s Charcoal Natural Soap",
+    price: 200,
+    description:
+      "Unveil a deep cleanse with Lonicera's Charcoal Natural Soap, a powerful yet gentle solution for purifying the skin. Crafted with activated charcoal, this handmade soap acts as a natural detoxifier, drawing out impurities and unclogging pores. The addition of nourishing plant-based oils and butters ensures a luxurious lather that leaves the skin feeling refreshed and revitalized. With its subtle, earthy scent, Lonicera's Charcoal Natural Soap offers a rejuvenating experience for all skin types. Grab right away the power of nature's purifying elements with this exceptional charcoal natural soap.",
+    ratings: 4.5,
     images: [
       {
         public_id: "shopit/demo/nkkjkta63uiazppzkmjf",
-        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1710492901/Herbal_Honey_di6cby.jpg",
+        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1711540222/lonicera/ccp_rbyyss.webp",
+      },
+      {
+        public_id: "shopit/demo/hz1iwdqzrvxtfxincvju",
+        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1711540222/lonicera/ccp_rbyyss.webp",
       },
       {
         public_id: "shopit/demo/oc2dvvkxyxukc13y9pjv",
-        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1710492901/Herbal_honey-2_yyeyjz.jpg",
-      }
+        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1711540222/lonicera/ccp_rbyyss.webp",
+      },
     ],
-    category: 
-      "Electronics"
-    ,
+    category: "Soaps",
     seller: "Ebay",
     stock: 50,
-    numOfReviews: 0,
+    numOfReviews: 32,
     reviews: [],
   },
   {
-    name: "Veg Capsules",
+    name: "Lonicera’s Turmeric Natural Soap",
     price: 315,
-    description: "Complementing this liquid marvel is our REDSTAM Veg Capsules, a concentrated powerhouse of revitalization. Formulated with the utmost care and precision, each capsule encapsulates a symphony of carefully selected botanicals such as the red spinach extract, meticulously combined to amplify their synergistic effects. With each capsule, individuals can embark on a journey of rejuvenation, unlocking newfound reservoirs of energy, resilience, and overall well-being.",
+    description:
+      "Experience the ancient wisdom of nature with Lonicera's Turmeric Natural Soap, crafted using organic turmeric and nourishing plant-based oils. Turmeric, revered for its anti-inflammatory and antioxidant properties, helps soothe and rejuvenate the skin, while the gentle lather gently cleanses without stripping away natural oils. This handmade soap is infused with the warm, earthy aroma of turmeric, creating a sensory experience that calms the mind and body. Seize the healing power of nature with Lonicera's Turmeric Natural Soap.",
     ratings: 1.65,
     images: [
       {
         public_id: "shopit/demo/e3hweb3tbp5zacfi564c",
-        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1710492901/Veg_capsules-2_eof5qm.jpg",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/e3hweb3tbp5zacfi564c.jpg",
       },
       {
         public_id: "shopit/demo/mjcc0kg0lzxegrauh8qc",
-        url: "https://res.cloudinary.com/dgs5n1wt5/image/upload/v1710492901/Veg-capsules_ylyiui.jpg",
-      }
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/mjcc0kg0lzxegrauh8qc.jpg",
+      },
+      {
+        public_id: "shopit/demo/iruzmpgrhb6xyqheppxg",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/iruzmpgrhb6xyqheppxg.jpg",
+      },
+      {
+        public_id: "shopit/demo/bj3auijqcxxvkwdohznb",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577510/shopit/demo/bj3auijqcxxvkwdohznb.jpg",
+      },
     ],
-    category: 
-      "Electronics"
-    ,
+    category: "Soaps",
     seller: "Amazon",
-    stock: 28,
+    stock: 0,
     numOfReviews: 2,
     reviews: [],
-  }
+  },
+  {
+    name: "Lonicera’s Green Tippy",
+    price: 315,
+    description:
+      "Savour the essence of nature's essence with Lonicera's Green Tippy - a transcendent whole leaf green tea experience plucked from the organic tea gardens of Nilgiri. Meticulously brewed at the perfect 80-85°C for 2-3 minutes, this elixir unveils a soothing taste that dances across your palate, while bestowing a cornucopia of health benefits upon mind, body, and soul. Highly recommended for those battling lifestyle diseases, Green Tippy is a potent ally in your quest for wellness, bolstering digestion, immunity, and cardiovascular health with its antioxidant-rich prowess. Indulge in a 100g package that stretches across months of tranquil sips, allowing you to savour each delicate nuance with every refill. Elevate your tea ritual with Lonicera's Green Tippy - a verdant embrace of nature's profound wisdom.",
+    ratings: 4.0,
+    images: [
+      {
+        public_id: "shopit/demo/e3hweb3tbp5zacfi564c",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/e3hweb3tbp5zacfi564c.jpg",
+      },
+      {
+        public_id: "shopit/demo/mjcc0kg0lzxegrauh8qc",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/mjcc0kg0lzxegrauh8qc.jpg",
+      },
+      {
+        public_id: "shopit/demo/iruzmpgrhb6xyqheppxg",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/iruzmpgrhb6xyqheppxg.jpg",
+      },
+      {
+        public_id: "shopit/demo/bj3auijqcxxvkwdohznb",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577510/shopit/demo/bj3auijqcxxvkwdohznb.jpg",
+      },
+    ],
+    category: "Tea",
+    seller: "Amazon",
+    stock: 0,
+    numOfReviews: 2,
+    reviews: [],
+  },
+  {
+    name: "Lonicera’s Black Tippy",
+    price: 315,
+    description:
+      "Indulge in the robust flavour and aroma of Lonicera's organic whole leaf black tea, carefully handpicked from the renowned tea gardens of Assam. Brewed at a perfect temperature of 95-100°C for 3-4 minutes, it unveils a rich, full-bodied taste with complex notes. Packed with polyphenols and antioxidants, Lonicera's Black Tippy supports heart health, aids digestion, and provides an invigorating energy boost. The 100g package ensures a long-lasting supply, allowing you to savor each aromatic cup. Enclasp the timeless tradition of black tea with Lonicera's Black Tippy.",
+    ratings: 4.0,
+    images: [
+      {
+        public_id: "shopit/demo/e3hweb3tbp5zacfi564c",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/e3hweb3tbp5zacfi564c.jpg",
+      },
+      {
+        public_id: "shopit/demo/mjcc0kg0lzxegrauh8qc",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/mjcc0kg0lzxegrauh8qc.jpg",
+      },
+      {
+        public_id: "shopit/demo/iruzmpgrhb6xyqheppxg",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577509/shopit/demo/iruzmpgrhb6xyqheppxg.jpg",
+      },
+      {
+        public_id: "shopit/demo/bj3auijqcxxvkwdohznb",
+        url: "http://res.cloudinary.com/udemy-courses/image/upload/v1698577510/shopit/demo/bj3auijqcxxvkwdohznb.jpg",
+      },
+    ],
+    category: "Tea",
+    seller: "Amazon",
+    stock: 0,
+    numOfReviews: 2,
+    reviews: [],
+  },
 ]

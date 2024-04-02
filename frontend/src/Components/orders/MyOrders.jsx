@@ -96,9 +96,9 @@ const MyOrders = () => {
   return (
     <>
       <MetaData title={"My Orders"} />
-
-      <div className="max-w-screen-lg mx-auto min-h-[60vh]">
-        <h1 className="my-5 text-3xl text-gray-300">
+    <div className="w-full h-full bg-base-100 dark:bg-gray-950">
+      <div className="max-w-screen-lg mx-auto  ">
+        <h1 className="my-5 text-3xl">
           {data?.orders?.length} Order(s)
         </h1>
 
@@ -112,6 +112,7 @@ const MyOrders = () => {
           striped
           hover
         />
+      </div>
       </div>
     </>
   );

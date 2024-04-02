@@ -20,7 +20,7 @@ const OrderDetails = () => {
     orderStatus,
   } = order;
 
-  const isPaid = paymentInfo?.status === "paid" ? true : false;
+  const isPaid = paymentInfo?.status === "Paid" ? true : false;
 
   useEffect(() => {
     if (error) {
@@ -34,33 +34,33 @@ const OrderDetails = () => {
   return (
     <>
       <MetaData title={"Order Details"} />
-      <div className="flex justify-center">
+      <div className="flex justify-center w-full h-full bg-base-100 dark:bg-gray-950">
         <div className="w-full lg:w-9/12 mt-5">
           <div className="flex justify-between items-center">
             <h3 className="mt-5 mb-4 text-2xl">Your Order Details</h3>
-            <a href="/invoice/order/order-id" className="btn btn-success">
+            <Link to={`/invoice/order/${order?._id}`} className="btn btn-success">
               <i className="fa fa-print"></i> Invoice
-            </a>
+            </Link>
           </div>
-          <table className="table-auto w-full border-collapse border border-gray-300">
+          <table className="table-auto w-full border-collapse border border-gray-700 dark:border-gray-300">
             <tbody>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">ID</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">ID</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {order?._id}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Status</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Status</th>
                 <td
-                  className={`${orderStatus.includes("Delivered") ? "text-green-500" : "text-red-500"} border border-gray-300 px-4 py-2`}
+                  className={`${orderStatus.includes("Delivered") ? "text-green-500" : "text-red-500"} border border-gray-700 dark:border-gray-300 px-4 py-2`}
                 >
                   <b>{orderStatus}</b>
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Date</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Date</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {new Date(order?.createdAt).toLocaleString("en-US")}
                 </td>
               </tr>
@@ -68,23 +68,23 @@ const OrderDetails = () => {
           </table>
 
           <h3 className="mt-5 mb-4 text-2xl">Shipping Info</h3>
-          <table className="table-auto w-full border-collapse border border-gray-300">
+          <table className="table-auto w-full border-collapse border border-gray-700 dark:border-gray-300">
             <tbody>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Name</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Name</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {user.name}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Phone No</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Phone No</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {shippingInfo?.phoneNo}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Address</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Address</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {shippingInfo?.address}, {shippingInfo?.city},{" "}
                   {shippingInfo?.zipCode}, {shippingInfo?.country}
                 </td>
@@ -93,33 +93,33 @@ const OrderDetails = () => {
           </table>
 
           <h3 className="mt-5 mb-4 text-2xl">Payment Info</h3>
-          <table className="table-auto w-full border-collapse border border-gray-300">
+          <table className="table-auto w-full border-collapse border border-gray-700 dark:border-gray-300">
             <tbody>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Status</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Status</th>
                 <td
-                  className={`${isPaid ? "text-green-500" : "text-red-500"} border border-gray-300 px-4 py-2`}
+                  className={`${isPaid ? "text-green-500" : "text-red-500"} border border-gray-700 dark:border-gray-300 px-4 py-2`}
                 >
                   <b>{paymentInfo?.status}</b>
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Method</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Method</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {order?.paymentMethod}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">Stripe ID</th>
-                <td className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Payment ID</th>
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {paymentInfo?.id || "Nill"}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-300 px-4 py-2">
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   Amount Paid
                 </th>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   ₹{totalAmount}
                 </td>
               </tr>
@@ -146,7 +146,7 @@ const OrderDetails = () => {
                 <div className="w-full lg:w-2/6 mt-2 lg:mt-0">
                   <Link
                     to={`/products/${item?.product}`}
-                    className="text-blue-100 hover:underline"
+                    className=" hover:underline"
                   >
                     {item?.name}
                   </Link>

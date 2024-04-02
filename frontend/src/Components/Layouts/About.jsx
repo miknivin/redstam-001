@@ -10,12 +10,12 @@ const About = () => {
 
   return (
     <div>
-      <section className=" bg-slate-950">
+      <section className=" bg-base-100 dark:bg-gray-950">
         <div class="text-center block relative z-20 mx-auto pt-8">
-          <h1 class="text-5xl font-light my-2 text-gray-50">
+          <h1 class="text-5xl font-light my-2">
             Embracing Nature's Ancient Wisdom
           </h1>
-          <p className="text-lg w-full md:w-3/4 mx-auto font-light text-gray-200">
+          <p className="text-lg w-full md:w-3/4 mx-auto font-light">
             In the heart of a pristine natural sanctuary, where the whispers of
             ancient knowledge echo through time, REDSTAM stands as a testament
             to the enduring power of nature's healing embrace. Founded upon the
@@ -26,12 +26,12 @@ const About = () => {
         </div>
         <div className="gap-16 items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-8 lg:px-6">
           <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className="mb-4 text-4xl tracking-tight font-light text-gray-50">
+            <h2 className="mb-4 text-4xl tracking-tight font-light">
               REDISCOVERING NATURE'S EMBRACE:{" "}
               <span className=" text-red-500">The Redstam Journey</span>
             </h2>
             <p
-              className={`mb-4 font-light text-gray-200 ${showMore ? "" : "line-clamp-[9]"}  md:text-lg lg:text-xl`}
+              className={`mb-4 font-light ${showMore ? "" : "line-clamp-[9]"}  md:text-lg lg:text-xl`}
             >
               From the moment our story began, we have been guided by a profound
               respect for the wisdom of our ancestors, who understood the

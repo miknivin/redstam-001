@@ -63,7 +63,7 @@ export const getOrderDetails = catchAsyncErrors(async (req,res,next)=>{
 
 // Get all orders details - ADMIN => /api/v1/admin/orders
 export const allOrders = catchAsyncErrors(async (req,res,next)=>{
-    const orders = await Order.find({user:req.user._id});
+    const orders = await Order.find();
 
     if (!orders) {
         return next(new ErrorHandler("No Order found with this Id",404))

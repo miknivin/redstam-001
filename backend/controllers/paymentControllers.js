@@ -1,144 +1,109 @@
 import catchAsyncErrors from "../middlewares/catchAsyncErrors.js";
 import Order from "../models/order.js";
-import Stripe from "stripe";
+import Razorpay from "razorpay";
 import dotenv from 'dotenv';
-
+import crypto from 'crypto'
 // Load .env file
 dotenv.config({ path: 'backend/config/config.env' });
 
-// Initialize Stripe with the secret key
-const secret_key = process.env.STRIPE_SECRET_KEY;
-if (!secret_key) {
-  console.error("Stripe secret key is not provided.");
-}
-const stripe = Stripe(secret_key);
+// Initialize Razorpay with the key ID and secret key
+const razorpay_key_id = process.env.RAZORPAY_SECRET_ID;
+const razorpay_secret_key = process.env.RAZORPAY_SECRET_KEY;
 
-// Create stripe checkout session   =>  /api/v1/payment/checkout_session
+if (!razorpay_key_id || !razorpay_secret_key) {
+  console.error("Razorpay key ID or secret key is not provided.");
+}
+
+const razorpay = new Razorpay({
+  key_id: razorpay_key_id,
+  key_secret: razorpay_secret_key
+});
+
+// Create Razorpay orde
 export const stripeCheckoutSession = catchAsyncErrors(
   async (req, res, next) => {
     const body = req?.body;
-    const line_items = body?.orderItems?.map((item) => {
-      return {
-        price_data: {
-          currency: "inr",
-          product_data: {
-            name: item?.name,
-            images: [item?.image],
-            metadata: { productId: item?.product },
-          },
-          unit_amount: item?.price * 100,
-        },
-        tax_rates: ["txr_1OvHc8SHMlZC6Ph6GIENNt0b"],
-        quantity: item?.quantity,
-      };
-    });
+    const orderItems = body?.orderItems;
+    const currency = "INR"; // Assuming the currency is INR for Razorpay
 
-    const shippingInfo = body?.shippingInfo;
-    const shipping_rate =
-      body?.itemsPrice >= 200
-        ? "shr_1OvHU9SHMlZC6Ph6Y0S2SFpd"
-        : "shr_1OvHVfSHMlZC6Ph6Z5aUlc5t";
+    const options = {
+      amount: body?.itemsPrice * 100, // Razorpay expects amount in paisa, hence * 100
+      currency: currency,
+      receipt: `order_${Date.now()}`,
+      payment_capture: 1 // Auto-capture payment
+    };
 
     try {
-      // Create a Stripe Checkout session
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        success_url: `${process.env.FRONTEND_URL}/order_placed?order_success=true`,
-        cancel_url: `${process.env.FRONTEND_URL}`,
-        customer_email: req?.user?.email,
-        client_reference_id: req?.user?._id?.toString(),
-        mode: "payment",
-        metadata: { ...shippingInfo, itemsPrice: body?.itemsPrice },
-        shipping_options: [{ shipping_rate }],
-        line_items,
-        billing_address_collection: 'required', // Require the customer to provide billing address
-      });
+      const order = await razorpay.orders.create(options);
 
-      // Respond with the Checkout session URL
       res.status(200).json({
-        url: session.url,
+        id: order.id,
+        currency: order.currency,
+        amount: order.amount,
+        receipt: order.receipt
       });
+      // console.error(`order data is ${order}`);
     } catch (error) {
-      console.error("Error creating Checkout session:", error);
-      res.status(500).json({ error: "Failed to create Checkout session" });
+      console.error("Error creating Razorpay order:", error);
+      res.status(500).json({ error: "Failed to create Razorpay order" });
     }
   }
 );
 
-// Function to retrieve order items from Stripe
-const getOrderItems = async (line_items) => {
-  return new Promise((resolve, reject) => {
-    let cartItems = [];
-
-    line_items?.data?.forEach(async (item) => {
-      const product = await stripe.products.retrieve(item.price.product);
-      const productId = product.metadata.productId;
-
-      cartItems.push({
-        product: productId,
-        name: product.name,
-        price: item.price.unit_amount_decimal / 100,
-        quantity: item.quantity,
-        image: product.images[0],
-      });
-
-      if (cartItems.length === line_items?.data?.length) {
-        resolve(cartItems);
-      }
-    });
-  });
-};
-
-// Webhook handler for processing successful payments
 export const stripeWebhook = catchAsyncErrors(async (req, res, next) => {
-  try {
-    const signature = req.headers["stripe-signature"];
-    const event = stripe.webhooks.constructEvent(
-      req.rawBody,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET
-    );
+  const { razorpay_order_id, 
+          razorpay_payment_id, 
+          razorpay_signature, 
+          shippingInfo, cartItems, user, 
+          itemsPrice, shippingPrice, 
+          totalPrice, taxPrice } = req.body;
 
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object;
-      const line_items = await stripe.checkout.sessions.listLineItems(session.id);
-      const orderItems = await getOrderItems(line_items);
-      const user = session.client_reference_id;
-      const totalAmount = session.amount_total / 100;
-      const taxAmount = session.total_details.amount_tax / 100;
-      const shippingAmount = session.total_details.amount_shipping / 100;
-      const itemsPrice = session.metadata.itemsPrice;
+  const body = razorpay_order_id + "|" + razorpay_payment_id;
 
-      const shippingInfo = {
-        address: session.metadata.address,
-        city: session.metadata.city,
-        phoneNo: session.metadata.phoneNo,
-        zipCode: session.metadata.zipCode,
-        country: session.metadata.country,
-      };
+  const expectedSignature = crypto
+    .createHmac("sha256", process.env.RAZORPAY_SECRET_KEY)
+    .update(body, "utf-8") // Specify encoding as UTF-8
+    .digest("hex");
 
-      const paymentInfo = {
-        id: session.payment_intent,
-        status: session.payment_status,
-      };
+  const isAuthentic = expectedSignature == razorpay_signature;
 
-      const orderData = {
+  if (isAuthentic) {
+    try {
+      const order = await Order.create({
         shippingInfo,
-        orderItems,
-        itemsPrice,
-        taxAmount,
-        shippingAmount,
-        totalAmount,
-        paymentInfo,
+        user:user._id,
+        orderItems: cartItems,
         paymentMethod: "Online",
-        user,
-      };
-
-      await Order.create(orderData);
-      res.status(200).json({ success: true });
+        paymentInfo: {
+          id: razorpay_payment_id,
+          status: "Paid",
+        },
+        itemsPrice,
+        shippingAmount: shippingPrice,
+        taxAmount: taxPrice,
+        totalAmount: totalPrice,
+      });
+      console.log("Order-created");
+      // Redirect to the specified URL after successful order creation
+      res.redirect(`${process.env.FRONTEND_URL}/order_placed?order_success=true`);
+    } catch (error) {
+      console.error("Error creating order:", error);
+      res.status(500).json({
+        success: false,
+        error: "Internal Server Error",
+      });
     }
-  } catch (error) {
-    console.error("Error processing webhook event:", error);
-    res.status(500).json({ error: "Failed to process webhook event" });
+  } else {
+    // Payment data is not authentic, handle error
+    console.error("Received invalid payment data:", req.body);
+    
+    // Send error response to frontend
+    res.status(500).json({
+      success: false,
+      error: "Invalid payment data",
+    });
   }
 });
+
+
+

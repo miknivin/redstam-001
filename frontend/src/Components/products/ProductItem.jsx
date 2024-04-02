@@ -32,10 +32,10 @@ function ProductItem({ product }) {
     <section className="bg-transparent">
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <h1 className="max-w-2xl mb-4 text-4xl font-light tracking-tight leading-none text-gray-100 md:text-5xl xl:text-6xl dark:text-white">
+          <h1 className="max-w-2xl mb-4 text-4xl font-light tracking-tight leading-none text-gray-900 md:text-5xl xl:text-5xl dark:text-white">
             {product.name}
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-200 line-clamp-[8]">
+          <p className="max-w-2xl mb-6 font-light text-gray-900 dark:text-gray-100 lg:mb-8 md:text-lg  line-clamp-[8]">
             {product.description}
           </p>
           <div className="card-body items-start p-0 my-3">
@@ -79,9 +79,9 @@ function ProductItem({ product }) {
             >
               Add to Cart
             </button>
-            <Link
+            <Link   
               to={`products/${product._id}`}
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-200 border border-gray-300 rounded-lg hover:bg-gray-700 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700"
+              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 dark:text-gray-100 border border-gray-700  rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-300 dark:hover:bg-gray-700"
             >
               Know more
             </Link>
@@ -100,7 +100,7 @@ function ProductItem({ product }) {
                 <img
                   src={image.url}
                   alt={`Productimg ${index + 1}`}
-                  className="rounded-box aspect-square object-cover"
+                  className="rounded-box aspect-square object-cover overflow-hidden"
                   loading="lazy"
                 />
               </SwiperSlide>

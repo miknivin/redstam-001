@@ -171,7 +171,7 @@ const Cart = () => {
                     </div>
                     <button
                       onClick={checkoutHandler}
-                      className="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full"
+                      className="bg-emerald-600 text-white py-2 px-4 rounded-lg mt-4 w-full"
                     >
                       Checkout
                     </button>

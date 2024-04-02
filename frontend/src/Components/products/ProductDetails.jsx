@@ -77,7 +77,7 @@ const ProductDetails = () => {
   }
   return (
     <div>
-      <div className="bg-gray-900 text-gray-50 py-6 sm:py-8 lg:py-12">
+      <div className="bg-base-100 dark:bg-gray-900 text-gray-950 dark:text-gray-50 py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-xl px-4 md:px-8">
           <div className="grid gap-12 md:grid-cols-2">
             {/* images - start */}
@@ -254,7 +254,7 @@ const ProductDetails = () => {
               <div className="flex gap-2.5">
                 <button
                   onClick={setItemToCart}
-                  className="inline-block flex-1 rounded-lg bg-teal-600 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-teal-400 focus-visible:ring active:bg-teal-700 sm:flex-none md:text-base"
+                  className="inline-block flex-1 rounded-lg bg-emerald-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-teal-400 focus-visible:ring active:bg-teal-700 sm:flex-none md:text-base"
                 >
                   Add to cart
                 </button>

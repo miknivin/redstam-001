@@ -5,6 +5,7 @@ export const productApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "/api/v1",
   }),
+  tagTypes: ["Product", "AdminProducts", "Reviews"],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: (params) => ({
@@ -13,16 +14,83 @@ export const productApi = createApi({
           page: params?.page,
           keyword: params?.keyword,
           category: params?.category,
-          "price[gte]": params.min,
-          "price[lte]": params.max,
+          "price[gte]": params?.min,
+          "price[lte]": params?.max,
           "ratings[gte]": params?.ratings,
         },
       }),
     }),
     getProductDetails: builder.query({
       query: (id) => `/products/${id}`,
+      providesTags: ["Product"],
+    }),
+    getAdminProducts: builder.query({
+      query: () => "/admin/products",
+      providesTags: ["AdminProducts"],
+    }),
+    createProduct: builder.mutation({
+      query(body) {
+        return {
+          url: "/admin/products",
+          method: "POST",
+          body,
+        };
+      },
+      invalidatesTags: ["AdminProducts"],
+    }),
+    uploadProductImages: builder.mutation({
+      query({ id, body }) {
+        return {
+          url: `/admin/products/${id}/upload_images`,
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["Product"],
+    }),
+    updateProduct: builder.mutation({
+      query({ id, body }) {
+        return {
+          url: `/admin/products/${id}`,
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["Product", "AdminProducts"],
+    }),
+    deleteProduct: builder.mutation({
+      query(id) {
+        return {
+          url: `/admin/products/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["AdminProducts"],
+    }),
+    deleteProductImage: builder.mutation({
+      query({ id, body }) {
+        return {
+          url: `/admin/products/${id}/delete_image`,
+          method: "PUT",
+          body,
+        };
+      },
+      invalidatesTags: ["Product", "AdminProducts"],
+    }),
+    getAdminOrders: builder.query({
+      query: () => `/admin/orders`,
+      providesTags: ["AdminOrders"],
     }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery } = productApi;
+export const {
+  useGetProductsQuery,
+  useGetProductDetailsQuery,
+  useGetAdminProductsQuery,
+  useCreateProductMutation,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
+  useDeleteProductImageMutation,
+  useUploadProductImagesMutation,
+} = productApi;

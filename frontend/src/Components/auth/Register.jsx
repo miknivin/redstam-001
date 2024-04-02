@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRegisterMutation } from "../../redux/api/authApi";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: "", // Added confirmPassword field
-    acceptTerms: false, // Added acceptTerms field
+    confirmPassword: "",
   });
 
-  const { name, email, password, confirmPassword, acceptTerms } = user;
+  const { name, email, password, confirmPassword } = user;
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
 
@@ -34,11 +35,6 @@ const Register = () => {
       return;
     }
 
-    if (!acceptTerms) {
-      toast.error("Please accept the terms and conditions");
-      return;
-    }
-
     register(user)
       .then(() => {
         // Handle successful registration
@@ -50,73 +46,102 @@ const Register = () => {
       });
   };
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+    if (error) {
+      toast.error(error?.data?.message);
+    }
+  }, [error, isAuthenticated, navigate]);
+
   return (
     <div>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        {/* Your form JSX */}
-        <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
-          {/* Other form fields */}
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={handleInputChange}
-              placeholder="Confirm password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="flex items-start">
-            <div className="flex items-center h-5">
-              <input
-                id="acceptTerms"
-                name="acceptTerms"
-                type="checkbox"
-                checked={acceptTerms}
-                onChange={handleInputChange}
-                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                required
-              />
-            </div>
-            <div className="ml-3 text-sm">
-              <label
-                htmlFor="acceptTerms"
-                className="font-light text-gray-500 dark:text-gray-300"
+      <div className="m-auto xl:container px-12 sm:px-0 mx-auto">
+        <div className="mx-auto h-full sm:w-max">
+          <div className="m-auto  py-12">
+            <div className="mt-12 rounded-3xl border bg-gray-50 dark:border-gray-700 dark:bg-gray-800 -mx-6 sm:-mx-10 p-8 sm:p-10">
+              <h3 className="text-2xl font-semibold text-gray-700 dark:text-white">
+                Register to your account
+              </h3>
+              <div className="mt-2 flex flex-wrap sm:grid gap-6 grid-cols-2"></div>
+              <form
+                className="mt-10 space-y-8 dark:text-white"
+                onSubmit={handleSubmit}
               >
-                I accept the{" "}
-                <a
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                  href="#menu"
-                >
-                  Terms and Conditions
-                </a>
-              </label>
+                <div>
+                  <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-emerald-500 dark:before:bg-emerald-600 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                    <input
+                      id="name"
+                      type="text"
+                      placeholder="Your name"
+                      className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
+                      value={name}
+                      name="name"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-emerald-500 dark:before:bg-emerald-600 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="Your email"
+                      className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
+                      value={email}
+                      name="email"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-emerald-500 dark:before:bg-emerald-600 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                    <input
+                      id="password"
+                      type="password"
+                      placeholder="Your password"
+                      className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
+                      value={password}
+                      name="password"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-emerald-500 dark:before:bg-emerald-600 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                    <input
+                      id="confirmPassword"
+                      type="password"
+                      placeholder="Confirm password"
+                      className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
+                      value={confirmPassword}
+                      name="confirmPassword"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full rounded-full bg-emerald-500 dark:bg-emerald-400 h-11 flex items-center justify-center px-6 py-3 transition hover:bg-emerald-600 focus:bg-emerald-600 active:bg-sky-800"
+                    disabled={isLoading}
+                  >
+                    <span className="text-base font-semibold text-white dark:text-gray-900">
+                      {isLoading ? "Authenticating" : "Register"}
+                    </span>
+                  </button>
+                  <Link to="/login" className="-ml-3 w-max p-3">
+                    <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
+                      Already have an Account
+                    </span>
+                  </Link>
+                </div>
+              </form>
             </div>
+            <div className="border-t pt-12 text-gray-500 dark:border-gray-800"></div>
           </div>
-          <button
-            type="submit"
-            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          >
-            Create an account
-          </button>
-          <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-            Already have an account?{" "}
-            <a
-              href="#menu"
-              className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-            >
-              Login here
-            </a>
-          </p>
-        </form>
+        </div>
       </div>
     </div>
   );
