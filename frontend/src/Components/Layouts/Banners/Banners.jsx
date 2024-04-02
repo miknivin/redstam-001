@@ -28,7 +28,7 @@ function Banners() {
           <img
             className=" object-cover"
             style={{ width: "100%", height: "100%" }}
-            src="https://ik.imagekit.io/c1jhxlxiy/banner.webp?updatedAt=1711288957508"
+            src="https://ik.imagekit.io/c1jhxlxiy/2000x1125%20pxls%202.webp?updatedAt=1712050050083"
             alt="banner"
           />
           {/* <div className="h-full w-[85%] mx-auto flex items-center relative">
@@ -53,7 +53,7 @@ function Banners() {
           <img
             className="object-cover object-right-top"
             style={{ width: "100%", height: "100%" }}
-            src="https://ik.imagekit.io/c1jhxlxiy/DISCOVER%20YOUR%20POTENTIAL%20(4).webp?updatedAt=1710831957296"
+            src="https://ik.imagekit.io/c1jhxlxiy/2000x1125%20pxls%201.webp?updatedAt=1712050194112"
             alt="banner1"
           />
           {/* <div className="h-full w-[85%] mx-auto flex items-center relative">
