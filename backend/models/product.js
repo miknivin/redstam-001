@@ -38,6 +38,7 @@ const productSchema = new mongoose.Schema({
           values: [
             "Soaps",
             "Tea",
+            "Wellbeing"
           ],
           message: "Please select correct category",
         },
