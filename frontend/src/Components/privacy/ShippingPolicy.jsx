@@ -6,7 +6,7 @@ const ShippingPolicy = () => {
   }, []);
   return (
     <div>
-      <div className="bg-gray-950 p-6 rounded-lg shadow-md">
+      <div className="dark:bg-gray-950 bg-base-100 p-6 rounded-lg shadow-md text-gray-900 dark:text-gray-50">
         <h2 className="text-2xl font-semibold mb-4">Shipping Policy</h2>
         <p className="mb-4">
           Welcome to redstam.com, where we strive to make your shopping

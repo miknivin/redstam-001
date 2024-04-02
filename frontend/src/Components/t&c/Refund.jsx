@@ -5,8 +5,8 @@ const Refund = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
   }, []);
   return (
-    <div>
-      <div className="container mx-auto px-4 py-8 bg-gray-950 p-8">
+    <div className="dark:bg-gray-950 bg-base-100 p-8 dark:text-gray-50 text-gray-900">
+      <div className="container mx-auto px-4 py-8  ">
         <h1 className="text-3xl font-bold mb-6">Return and Refund Policy</h1>
         <div className=" shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <h2 className="text-xl font-bold mb-4">

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: "Outfit", sans-serif !important;
+  font-family: "Ubuntu", sans-serif !important;
   background-color: #14181E; /* Default background color */
 }
 

@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   }, []);
   return (
     <>
-      <div className=" p-10 bg-gray-950">
+      <div className=" p-10 dark:bg-gray-950 bg-base-100">
         <h2 className=" text-3xl">Privacy Policy</h2>
         <p>Last updated: {/* */}22 March 2024</p>
         <p>
