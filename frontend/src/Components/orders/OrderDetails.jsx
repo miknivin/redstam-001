@@ -38,20 +38,27 @@ const OrderDetails = () => {
         <div className="w-full lg:w-9/12 mt-5">
           <div className="flex justify-between items-center">
             <h3 className="mt-5 mb-4 text-2xl">Your Order Details</h3>
-            <Link to={`/invoice/order/${order?._id}`} className="btn btn-success">
+            <Link
+              to={`/invoice/order/${order?._id}`}
+              className="btn btn-success"
+            >
               <i className="fa fa-print"></i> Invoice
             </Link>
           </div>
           <table className="table-auto w-full border-collapse border border-gray-700 dark:border-gray-300">
             <tbody>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">ID</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  ID
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {order?._id}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Status</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Status
+                </th>
                 <td
                   className={`${orderStatus.includes("Delivered") ? "text-green-500" : "text-red-500"} border border-gray-700 dark:border-gray-300 px-4 py-2`}
                 >
@@ -59,7 +66,9 @@ const OrderDetails = () => {
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Date</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Date
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {new Date(order?.createdAt).toLocaleString("en-US")}
                 </td>
@@ -71,19 +80,25 @@ const OrderDetails = () => {
           <table className="table-auto w-full border-collapse border border-gray-700 dark:border-gray-300">
             <tbody>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Name</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Name
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {user.name}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Phone No</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Phone No
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {shippingInfo?.phoneNo}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Address</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Address
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {shippingInfo?.address}, {shippingInfo?.city},{" "}
                   {shippingInfo?.zipCode}, {shippingInfo?.country}
@@ -96,7 +111,9 @@ const OrderDetails = () => {
           <table className="table-auto w-full border-collapse border border-gray-700 dark:border-gray-300">
             <tbody>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Status</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Status
+                </th>
                 <td
                   className={`${isPaid ? "text-green-500" : "text-red-500"} border border-gray-700 dark:border-gray-300 px-4 py-2`}
                 >
@@ -104,13 +121,17 @@ const OrderDetails = () => {
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Method</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Method
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {order?.paymentMethod}
                 </td>
               </tr>
               <tr>
-                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">Payment ID</th>
+                <th className="border border-gray-700 dark:border-gray-300 px-4 py-2">
+                  Payment ID
+                </th>
                 <td className="border border-gray-700 dark:border-gray-300 px-4 py-2">
                   {paymentInfo?.id || "Nill"}
                 </td>

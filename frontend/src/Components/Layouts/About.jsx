@@ -48,16 +48,13 @@ const About = () => {
               without compromise. At the heart of our endeavors lies a steadfast
               commitment to promoting exuberance, sturdiness, durability, and
               endurance – the cornerstones of a life lived to its fullest
-              potential. Our flagship products, Herbal Honey and REDSTAM Veg.
-              Capsules are living embodiments of this philosophy, crafted from
-              the purest, all-natural ingredients to harness the restorative
-              powers of nature's ancient secrets.
+              potential.
             </p>
             <button
               className="btn  btn-info"
               onClick={() => setShowMore(!showMore)}
             >
-              Read More
+              Read {!showMore?"More":"Less"}
             </button>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-8">

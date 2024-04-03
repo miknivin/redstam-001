@@ -79,7 +79,7 @@ function ProductItem({ product }) {
             >
               Add to Cart
             </button>
-            <Link   
+            <Link
               to={`products/${product._id}`}
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 dark:text-gray-100 border border-gray-700  rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-300 dark:hover:bg-gray-700"
             >

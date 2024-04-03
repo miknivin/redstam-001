@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Loader from "../Layouts/Loader";
 import { toast } from "react-hot-toast";
 import { MDBDataTable } from "mdbreact";
 import { Link } from "react-router-dom";
@@ -10,7 +9,8 @@ import {
   useDeleteOrderMutation,
   useGetAdminOrdersQuery,
 } from "../../redux/api/orderApi";
-import '../orders/my-order.css'
+import "../orders/my-order.css";
+import SkeletonText from "../utilities/SkeletonText";
 
 const ListOrders = () => {
   const { data, isLoading, error } = useGetAdminOrdersQuery();
@@ -95,7 +95,13 @@ const ListOrders = () => {
     return orders;
   };
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return (
+    <AdminLayout>
+      <div className="flex justify-center items-center w-full h-screen">
+        <SkeletonText />
+      </div>
+    </AdminLayout>
+  );
 
   return (
     <AdminLayout>

@@ -76,9 +76,7 @@ const CategoryFilter = () => {
               {PRODUCT_CATEGORIES.map((category) => (
                 <div class="form-control" key={category}>
                   <label class="label cursor-pointer p-2">
-                    <span class="label-text text-sm me-2">
-                      {category}
-                    </span>
+                    <span class="label-text text-sm me-2">{category}</span>
                     <input
                       type="checkbox"
                       name="category"

@@ -96,23 +96,21 @@ const MyOrders = () => {
   return (
     <>
       <MetaData title={"My Orders"} />
-    <div className="w-full h-full bg-base-100 dark:bg-gray-950">
-      <div className="max-w-screen-lg mx-auto  ">
-        <h1 className="my-5 text-3xl">
-          {data?.orders?.length} Order(s)
-        </h1>
+      <div className="w-full h-full bg-base-100 dark:bg-gray-950">
+        <div className="max-w-screen-lg mx-auto  ">
+          <h1 className="my-5 text-3xl">{data?.orders?.length} Order(s)</h1>
 
-        <MDBDataTable
-          data={setOrders()}
-          key={refreshKey} // Key to force re-render
-          className="px-3 overflow-x-scroll lg:overflow-x-auto"
-          bordered
-          responsive
-          rounded
-          striped
-          hover
-        />
-      </div>
+          <MDBDataTable
+            data={setOrders()}
+            key={refreshKey} // Key to force re-render
+            className="px-3 overflow-x-scroll lg:overflow-x-auto"
+            bordered
+            responsive
+            rounded
+            striped
+            hover
+          />
+        </div>
       </div>
     </>
   );
