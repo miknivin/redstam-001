@@ -155,7 +155,7 @@ const HeaderRe = () => {
             </div>
           </div>
           {/* cart */}
-          <button className="flex md:hidden items-center hover:text-gray-200">
+          <Link to='/cart' className="flex md:hidden items-center hover:text-gray-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -174,7 +174,7 @@ const HeaderRe = () => {
               <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
             </span>
-          </button>
+          </Link>
           {/* Hamburger */}
           <button
             data-collapse-toggle="navbar-sticky"

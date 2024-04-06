@@ -61,7 +61,7 @@ const Cart = () => {
     <>
       <Metadata title={"Your Cart"} />
       {cartItems.length === 0 ? (
-        <div className="w-full h-96 flex justify-center items-center text-8xl">
+        <div className="w-full h-96 flex justify-center items-center text-4xl sm:text-6xl">
           Your Cart is Empty
         </div>
       ) : (
