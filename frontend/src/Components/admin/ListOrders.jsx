@@ -95,13 +95,14 @@ const ListOrders = () => {
     return orders;
   };
 
-  if (isLoading) return (
-    <AdminLayout>
-      <div className="flex justify-center items-center w-full h-screen">
-        <SkeletonText />
-      </div>
-    </AdminLayout>
-  );
+  if (isLoading)
+    return (
+      <AdminLayout>
+        <div className="flex justify-center items-center w-full h-screen">
+          <SkeletonText />
+        </div>
+      </AdminLayout>
+    );
 
   return (
     <AdminLayout>

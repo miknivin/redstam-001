@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLoginMutation } from "../../redux/api/authApi";
+import {
+  useLoginMutation,
+  useGoogleSignInMutation,
+} from "../../redux/api/authApi";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,10 +12,13 @@ import { auth } from "../../firebase.config";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
-  const [login, { isLoading, error, data }] = useLoginMutation();
+  const [
+    googleSignIn,
+    { isLoading: googleSignLoading, error: googleSignError },
+  ] = useGoogleSignInMutation();
+  const [login, { isLoading, error }] = useLoginMutation();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   const SignUpUsingGoogle = () => {
@@ -20,7 +26,12 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const user = result.user;
-        let userData = { email: user.email };
+
+        // Generate a random password
+        const generatedPassword = generateRandomPassword();
+
+        let userData = { email: user.email, password: generatedPassword };
+
         // Check if the user has a phone number associated with the account
         if (user.phoneNumber) {
           // If phone number is available, use it for login
@@ -28,7 +39,7 @@ const Login = () => {
         }
 
         // Call login function with the appropriate user data
-        const loginRes = await login(userData);
+        const loginRes = await googleSignIn(userData);
 
         if (loginRes && loginRes.data && loginRes.data.token) {
           toast.success("User logged in successfully");
@@ -43,15 +54,33 @@ const Login = () => {
       });
   };
 
+  // Function to generate a random password
+  const generateRandomPassword = () => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let password = "";
+    for (let i = 0; i < 8; i++) {
+      password += characters.charAt(
+        Math.floor(Math.random() * characters.length),
+      );
+    }
+    return password;
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
       toast.success("Login Success");
     }
+
+    if (googleSignError) {
+      toast.error(error?.data?.message);
+    }
+
     if (error) {
       toast.error(error?.data?.message);
     }
-  }, [error, isAuthenticated, navigate]);
+  }, [error, googleSignError, isAuthenticated, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -93,15 +122,21 @@ const Login = () => {
                     onClick={SignUpUsingGoogle}
                     className="w-max mx-auto flex items-center justify-center space-x-4"
                   >
-                    <img
-                      src="https://www.svgrepo.com/show/475656/google-color.svg"
-                      loading="lazy"
-                      alt="google logo"
-                      className="w-5"
-                    />
-                    <span className="block w-max text-sm font-semibold tracking-wide text-cyan-700 dark:text-white">
-                      Sign in With Google
-                    </span>
+                    {googleSignLoading ? (
+                      <span className="loading loading-spinner loading-md"></span>
+                    ) : (
+                      <>
+                        <img
+                          src="https://www.svgrepo.com/show/475656/google-color.svg"
+                          loading="lazy"
+                          alt="google logo"
+                          className="w-5"
+                        />
+                        <span className="block w-max text-sm font-semibold tracking-wide text-cyan-700 dark:text-white">
+                          Sign in With Google
+                        </span>
+                      </>
+                    )}
                   </button>
                 </button>
               </div>
@@ -122,21 +157,33 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <div className="w-full relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-emerald-500 dark:before:bg-emerald-600 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                  <div className="w-full flex  relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-emerald-500 dark:before:bg-emerald-600 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
                     <input
                       id="password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="Your password"
                       className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      <i
+                        className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
+                      ></i>
+                    </button>
                   </div>
-                  <button type="reset" className="-mr-3 w-max p-3">
-                    {/* <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
+                  <Link
+                    to="/password/forgot"
+                    type="reset"
+                    className="-mr-3 w-max p-3"
+                  >
+                    <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
                       Forgot password ?
-                    </span> */}
-                  </button>
+                    </span>
+                  </Link>
                 </div>
                 <div>
                   <button

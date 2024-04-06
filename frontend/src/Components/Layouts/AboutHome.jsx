@@ -1,28 +1,69 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
 
 const AboutHome = () => {
+  const { ref, inView } = useInView({ amount: 0.3 });
+
+  const fadeInAnimationVariants = {
+    initial: {
+      opacity: 0,
+      y: 100,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
-    <div className=" bg-base-100">
-      <div class="text-center block relative z-20 mx-auto pt-10 pb-3 ">
-        <h1 class="text-5xl font-light my-2">
+    <div className="bg-base-100 dark:bg-gray-950">
+      <motion.div
+        className="text-center block relative z-20 mx-auto pt-10 pb-3 "
+        ref={ref}
+      >
+        <motion.h1
+          className="text-3xl md:text-5xl font-light my-2"
+          variants={fadeInAnimationVariants}
+          initial="initial"
+          whileInView={"animate"}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
           Embracing Nature's Ancient Wisdom
-        </h1>
-        <p className="text-lg w-full md:w-3/4 mx-auto font-light">
+        </motion.h1>
+        <motion.p
+          className="text-lg w-full md:w-3/4 mx-auto font-light"
+          variants={fadeInAnimationVariants}
+          initial="initial"
+          whileInView={"animate"}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
           In the heart of a pristine natural sanctuary, where the whispers of
           ancient knowledge echo through time, REDSTAM stands as a testament to
           the enduring power of nature's healing embrace. Founded upon the
           principles of reverence for the earth's bountiful gifts and a
           relentless pursuit of holistic well-being, our journey is a symphony
           of tradition and innovation.
-        </p>
-        <Link
-          to="about"
-          className="btn bg-red-600 hover:bg-red-400 mx-auto  mt-5 mb-8 text-white"
+        </motion.p>
+        <motion.button
+          variants={fadeInAnimationVariants}
+          initial="initial"
+          whileInView={"animate"}
+          transition={{ delay: 0.5 }}
+          viewport={{ once: true }}
         >
-          Know More
-        </Link>
-      </div>
+          <Link
+            to="about"
+            className="relative inline-flex items-center justify-center p-0.5 my-4 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-800 to-red-600 group-hover:from-pink-700 group-hover:to-red-800 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+          >
+            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-950 rounded-md group-hover:bg-opacity-0">
+              Read More
+            </span>
+          </Link>
+        </motion.button>
+      </motion.div>
     </div>
   );
 };

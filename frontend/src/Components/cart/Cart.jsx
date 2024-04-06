@@ -75,7 +75,7 @@ const Cart = () => {
                 <div className="lg:w-3/4">
                   <div className=" bg-gray-200 rounded-lg shadow-md p-6 mb-4 overflow-x-scroll md:overflow-x-auto">
                     <table className="w-full table rounded-md">
-                      <thead className="text-gray-800">
+                      <thead className="text-gray-800 text-lg">
                         <tr>
                           <th className="text-left font-semibold">Product</th>
                           <th className="text-left font-semibold">Price</th>
@@ -88,7 +88,7 @@ const Cart = () => {
                         {cartItems.map((item) => (
                           <tr
                             key={item?.product}
-                            className="hover rounded-md text-gray-600 hover:text-gray-400"
+                            className="hover rounded-md text-gray-600 hover:text-gray-400 text-sm"
                           >
                             <td className="py-4">
                               <div className="flex flex-col md:flex-row items-start gap-2">

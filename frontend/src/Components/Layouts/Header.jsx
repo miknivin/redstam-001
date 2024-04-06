@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useLazyLogoutQuery } from "../../redux/api/authApi";
 import { useGetMeQuery } from "../../redux/api/userApi";
 import toast from "react-hot-toast";
-// import toast from "react-hot-toast";
 function Header() {
   const navigate = useNavigate();
   const { isLoading } = useGetMeQuery();
@@ -50,6 +49,7 @@ function Header() {
             />
           </Link>
         </div>
+
         <div className="justify-end flex-1 gap-3">
           <Search />
           <div className="dropdown dropdown-end">

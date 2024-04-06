@@ -1,21 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { useGetProductDetailsQuery } from "../../redux/api/productsApi";
+import {
+  useCanUserReviewQuery,
+  useGetProductDetailsQuery,
+} from "../../redux/api/productsApi";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loader from "../Layouts/Loader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCartItem } from "../../redux/features/cartSlice";
 import NoResultPage from "../utilities/NoResultPage";
+import Reviews from "../reviews/Reviews";
+import NewReview from "../reviews/NewReview";
+import Modals from "../utilities/Modals";
+import ListReviews from "../reviews/ListReviews";
+import StarRatings from "react-star-ratings";
 const ProductDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const [activeImg, setActiveImage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [quantity, setQuantity] = useState("1");
   const [readMore, setReadMore] = useState(false);
   const { data, error, isLoading, isError } = useGetProductDetailsQuery(
     params?.id,
   );
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const product = data?.productById;
+  const { data: canUserReview } = useCanUserReviewQuery(params?.id);
+  const canReview = canUserReview?.canReview;
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     setActiveImage(
@@ -142,7 +161,7 @@ const ProductDetails = () => {
               {/* rating - start */}
               <div className="mb-6 flex items-center gap-3 md:mb-10">
                 <div className="flex h-7 items-center gap-1 rounded-full bg-red-500 px-2 text-white">
-                  <span className="text-sm">{product.ratings}</span>
+                  <span className="text-sm">{product?.ratings}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -153,7 +172,7 @@ const ProductDetails = () => {
                   </svg>
                 </div>
                 <span className="text-sm text-gray-400 transition duration-100">
-                  {product.numOfReviews} ratings
+                  {product?.numOfReviews} ratings
                 </span>
               </div>
               <div className='text-xl transition duration-100 pb-2 {product.stock>0?"font-bold":"text-red-700"}'>
@@ -277,6 +296,42 @@ const ProductDetails = () => {
             </div>
             {/* content - end */}
           </div>
+          <Reviews />
+          <div className="my-2">
+            {isAuthenticated && canReview ? (
+              <div className="w-full flex justify-center">
+                <button
+                  onClick={openModal}
+                  className="btn btn-success mx-auto text-xl my-2"
+                >
+                  Submit your Review
+                </button>
+              </div>
+            ) : (
+              <div role="alert" className="alert alert-warning w-fit">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="stroke-current shrink-0 h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <span>You need to login to write review</span>
+              </div>
+            )}
+            {product?.reviews?.length > 0 && (
+              <ListReviews reviews={product?.reviews} />
+            )}
+          </div>
+          <Modals isOpen={isModalOpen} onRequestClose={closeModal}>
+            <NewReview productId={product?._id} closeModal={closeModal} />
+          </Modals>
         </div>
       </div>
     </div>

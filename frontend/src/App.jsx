@@ -7,6 +7,7 @@ import "./App.css";
 import { Component } from "react";
 import useUserRoutes from "./Components/routes/UserRoutes";
 import useAdminRoutes from "./Components/routes/AdminRoutes";
+import HeaderRe from "./Components/Layouts/HeaderRe";
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +45,7 @@ function App() {
     <Router>
       <div className="App">
         <Toaster position="top-center" />
-        <Header />
+        <HeaderRe />
         <div className="">
           <ErrorBoundary>
             <Routes>

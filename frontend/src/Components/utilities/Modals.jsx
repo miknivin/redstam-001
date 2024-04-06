@@ -24,7 +24,7 @@ const Modals = ({ isOpen, onRequestClose, children }) => {
                 >
                   ✕
                 </button>
-                <div className="sm:flex sm:items-start">
+                <div className="sm:flex sm:items-start justify-center">
                   <div className="mt-3 text-center sm:mt-0 sm:mx-4 sm:text-left">
                     {children}
                   </div>

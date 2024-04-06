@@ -3,16 +3,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDedbiYtlukn6rSVvgmMG4XcEB4K88bqEk",
-  authDomain: "ecom-phone-auth-e7414.firebaseapp.com",
-  projectId: "ecom-phone-auth-e7414",
-  storageBucket: "ecom-phone-auth-e7414.appspot.com",
-  messagingSenderId: "43404915083",
-  appId: "1:43404915083:web:c5e5874d0f630f3a4aff8e",
-  measurementId: "G-V6RVP9GJSM",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.EACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 export const auth = getAuth(app);

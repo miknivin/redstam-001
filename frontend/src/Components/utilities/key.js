@@ -1,1 +1,1 @@
-export const key = "rzp_test_XVayFHSwwC1uff";
+export const key = process.env.REACT_APP_RAZORPAY_SECRET_ID;

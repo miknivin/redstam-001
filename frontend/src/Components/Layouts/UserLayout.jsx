@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const UserLayout = ({ children }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const menuItems = [
     {
       name: "Profile",
@@ -28,7 +32,7 @@ const UserLayout = ({ children }) => {
   };
 
   return (
-    <div>
+    <div className="bg-base-100 dark:bg-gray-900">
       <div className="max-w-screen-lg mx-auto">
         <div className="mt-2 mb-4">
           <h1 className="text-center text-5xl">User Setting</h1>
@@ -36,14 +40,14 @@ const UserLayout = ({ children }) => {
         <div className="mx-auto my-5 w-fit">
           <div
             role="tablist"
-            className="tabs tabs-boxed flex justify-center gap-5 bg-gray-950"
+            className="tabs tabs-boxed flex justify-center gap-5 bg-base-100 dark:bg-gray-900"
           >
             {menuItems.map((menuItem, index) => (
               <Link
                 key={index}
                 to={menuItem.url}
                 role="tab"
-                className={`tab ${activeMenuItem.includes(menuItem.url) ? "tab-active border-none" : ""}  w-fit h-fit px-4 py-2 border border-gray-500`}
+                className={`tab ${activeMenuItem.includes(menuItem.url) ? "bg-pink-800 border-none text-gray-100" : ""}  w-fit h-fit px-4 py-2 border  border-gray-500`}
                 onClick={() => handleMenuItemClick(menuItem.url)}
                 aria-current={
                   activeMenuItem.includes(menuItem.url) ? "true" : "false"

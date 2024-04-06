@@ -56,9 +56,9 @@ const ProcessOrder = () => {
       <Metadata title={"Process Order"} />
       <div>
         <div>
-            <Link to="/admin/orders" className="btn  rounded-full h-fit">
+          <Link to="/admin/orders" className="btn  rounded-full h-fit">
             <i class="fa-solid fa-arrow-left text-xl"></i>
-            </Link>
+          </Link>
         </div>
         {isLoading ? (
           <SkeletonHero />
