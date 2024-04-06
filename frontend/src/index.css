@@ -12,3 +12,8 @@ body {
     background-color: #030712; /* Dark mode background color */
   }
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 35px;
+}

@@ -37,7 +37,6 @@ const AboutHome = () => {
         variants={variants}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: true, amount: 0.3 }}
         className="text-center block relative z-20 mx-auto pt-10 pb-3 "
         ref={ref}
       >

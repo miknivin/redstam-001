@@ -18,14 +18,32 @@ const HeaderRe = () => {
   const [logout, { isSuccess, error }] = useLazyLogoutQuery();
 
   const [showDropDown, setShowDropDown] = useState(false);
-
+  const [activeMenuItem, setActiveMenuItem] = useState("");
   const logoutHandler = () => {
     logout();
     navigate(0);
   };
 
   const isActive = (pathname) => {
-    return location.pathname === pathname ? "text-pink-700" : "";
+    if (location.pathname === pathname) {
+      if (activeMenuItem === "testimonials") {
+        console.log("condition");
+        return ""; 
+      } else {
+        return "text-pink-700";
+      }
+    } else {
+      return "";
+    }
+  };
+  
+
+    const scrollToElement = (ref, menuItem) => {
+    setActiveMenuItem(menuItem);
+    const element = document.querySelector(`#${ref}`);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   useEffect(() => {
@@ -45,8 +63,40 @@ const HeaderRe = () => {
     .toFixed(2);
 
   const handleButtonClick = () => {
+    setActiveMenuItem("")
     setIsHidden(true); // Set isHidden to true when button or link is clicked
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Entry is in view, update the activeMenuItem
+            const cleanedId = entry.target.id.replace("Ref", "");
+            const capitalizedId =
+              cleanedId.charAt(0).toUpperCase() + cleanedId.slice(1);
+            setActiveMenuItem(capitalizedId);
+          }
+        });
+      },
+      { threshold: 0.3 },
+    ); // Adjust the threshold as needed
+
+    // Observe each section
+    const sections = document.querySelectorAll("[data-section]");
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Clean up observer on component unmount
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
     <nav className="bg-base-300 bb-white sticky dark:bg-gray-950 w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-600 py-1">
       <div className="max-w-screen-xl lg:max-w-full flex flex-wrap items-center justify-between mx-auto p-4">
@@ -54,7 +104,7 @@ const HeaderRe = () => {
           <img
             src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM%20LOGO.png?updatedAt=1712393715806"
             className=" w-32"
-            alt="Business bureau logo"
+            alt="redstam logo"
           />
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -228,13 +278,14 @@ const HeaderRe = () => {
               </Link>
             </li>
             <li>
-              <Link
-                to="/"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-pink-700 md:p-0 ${isActive("/categories")}`}
-                onClick={handleButtonClick} // Call handleButtonClick on click
-              >
-                Categories
-              </Link>
+            <Link
+              to="/#testimonials" // Target location of the link
+              className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-pink-700 md:p-0 ${activeMenuItem === "testimonials" ? "text-pink-700" : ""}`} // Dynamically generated CSS classes
+              onClick={() => scrollToElement("testimonialsRef", "testimonials")} // Function to execute on click (scroll to testimonials section)
+            >
+              Testimonials
+            </Link>
+
             </li>
             <li>
               <Link

@@ -49,7 +49,7 @@ function ProductItem({ product }) {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
       },
     },
   };
@@ -77,7 +77,6 @@ function ProductItem({ product }) {
           variants={variants}
           initial={"hidden"}
           whileInView={"show"}
-          viewport={{ once: true }}
           className="mr-auto place-self-center lg:col-span-7"
         >
           <motion.h1
@@ -133,7 +132,6 @@ function ProductItem({ product }) {
           variants={fadeInAnimationVariants}
           initial="initial"
           whileInView={"animate"}
-          viewport={{ once: true }}
           className=" block lg:mt-0 lg:col-span-5 lg:flex my-4 overflow-hidden w-full md:max-w-lg"
         >
           <Swiper

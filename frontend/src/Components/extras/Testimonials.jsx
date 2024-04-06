@@ -5,7 +5,7 @@ import testimonialsData from '../utilities/testimonial';
 
 const Testimonials = () => {
   const swiperRef = useRef(null);
-
+  const testimonialsRef = useRef(null);
   useEffect(() => {
     swiperRef.current = new Swiper('.mySwiper', {
       loop: true,
@@ -32,7 +32,10 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 py-16">
+    <div 
+    ref={testimonialsRef}
+    id="testimonialsRef"
+    className="bg-gray-50 dark:bg-gray-900 py-16">
       <div className="container m-auto text-gray-600 dark:text-gray-300 md:px-12 xl:px-6">
         <div className="mb-12 space-y-4 px-6 md:px-0">
           <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">

@@ -1,24 +1,24 @@
 const benefitsData = [
   {
-    title: "Graphic Design",
+    title: "Natural Energy Booster",
     description:
-      "Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.",
+      "      Our product contains natural carbohydrates like fructose and glucose, offering a quick energy boost for combatting fatigue, potentially enhancing intimacy levels.",
     imageSrc:
-      "https://tailus.io/sources/blocks/end-image/preview/images/ui-design.svg",
+      "https://ik.imagekit.io/c1jhxlxiy/muscles.png?updatedAt=1712404952847",
   },
   {
-    title: "UI Design",
+    title: "Improved Blood Flow",
     description:
-      "Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.",
+      "Studies prove that honey improves blood flow due to its antioxidant properties. Good circulation is essential for sexual function in both men and women.",
     imageSrc:
-      "https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg",
+      "https://ik.imagekit.io/c1jhxlxiy/heart.png?updatedAt=1712404952728",
   },
   {
-    title: "UX Design",
+    title: "Stress Reduction",
     description:
-      "Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.",
+      "Honey is a source of certain B vitamins that can contribute to the production of mood-regulating hormones. Stress can be a major factor affecting sexual performance, so managing stress levels can be beneficial.",
     imageSrc:
-      "https://tailus.io/sources/blocks/end-image/preview/images/graphic.svg",
+      "https://ik.imagekit.io/c1jhxlxiy/stress-reduction.png?updatedAt=1712404952770",
   },
 ];
 

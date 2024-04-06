@@ -11,7 +11,7 @@ const Benefits = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
       },
     },
   };
@@ -38,7 +38,6 @@ const Benefits = () => {
             variants={variants}
             initial={"hidden"}
             whileInView={"show"}
-            viewport={{ once: true, amount: 0.4 }}
             className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3"
           >
             {benefitsData.map((benefit, index) => (

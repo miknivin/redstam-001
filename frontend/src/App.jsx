@@ -8,6 +8,7 @@ import { Component } from "react";
 import useUserRoutes from "./Components/routes/UserRoutes";
 import useAdminRoutes from "./Components/routes/AdminRoutes";
 import HeaderRe from "./Components/Layouts/HeaderRe";
+import ScrollToTopButton from "./Components/utilities/ScrollToTopButton";
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,7 @@ function App() {
             </Routes>
           </ErrorBoundary>
         </div>
+        <ScrollToTopButton/>
         <Footer />
       </div>
     </Router>
