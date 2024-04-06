@@ -15,6 +15,7 @@ import AboutHome from "./Layouts/AboutHome.jsx";
 import CategoryFilter from "./Layouts/CategoryFilter.jsx";
 import SkeletonHero from "./utilities/SkeletonHero.jsx";
 import Benefits from "./extras/Benefits.jsx";
+import Testimonials from "./extras/Testimonials.jsx";
 function Home() {
   let [searchParams] = useSearchParams();
   const page = searchParams.get("page") || 1;
@@ -102,10 +103,14 @@ function Home() {
               </div>
             )}
           </div>
-          <CustomPagination
+
+          {/* <CustomPagination
             resPerPage={data?.resPerPage}
             filteredProductsCount={data?.filteredProductsCount}
-          />
+          /> */}
+        </section>
+        <section id="testimonials">
+          <Testimonials />
         </section>
       </div>
     </>

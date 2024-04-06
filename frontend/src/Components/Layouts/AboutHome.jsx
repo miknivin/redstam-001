@@ -3,42 +3,53 @@ import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 
 const AboutHome = () => {
-  const { ref, inView } = useInView({ amount: 0.3 });
+  const { ref, inView } = useInView({ amount: 0.5 });
 
-  const fadeInAnimationVariants = {
-    initial: {
+  const variants = {
+    hidden: {
       opacity: 0,
-      y: 100,
     },
-    animate: {
+    show: {
       opacity: 1,
-      y: 0,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3,
+      },
     },
   };
 
+  const item = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+      },
+    },
+  };
   return (
     <div className="bg-base-100 dark:bg-gray-950">
       <motion.div
+        variants={variants}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: true, amount: 0.3 }}
         className="text-center block relative z-20 mx-auto pt-10 pb-3 "
         ref={ref}
       >
         <motion.h1
           className="text-3xl md:text-5xl font-light my-2"
-          variants={fadeInAnimationVariants}
-          initial="initial"
-          whileInView={"animate"}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          variants={item}
         >
           Embracing Nature's Ancient Wisdom
         </motion.h1>
         <motion.p
-          className="text-lg w-full md:w-3/4 mx-auto font-light"
-          variants={fadeInAnimationVariants}
-          initial="initial"
-          whileInView={"animate"}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+          className="text-lg w-full md:w-3/4 mx-auto font-light p-3"
+          variants={item}
         >
           In the heart of a pristine natural sanctuary, where the whispers of
           ancient knowledge echo through time, REDSTAM stands as a testament to
@@ -47,13 +58,7 @@ const AboutHome = () => {
           relentless pursuit of holistic well-being, our journey is a symphony
           of tradition and innovation.
         </motion.p>
-        <motion.button
-          variants={fadeInAnimationVariants}
-          initial="initial"
-          whileInView={"animate"}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <motion.button variants={item} viewport={{ once: true }}>
           <Link
             to="about"
             className="relative inline-flex items-center justify-center p-0.5 my-4 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-800 to-red-600 group-hover:from-pink-700 group-hover:to-red-800 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"

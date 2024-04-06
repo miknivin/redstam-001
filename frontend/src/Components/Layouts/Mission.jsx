@@ -43,7 +43,7 @@ const Mission = () => {
         </motion.h1>
         <motion.p
           variants={item}
-          className="text-lg w-full md:w-3/4 mx-auto font-light"
+          className="text-lg w-full md:w-3/4 mx-auto font-light p-3"
         >
           At REDSTAM, we fuse ancient wisdom with modern science to unlock
           nature's secrets for vibrant living. Our ethical practices ensure
