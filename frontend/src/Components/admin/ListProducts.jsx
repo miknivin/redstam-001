@@ -52,7 +52,7 @@ const ListProducts = () => {
   };
   return (
     <AdminLayout>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto min-h-[40vh]">
         <table className="table text-gray-200">
           <thead className=" text-gray-100 text-lg">
             <tr>

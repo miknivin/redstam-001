@@ -5,6 +5,7 @@ import ListProducts from "../admin/ListProducts";
 import NewProduct from "../admin/NewProduct";
 import ListOrders from "../admin/ListOrders";
 import ProcessOrder from "../admin/ProcessOrder";
+import ListUsers from "../admin/ListUsers";
 const AdminRoutes = () => {
   return (
     <>
@@ -37,6 +38,14 @@ const AdminRoutes = () => {
         element={
           <ProtectedRoute admin={true}>
             <ProcessOrder />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/users"
+        element={
+          <ProtectedRoute admin={true}>
+            <ListUsers />
           </ProtectedRoute>
         }
       />

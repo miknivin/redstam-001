@@ -18,6 +18,11 @@ const AdminLayout = ({ children }) => {
       url: "/admin/orders",
       icon: "fa-solid fa-box",
     },
+    {
+      name: "Users",
+      url: "/admin/users",
+      icon: "fa-solid fa-users",
+    },
   ];
 
   const location = useLocation();

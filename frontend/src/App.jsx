@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import "./App.css";
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
 import useUserRoutes from "./Components/routes/UserRoutes";
 import useAdminRoutes from "./Components/routes/AdminRoutes";
 import HeaderRe from "./Components/Layouts/HeaderRe";
 import ScrollToTopButton from "./Components/utilities/ScrollToTopButton";
+import ConfirmModals from "./Components/utilities/ConfirmModal";
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +41,25 @@ class ErrorBoundary extends Component {
 }
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const userConfirmed = false;
+    if (!userConfirmed) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closeModal = () => {
+    // localStorage.setItem("userConfirmed", "true");
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 800);
+  };
+
   const userRoutes = useUserRoutes();
   const adminRoutes = useAdminRoutes();
   return (
@@ -55,7 +75,8 @@ function App() {
             </Routes>
           </ErrorBoundary>
         </div>
-        <ScrollToTopButton/>
+        <ConfirmModals isOpen={isModalOpen} onRequestClose={closeModal} />
+        <ScrollToTopButton />
         <Footer />
       </div>
     </Router>

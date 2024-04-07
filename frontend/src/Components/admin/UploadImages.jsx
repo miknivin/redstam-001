@@ -105,7 +105,7 @@ const UploadImages = ({ productId, productName, closeModal }) => {
   return (
     <div>
       <form action="" encType="multipart/form-data" onSubmit={submitHandler}>
-        <div className="w-full h-full flex flex-col bg-transparent">
+        <div className="w-full h-full flex flex-col items-center justify-center bg-transparent">
           <h1 className=" text-2xl sm:text-3xl text-gray-100 mt-3 font-medium">
             Upload Product Images
           </h1>
@@ -173,10 +173,10 @@ const UploadImages = ({ productId, productName, closeModal }) => {
             ))}
           </div>
         </div>
-        <div>
+        <div className="flex justify-center items-center">
           <button
             type="submit"
-            className="btn w-100 py-3 bg-emerald-600 hover:bg-emerald-800  text-white"
+            className="btn w-100 py-3 bg-emerald-600 hover:bg-emerald-800  text-white mx-auto"
             disabled={isLoading || isDeleteLoading}
           >
             {isLoading ? "Uploading..." : "Upload"}
