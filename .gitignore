@@ -10,5 +10,5 @@
 frontend/firebase.config.js
 frontend/firebase-backup.js
 .env.production
-config.env
+backend/config.env
 
