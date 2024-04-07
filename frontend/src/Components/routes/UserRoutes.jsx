@@ -22,8 +22,6 @@ import ConfirmOrder from "../cart/ConfirmOrder";
 import OrderPlaced from "../cart/OrderPlaced";
 import PageNotFound from "../utilities/PageNotFound";
 import ProductDetails from "../products/ProductDetails";
-import ForgotPassword from "../auth/ForgotPassword";
-import ResetPassword from "../auth/ResetPassword";
 const UserRoutes = () => {
   return (
     <>
@@ -31,8 +29,6 @@ const UserRoutes = () => {
       <Route path="/products/:id" element={<ProductDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/password/forgot" element={<ForgotPassword />} />
-      <Route path="/password/reset/:token" element={<ResetPassword />} />
       <Route
         path="/me/profile"
         element={

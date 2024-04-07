@@ -1,12 +1,11 @@
 import express from 'express';
-import { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getUserProfile, updatePassword, updateProfile, allUsers, getUserDetails, updateUser, deleteUser,uploadAvatar, googleSignin } from '../controllers/authControllers.js';
+import { registerUser, loginUser, logoutUser, forgotPassword, resetPassword, getUserProfile, updatePassword, updateProfile, allUsers, getUserDetails, updateUser, deleteUser,uploadAvatar } from '../controllers/authControllers.js';
 import { authorizeRoles, isAuthenticateUser } from '../middlewares/auth.js';
 
 
 const router = express.Router();
 
 router.route('/register').post(registerUser);
-router.route(`/register/${process.env.FB_KEY}`).post(googleSignin);
 router.route('/login').post(loginUser);
 router.route('/logout').get(logoutUser);
 router.route('/password/forgot').post(forgotPassword);

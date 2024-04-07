@@ -1,5 +1,5 @@
 import express from 'express';
-import { createProductReview, deleteProduct, deleteReview, getProductById, getProductReview, getProducts,canUserReview, newProduct, updateProductById,getAdminProducts,uploadProductImages,deleteProductImage } from '../controllers/productsController.js';
+import { createProductReview, deleteProduct, deleteReview, getProductById, getProductReview, getProducts, newProduct, updateProductById,getAdminProducts,uploadProductImages,deleteProductImage } from '../controllers/productsController.js';
 import { isAuthenticateUser } from '../middlewares/auth.js';
 import { authorizeRoles } from '../middlewares/auth.js';
 const router = express.Router();
@@ -21,5 +21,5 @@ router.route('/reviews')
 .get(getProductReview)
 .put(isAuthenticateUser, createProductReview);
 router.route('/admin/reviews').delete(isAuthenticateUser, authorizeRoles("admin"), deleteReview);
-router.route("/can_review").get(isAuthenticateUser, canUserReview);
+
 export default router;

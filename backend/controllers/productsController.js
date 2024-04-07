@@ -3,7 +3,6 @@ import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from '../middlewares/catchAsyncErrors.js';
 import APIFilters from '../utils/apiFilters.js';
 import { delete_file, upload_file } from "../utils/cloudinary.js";
-import Order from "../models/order.js";
 export const getProducts = catchAsyncErrors(async (req, res, next) => {
     const resPerPage = req.query.resPerPage || 4;
     const apiFilters = new APIFilters(products, req.query).search().filter();;
@@ -63,9 +62,7 @@ export const newProduct = catchAsyncErrors(async (req, res) => {
 //to fetch a product details by id 
 export const getProductById = catchAsyncErrors( async (req,res,next)=>{
     
-    const productById = await products.findById(req?.params?.id).populate(
-        "reviews.user"
-      );
+    const productById = await products.findById(req?.params?.id)
 
     if(!productById){
         return next(new ErrorHandler("Product not found",404))
@@ -262,19 +259,3 @@ export const deleteReview = catchAsyncErrors( async (req,res,next)=>{
     })
 }
 );
-
-// Can user review   =>  /api/v1/can_review
-export const canUserReview = catchAsyncErrors(async (req, res) => {
-  const orders = await Order.find({
-    user: req.user._id,
-    "orderItems.product": req.query.productId,
-  });
-
-  if (orders.length === 0) {
-    return res.status(200).json({ canReview: false });
-  }
-
-  res.status(200).json({
-    canReview: true,
-  });
-});

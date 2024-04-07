@@ -61,7 +61,7 @@ const Cart = () => {
     <>
       <Metadata title={"Your Cart"} />
       {cartItems.length === 0 ? (
-        <div className="w-full h-96 flex justify-center items-center text-4xl sm:text-6xl">
+        <div className="w-full h-96 flex justify-center items-center text-8xl">
           Your Cart is Empty
         </div>
       ) : (
@@ -75,7 +75,7 @@ const Cart = () => {
                 <div className="lg:w-3/4">
                   <div className=" bg-gray-200 rounded-lg shadow-md p-6 mb-4 overflow-x-scroll md:overflow-x-auto">
                     <table className="w-full table rounded-md">
-                      <thead className="text-gray-800 text-lg">
+                      <thead className="text-gray-800">
                         <tr>
                           <th className="text-left font-semibold">Product</th>
                           <th className="text-left font-semibold">Price</th>
@@ -88,7 +88,7 @@ const Cart = () => {
                         {cartItems.map((item) => (
                           <tr
                             key={item?.product}
-                            className="hover rounded-md text-gray-600 hover:text-gray-400 text-sm"
+                            className="hover rounded-md text-gray-600 hover:text-gray-400"
                           >
                             <td className="py-4">
                               <div className="flex flex-col md:flex-row items-start gap-2">

@@ -2,13 +2,12 @@ import Footer from "./Components/Layouts/Footer";
 import Header from "./Components/Layouts/Header";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
 import "./App.css";
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
 import useUserRoutes from "./Components/routes/UserRoutes";
 import useAdminRoutes from "./Components/routes/AdminRoutes";
-import HeaderRe from "./Components/Layouts/HeaderRe";
-import ScrollToTopButton from "./Components/utilities/ScrollToTopButton";
+import Modals from "./Components/utilities/Modals";
+import ConfirmModals from "./Components/utilities/ConfirmModal";
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -42,11 +41,30 @@ class ErrorBoundary extends Component {
 function App() {
   const userRoutes = useUserRoutes();
   const adminRoutes = useAdminRoutes();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const userConfirmed = false
+    if (!userConfirmed) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const closeModal = () => {
+    // localStorage.setItem("userConfirmed", "true");
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 800);
+  };
   return (
     <Router>
       <div className="App">
         <Toaster position="top-center" />
-        <HeaderRe />
+        <Header />
         <div className="">
           <ErrorBoundary>
             <Routes>
@@ -55,7 +73,7 @@ function App() {
             </Routes>
           </ErrorBoundary>
         </div>
-        <ScrollToTopButton/>
+        <ConfirmModals isOpen={isModalOpen} onRequestClose={closeModal} />
         <Footer />
       </div>
     </Router>
