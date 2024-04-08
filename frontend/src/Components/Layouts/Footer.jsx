@@ -9,8 +9,8 @@ function Footer() {
           <img
             width={150}
             className=" -ms-2"
-            src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM.webp?updatedAt=1710827797429"
-            alt=""
+            src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM%20LOGO.png?updatedAt=1712393715806"
+            alt="footer logo"
           />
           {/* <p>
             ACME Industries Ltd.

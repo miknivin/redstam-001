@@ -319,6 +319,12 @@ const HeaderRe = () => {
                 >
                   <i className="fa-solid fa-cart-shopping p-2"></i>
                 </Link>
+                <button
+                  className="hover:text-gray-600 border-2 w-fit h-fit rounded-full"
+                  onClick={logoutHandler} // Call handleButtonClick on click
+                >
+                  <i className="fa-solid fa-right-from-bracket text-red-600 p-2"></i>
+                </button>
                 {/* <a
                 href="#me"
                 target="blank"

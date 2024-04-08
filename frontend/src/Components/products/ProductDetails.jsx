@@ -14,6 +14,7 @@ import NewReview from "../reviews/NewReview";
 import Modals from "../utilities/Modals";
 import ListReviews from "../reviews/ListReviews";
 import StarRatings from "react-star-ratings";
+import Testimonials from "../extras/Testimonials";
 const ProductDetails = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -296,8 +297,8 @@ const ProductDetails = () => {
             </div>
             {/* content - end */}
           </div>
-          <Reviews />
-          <div className="my-2">
+          <Testimonials />
+          {/* <div className="my-2">
             {isAuthenticated && canReview ? (
               <div className="w-full flex justify-center">
                 <button
@@ -328,7 +329,7 @@ const ProductDetails = () => {
             {product?.reviews?.length > 0 && (
               <ListReviews reviews={product?.reviews} />
             )}
-          </div>
+          </div> */}
           <Modals isOpen={isModalOpen} onRequestClose={closeModal}>
             <NewReview productId={product?._id} closeModal={closeModal} />
           </Modals>

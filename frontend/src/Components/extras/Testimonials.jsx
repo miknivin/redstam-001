@@ -9,6 +9,7 @@ const Testimonials = () => {
   useEffect(() => {
     swiperRef.current = new Swiper(".mySwiper", {
       loop: true,
+      autoplay: true,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -49,43 +50,38 @@ const Testimonials = () => {
             years.
           </p>
         </div>
-        <div className="swiper mySwiper h-fit">
-          <div className="swiper-wrapper pb-8 h-fit">
+        <div className="swiper mySwiper h-fit ">
+          <div className="swiper-wrapper pb-8 h-fit ">
             {testimonialsData.map((testimonial, index) => (
               <div
                 key={index}
                 className="swiper-slide !bg-transparent px-6 md:px-0"
               >
-                <div className="p-2 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none md:mx-auto lg:w-10/12 xl:w-8/12">
-                  <div className="grid md:grid-cols-5">
-                    <img
-                      src={testimonial.imageSrc}
-                      className="md:col-span-2 h-full w-full rounded-2xl object-cover"
-                      alt="testimonial_image"
-                      width={640}
-                      height={422}
-                      loading="lazy"
-                    />
-                    <div className="md:col-span-3 mx-auto space-y-6 p-6 text-center sm:p-8">
-                      <div className="mx-auto w-24">
-                        <img
-                          src={testimonial.companyLogoSrc}
-                          alt="company logo"
-                          height={400}
-                          width={142}
-                          loading="lazy"
-                        />
-                      </div>
-                      <p>
-                        <span className="font-serif">"</span>{" "}
-                        {testimonial.testimonial}{" "}
-                        <span className="font-serif">"</span>
-                      </p>
-                      <h6 className="text-lg font-semibold leading-none">
-                        {testimonial.author}
-                      </h6>
-                    </div>
+                <div class="mx-auto space-y-6 text-center md:w-8/12 lg:w-7/12 p-4 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none ">
+                  <img
+                    class="mx-auto !h-16 !w-16 rounded-full object-cover"
+                    src={testimonial.imageSrc}
+                    alt="user avatar"
+                    height="220"
+                    width="220"
+                    loading="lazy"
+                  />
+                  <p>
+                    <span class="font-serif">"</span> {testimonial.testimonial}{" "}
+                    <span class="font-serif">"</span>
+                  </p>
+                  <div>
+                    <h6 class="text-lg font-semibold leading-none">{testimonial.author}</h6>
+                    {/* <span class="text-xs text-gray-500">{testimonial.}</span> */}
                   </div>
+                  {/* <img
+                    class="mx-auto !w-28"
+                    src="images/clients/client-4.png"
+                    alt="company logo"
+                    height="400"
+                    width="142"
+                    loading="lazy"
+                  /> */}
                 </div>
               </div>
             ))}
