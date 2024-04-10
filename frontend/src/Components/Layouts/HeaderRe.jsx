@@ -98,7 +98,7 @@ const HeaderRe = () => {
 
   return (
     <nav className="bg-base-300 bb-white sticky dark:bg-gray-950 w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-600 py-1">
-      <div className="max-w-screen-xl lg:max-w-full flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-xl lg:max-w-full flex flex-wrap items-center justify-between mx-auto p-4 font-bcf font-bold">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -262,7 +262,7 @@ const HeaderRe = () => {
           className={`items-center justify-between  ${isHidden ? "hidden" : ""} w-full md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="bb-white flex flex-col p-4 md:p-0 mt-4 font-medium border text-gray-800 dark:text-gray-300 border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-700">
+          <ul className="bb-white flex flex-col p-4 md:p-0 mt-4 font-medium border text-gray-800 dark:text-gray-300 border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-700 font-bold">
             <li>
               <Link
                 to="/"

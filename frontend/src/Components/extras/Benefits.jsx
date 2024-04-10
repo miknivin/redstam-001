@@ -32,7 +32,7 @@ const Benefits = () => {
 
   return (
     <div>
-      <div className="py-16">
+      <div className="py-16 bg-gradient-to-t from-red-100 to bg-slate-100">
         <div className="max-w-screen-xl m-auto px-6 text-gray-500 md:px-12 xl:px-0">
           <motion.div
             variants={variants}
@@ -44,15 +44,13 @@ const Benefits = () => {
               <motion.div
                 key={index}
                 variants={item}
-                className="border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 px-8 pt-12 shadow-2xl shadow-gray-600/10 dark:shadow-none sm:px-12 lg:px-8"
+                className="border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-50 px-8 pt-12 shadow-2xl shadow-gray-600/10 dark:shadow-none sm:px-12 lg:px-8"
               >
                 <div className="mb-12 space-y-4">
-                  <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                  <h3 className="text-2xl font-semibold text-gray-800 font-bcf">
                     {benefit.title}
                   </h3>
-                  <p className="mb-6 text-gray-600 dark:text-gray-300">
-                    {benefit.description}
-                  </p>
+                  <p className="mb-6 text-gray-600 font-light font-calibri">{benefit.description}</p>
                 </div>
                 <img
                   src={benefit.imageSrc}

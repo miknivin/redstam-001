@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Ubuntu", sans-serif !important;
-  background-color: #14181e; /* Default background color */
+@font-face {
+  font-family: 'Bahnschrift';
+  src: url('./font/woff2/bahnschrift.woff2') format('woff2'),
+       url('./font/bahnschrift.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('./font/woff2/bahnschrift.woff2') format('woff2'),
+       url('./font/calibri.woff') format('woff');
+}
+
+.font-bcf{
+  font-family: 'Bahnschrift', sans-serif;
+}
+
+.font-calibri{
+  font-family: 'Calibri', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

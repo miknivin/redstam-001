@@ -36,18 +36,17 @@ const Testimonials = () => {
     <div
       ref={testimonialsRef}
       id="testimonialsRef"
-      className="bg-gray-50 dark:bg-gray-900 py-16"
+      className="bg-gray-50 py-16"
     >
       <div className="container m-auto text-gray-600 dark:text-gray-300 md:px-12 xl:px-6">
         <div className="mb-12 space-y-4 px-6 md:px-0">
-          <h2 className="text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+          <h2 className="text-center text-3xl text-gray-800 md:text-5xl font-bcf font-bold">
             We have some fans.
           </h2>
-          <p className="text-center">
+          <p className="text-center text-gray-700 font-calibri">
             We don't like to brag, but we don't mind letting our customers do it
             for us. <br />
-            Here are a few nice things folks have said about our themes over the
-            years.
+            Here are a few nice things folks have said about our products
           </p>
         </div>
         <div className="swiper mySwiper h-fit ">
@@ -66,12 +65,14 @@ const Testimonials = () => {
                     width="220"
                     loading="lazy"
                   />
-                  <p>
+                  <p className="font-calibri">
                     <span class="font-serif">"</span> {testimonial.testimonial}{" "}
                     <span class="font-serif">"</span>
                   </p>
                   <div>
-                    <h6 class="text-lg font-semibold leading-none">{testimonial.author}</h6>
+                    <h6 class="text-lg font-semibold leading-none font-calibri">
+                      {testimonial.author}
+                    </h6>
                     {/* <span class="text-xs text-gray-500">{testimonial.}</span> */}
                   </div>
                   {/* <img

@@ -35,8 +35,7 @@ const Mission = () => {
         variants={variants}
         initial={"hidden"}
         whileInView={"show"}
-        viewport={{ once: true }}
-        class="text-center block relative z-20 mx-auto pt-8 bg-base-200 dark:bg-slate-950"
+        class="text-center block relative z-20 mx-auto pt-8 bg-gradient-to-b from-gray-100 via-slate-50 to-red-100"
       >
         <motion.h1 variants={item} class="text-5xl font-light my-2">
           Empowering Wellness Through Nature

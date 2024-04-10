@@ -10,13 +10,13 @@ const Contact = () => {
       <section
         data-section
         id="contactRef"
-        className="bb-black bg-gray-900 dark:bg-gray-900"
+        className="bb-black bg-gray-50 "
       >
         <h1 className="text-center text-5xl pt-6 font-bold text-white dark:text-white">
           Contact Us
         </h1>
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div className="mr-auto place-self-center lg:col-span-7 w-full lg:w-[90%]">
+          <div className="mr-auto place-self-center bg-slate-900 lg:col-span-7 w-full lg:w-[90%] p-5 rounded-box">
             <Forms />
           </div>
           <div className="lg:mt-0 lg:col-span-5 lg:flex my-3">
@@ -40,13 +40,13 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div class="ml-4 mb-4">
-                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-100">
+                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900">
                     Our Address
                   </h3>
-                  <p class="text-gray-400 dark:text-slate-400 normal-case">
+                  <p class="text-gray-700 dark:text-slate-700  normal-case">
                     37/3489 - Fifth Floor, Manjooran Estate
                   </p>
-                  <p class="text-gray-400 dark:text-slate-400 normal-case">
+                  <p class="text-gray-700 dark:text-slate-700 normal-case">
                     Edapally, Kochi, Kerala
                   </p>
                 </div>
@@ -71,13 +71,13 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div class="ml-4 mb-4">
-                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-100">
+                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900">
                     Contact
                   </h3>
-                  <p class="text-gray-400 dark:text-slate-400">
+                  <p class="text-gray-700 dark:text-slate-700 ">
                     Mobile:+91 8075 666 099
                   </p>
-                  <p class="text-gray-400 dark:text-slate-400">
+                  <p class="text-gray-700 dark:text-slate-700 ">
                     Mail: info@redstam.com
                   </p>
                 </div>
@@ -101,13 +101,13 @@ const Contact = () => {
                   </svg>
                 </div>
                 <div class="ml-4 mb-4">
-                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-100">
+                  <h3 class="mb-2 text-lg font-medium leading-6 text-gray-900">
                     Working hours
                   </h3>
-                  <p class="text-gray-400 dark:text-slate-400">
+                  <p class="text-gray-700 dark:text-slate-700 ">
                     Monday - Friday: 09:00 - 18:00
                   </p>
-                  {/* <p class="text-gray-400 dark:text-slate-400">
+                  {/* <p class="text-gray-700 dark:text-slate-700 ">
                     Saturday &amp; Sunday: 08:00 - 12:00
                   </p> */}
                 </div>

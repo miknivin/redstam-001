@@ -75,7 +75,10 @@ function Home() {
           {/* {!keyword && <CategoryFilter />} */}
         </section>
         {/* all products section */}
-        <section id="products" className=" bg-base-100 dark:bg-gray-950 ">
+        <section
+          id="products"
+          className=" bg-gradient-to-b from-red-100 to-gray-50"
+        >
           <div className="text-center">
             {/* <h1 className="text-5xl font-bold py-5 text-base-300">
               {keyword

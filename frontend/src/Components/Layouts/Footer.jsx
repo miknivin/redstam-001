@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div>
-      <footer className="footer p-10 max-w-screen-xl mx-auto text-gray-200">
+      <footer className="footer p-10 max-w-screen-xl mx-auto text-gray-200 font-calibri">
         <aside>
           <img
             width={150}
