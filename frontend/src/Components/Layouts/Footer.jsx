@@ -12,6 +12,17 @@ function Footer() {
             src="https://ik.imagekit.io/c1jhxlxiy/REDSTAM%20LOGO.png?updatedAt=1712393715806"
             alt="footer logo"
           />
+          <div className="flex gap-4 flex-wrap -ml-3 mt-3">
+            <a href="https://x.com/REDSTAM_?t=WmXOGmMRdnvdm54rTVjbng&s=08" target="blank">
+              <i className="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61558302530575&mibextid=ZbWKwL" target="blank">
+            <i className="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/redstam_?igsh=aDdlMHQwbWE2Y29p" target="blank">
+            <i className="fa-brands fa-instagram"></i>
+            </a>  
+          </div>
           {/* <p>
             ACME Industries Ltd.
             <br />

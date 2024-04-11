@@ -2,14 +2,18 @@ import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
 import "swiper/swiper-bundle.css";
 import testimonialsData from "../utilities/testimonial";
-
+import "swiper/css"
 const Testimonials = () => {
   const swiperRef = useRef(null);
   const testimonialsRef = useRef(null);
+  
   useEffect(() => {
     swiperRef.current = new Swiper(".mySwiper", {
       loop: true,
-      autoplay: true,
+      autoplay: {
+        delay: 1000, // Autoplay delay in milliseconds
+        disableOnInteraction: false, // Autoplay continues even when user interacts with the slider
+      },
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -49,11 +53,12 @@ const Testimonials = () => {
             Here are a few nice things folks have said about our products
           </p>
         </div>
-        <div className="swiper mySwiper h-fit ">
+        <div data-swiper-autoplay="2000" className="swiper mySwiper h-fit ">
           <div className="swiper-wrapper pb-8 h-fit ">
             {testimonialsData.map((testimonial, index) => (
               <div
                 key={index}
+  
                 className="swiper-slide !bg-transparent px-6 md:px-0"
               >
                 <div class="mx-auto space-y-6 text-center md:w-8/12 lg:w-7/12 p-4 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none ">
@@ -73,16 +78,7 @@ const Testimonials = () => {
                     <h6 class="text-lg font-semibold leading-none font-calibri">
                       {testimonial.author}
                     </h6>
-                    {/* <span class="text-xs text-gray-500">{testimonial.}</span> */}
                   </div>
-                  {/* <img
-                    class="mx-auto !w-28"
-                    src="images/clients/client-4.png"
-                    alt="company logo"
-                    height="400"
-                    width="142"
-                    loading="lazy"
-                  /> */}
                 </div>
               </div>
             ))}

@@ -47,14 +47,14 @@ const Benefits = () => {
                 className="border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-50 px-8 pt-12 shadow-2xl shadow-gray-600/10 dark:shadow-none sm:px-12 lg:px-8"
               >
                 <div className="mb-12 space-y-4">
-                  <h3 className="text-2xl font-semibold text-gray-800 font-bcf">
+                  <h3 className="text-2xl font-semibold text-gray-800 font-bcf text-center">
                     {benefit.title}
                   </h3>
-                  <p className="mb-6 text-gray-600 font-light font-calibri">{benefit.description}</p>
+                  <p className="mb-6 text-gray-600 font-light text-center font-calibri">{benefit.description}</p>
                 </div>
                 <img
                   src={benefit.imageSrc}
-                  className="ml-auto w-2/3"
+                  className="mx-auto w-2/3"
                   alt="illustration"
                   loading="lazy"
                   width={900}

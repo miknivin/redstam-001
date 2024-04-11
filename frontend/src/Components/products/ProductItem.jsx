@@ -67,8 +67,6 @@ function ProductItem({ product }) {
 
     dispatch(setCartItem(cartItem));
     toast.success("Item added to Cart");
-    // console.log("Cart item");
-    // console.log(cartItem);
   };
   return (
     <section className="bg-transparent">
