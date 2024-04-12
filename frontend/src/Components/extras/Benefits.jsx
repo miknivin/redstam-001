@@ -50,7 +50,9 @@ const Benefits = () => {
                   <h3 className="text-3xl font-semibold text-gray-800 font-bcf text-center">
                     {benefit.title}
                   </h3>
-                  <p className=" text-gray-600 font-light text-center font-calibri">{benefit.description}</p>
+                  <p className=" text-gray-600 font-light text-center font-calibri">
+                    {benefit.description}
+                  </p>
                 </div>
                 <img
                   src={benefit.imageSrc}

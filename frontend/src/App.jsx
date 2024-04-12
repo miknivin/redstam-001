@@ -41,7 +41,6 @@ class ErrorBoundary extends Component {
 }
 
 function App() {
- 
   const userRoutes = useUserRoutes();
   const adminRoutes = useAdminRoutes();
   return (

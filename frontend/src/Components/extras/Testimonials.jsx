@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
 import "swiper/swiper-bundle.css";
 import testimonialsData from "../utilities/testimonial";
-import "swiper/css"
+import "swiper/css";
 const Testimonials = () => {
   const swiperRef = useRef(null);
   const testimonialsRef = useRef(null);
-  
+
   useEffect(() => {
     swiperRef.current = new Swiper(".mySwiper", {
       loop: true,
@@ -58,7 +58,6 @@ const Testimonials = () => {
             {testimonialsData.map((testimonial, index) => (
               <div
                 key={index}
-  
                 className="swiper-slide !bg-transparent px-6 md:px-0"
               >
                 <div class="mx-auto space-y-6 text-center md:w-8/12 lg:w-7/12 p-4 border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none ">

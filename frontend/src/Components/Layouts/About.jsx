@@ -47,7 +47,7 @@ const About = () => {
           className="text-center block relative z-20 mx-auto pt-8"
         >
           <motion.h1
-            className="text-5xl font-light my-2 text-gray-950 font-bcf"
+            className="text-5xl my-2 text-gray-950 font-bcf font-bold"
             variants={item}
           >
             Embracing Nature's Ancient Wisdom
@@ -74,7 +74,7 @@ const About = () => {
           >
             <motion.h2
               variants={item}
-              className="mb-4 text-4xl tracking-tight font-light text-gray-900 font-bcf"
+              className="mb-4 text-4xl tracking-tight text-gray-900 font-bcf font-medium"
             >
               REDISCOVERING NATURE'S EMBRACE:{" "}
               <span className="bg-gradient-to-br from-pink-800 to-red-600 text-transparent bg-clip-text font-bcf">
@@ -85,7 +85,7 @@ const About = () => {
               variants={item}
               className={`mb-4 font-light ${
                 showMore ? "" : "line-clamp-[9]"
-              }  md:text-lg lg:text-xl font-calibri`}
+              }  md:text-lg lg:text-xl font-calibri text-gray-800`}
             >
               From the moment our story began, we have been guided by a profound
               respect for the wisdom of our ancestors, who understood the

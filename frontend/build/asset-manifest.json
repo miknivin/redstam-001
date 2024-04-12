@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0b0c114d.css",
-    "main.js": "/static/js/main.ac3beeef.js",
+    "main.js": "/static/js/main.9a7e8a6b.js",
     "static/js/703.6dfb15a3.chunk.js": "/static/js/703.6dfb15a3.chunk.js",
     "static/js/198.6aed746e.chunk.js": "/static/js/198.6aed746e.chunk.js",
     "static/media/calibri.woff": "/static/media/calibri.b8683d8691fe238b139d.woff",
@@ -9,12 +9,12 @@
     "static/media/bahnschrift.woff": "/static/media/bahnschrift.093504c1306fd9aaf848.woff",
     "index.html": "/index.html",
     "main.0b0c114d.css.map": "/static/css/main.0b0c114d.css.map",
-    "main.ac3beeef.js.map": "/static/js/main.ac3beeef.js.map",
+    "main.9a7e8a6b.js.map": "/static/js/main.9a7e8a6b.js.map",
     "703.6dfb15a3.chunk.js.map": "/static/js/703.6dfb15a3.chunk.js.map",
     "198.6aed746e.chunk.js.map": "/static/js/198.6aed746e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0b0c114d.css",
-    "static/js/main.ac3beeef.js"
+    "static/js/main.9a7e8a6b.js"
   ]
 }

@@ -16,7 +16,7 @@ import banners from "../../utilities/banners";
 function Banners() {
   return (
     <>
- <Swiper
+      <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={50}
         slidesPerView={1}

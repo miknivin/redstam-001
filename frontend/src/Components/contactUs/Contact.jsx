@@ -7,11 +7,7 @@ const Contact = () => {
   }, []);
   return (
     <div>
-      <section
-        data-section
-        id="contactRef"
-        className="bb-black bg-gray-50 "
-      >
+      <section data-section id="contactRef" className="bb-black bg-gray-50 ">
         <h1 className="text-center text-5xl pt-6 font-bold text-white dark:text-white">
           Contact Us
         </h1>
