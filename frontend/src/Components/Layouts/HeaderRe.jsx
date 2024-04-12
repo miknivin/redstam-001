@@ -30,7 +30,7 @@ const HeaderRe = () => {
         console.log("condition");
         return "";
       } else {
-        return "text-pink-700";
+        return "text-red-500";
       }
     } else {
       return "";
@@ -262,11 +262,11 @@ const HeaderRe = () => {
           className={`items-center justify-between  ${isHidden ? "hidden" : ""} w-full md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="bb-white flex flex-col p-4 md:p-0 mt-4 font-medium border text-gray-800 dark:text-gray-300 border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-700 font-bold">
+          <ul className="bb-white flex flex-col p-4 md:p-0 mt-4 border text-gray-800 dark:text-gray-300 border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-700 font-bold">
             <li>
               <Link
                 to="/"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-pink-700 md:p-0 ${isActive("/")}`}
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${isActive("/")}`}
                 aria-current="page"
                 onClick={handleButtonClick} // Call handleButtonClick on click
               >
@@ -276,7 +276,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/about"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-pink-700 md:p-0 ${isActive("/about")}`}
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${isActive("/about")}`}
                 onClick={handleButtonClick} // Call handleButtonClick on click
               >
                 About
@@ -285,7 +285,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/#testimonials" // Target location of the link
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-pink-700 md:p-0 ${activeMenuItem === "testimonials" ? "text-pink-700" : ""}`} // Dynamically generated CSS classes
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${activeMenuItem === "testimonials" ? "text-pink-700" : ""}`} // Dynamically generated CSS classes
                 onClick={() =>
                   scrollToElement("testimonialsRef", "testimonials")
                 } // Function to execute on click (scroll to testimonials section)
@@ -296,7 +296,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/contact"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-pink-700 md:p-0 ${isActive("/contact")}`}
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${isActive("/contact")}`}
                 onClick={handleButtonClick} // Call handleButtonClick on click
               >
                 Contact

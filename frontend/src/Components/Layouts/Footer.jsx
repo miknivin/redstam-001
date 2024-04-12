@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div>
+    <div className="!bg-slate-950">
       <footer className="footer p-10 max-w-screen-xl mx-auto text-gray-200 font-calibri">
         <aside>
           <img

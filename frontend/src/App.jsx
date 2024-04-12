@@ -41,25 +41,7 @@ class ErrorBoundary extends Component {
 }
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  useEffect(() => {
-    const userConfirmed = false;
-    if (!userConfirmed) {
-      const timer = setTimeout(() => {
-        setIsModalOpen(true);
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const closeModal = () => {
-    // localStorage.setItem("userConfirmed", "true");
-    setTimeout(() => {
-      setIsModalOpen(false);
-    }, 800);
-  };
-
+ 
   const userRoutes = useUserRoutes();
   const adminRoutes = useAdminRoutes();
   return (
@@ -75,7 +57,6 @@ function App() {
             </Routes>
           </ErrorBoundary>
         </div>
-        <ConfirmModals isOpen={isModalOpen} onRequestClose={closeModal} />
         <ScrollToTopButton />
         <Footer />
       </div>
