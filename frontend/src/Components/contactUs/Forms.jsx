@@ -80,14 +80,14 @@ const Forms = () => {
       <div className="w-full">
         <div>
           <h3
-            className="text-3xl my-3 mb-5 leading-6 font-medium text-gray-100 dark:text-gray-50"
+            className="text-3xl my-3 mb-5 leading-6 font-medium text-gray-100 dark:text-gray-50 font-bcf"
             id="modal-headline"
           >
             Submit the form
           </h3>
         </div>
         <form
-          className="w-full h-full text-start mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2"
+          className="w-full h-full text-start mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2 font-calibri"
           onSubmit={handleFormSubmit}
         >
           <div>
@@ -184,7 +184,7 @@ const Forms = () => {
           <div className="flex items-center justify-between sm:col-span-2">
             <button
               type="submit"
-              className=" bg-red-600 inline-block rounded-lg px-8 py-3 text-center text-sm font-light text-white outline-none ring-red-300 transition duration-100 hover:bg-red-700 focus-visible:ring active:bg-red-800 md:text-base"
+              className=" bg-red-600 font-medium inline-block rounded-lg px-8 py-3 text-center text-sm font-calibri text-white outline-none ring-red-300 transition duration-100 hover:bg-red-700 focus-visible:ring active:bg-red-800 md:text-base"
               disabled={loading} // Disable the button when loading
             >
               {loading ? (

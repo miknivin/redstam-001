@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <div>
       <section data-section id="contactRef" className="bb-black bg-gray-50 ">
-        <h1 className="text-center text-5xl pt-6 font-bold text-white dark:text-white">
+        <h1 className="text-center text-5xl pt-6 font-bold text-gray-900 font-bcf">
           Contact Us
         </h1>
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -16,9 +16,9 @@ const Contact = () => {
             <Forms />
           </div>
           <div className="lg:mt-0 lg:col-span-5 lg:flex my-3">
-            <ul class="mb-6 md:mb-0 pt-5 md:pt-14 ">
+            <ul class="mb-6 md:mb-0 pt-5 md:pt-14 font-calibri">
               <li class="flex">
-                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-900 text-gray-50">
+                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-600 text-gray-50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -48,7 +48,7 @@ const Contact = () => {
                 </div>
               </li>
               <li class="flex">
-                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-900 text-gray-50">
+                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-600 text-gray-50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -79,7 +79,7 @@ const Contact = () => {
                 </div>
               </li>
               <li class="flex">
-                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-900 text-gray-50">
+                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-600 text-gray-50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

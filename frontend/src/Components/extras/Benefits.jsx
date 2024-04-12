@@ -44,7 +44,7 @@ const Benefits = () => {
               <motion.div
                 key={index}
                 variants={item}
-                className="border border-gray-100 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-50 px-8 pt-12 shadow-2xl shadow-gray-600/10 dark:shadow-none sm:px-12 lg:px-8"
+                className="border rounded-3xl bg-white dark:bg-gray-50 px-8 pt-12 shadow-2xl shadow-gray-600/10 dark:shadow-none sm:px-12 lg:px-8"
               >
                 <div className=" mb-2 space-y-2">
                   <h3 className="text-3xl font-semibold text-gray-800 font-bcf text-center">
@@ -56,11 +56,9 @@ const Benefits = () => {
                 </div>
                 <img
                   src={benefit.imageSrc}
-                  className="mx-auto w-2/3"
+                  className="mx-auto w-1/2"
                   alt="illustration"
                   loading="lazy"
-                  width={900}
-                  height={600}
                 />
               </motion.div>
             ))}

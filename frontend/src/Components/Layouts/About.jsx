@@ -77,8 +77,8 @@ const About = () => {
               className="mb-4 text-4xl tracking-tight text-gray-900 font-bcf font-medium"
             >
               REDISCOVERING NATURE'S EMBRACE:{" "}
-              <span className="bg-gradient-to-br from-pink-800 to-red-600 text-transparent bg-clip-text font-bcf">
-                The Redstam Journey
+              <span className=" text-red-600 font-bcf">
+                The REDSTAM Journey
               </span>
             </motion.h2>
             <motion.p

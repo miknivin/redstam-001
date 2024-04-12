@@ -266,7 +266,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${isActive("/")}`}
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-500 md:p-0 ${isActive("/")}`}
                 aria-current="page"
                 onClick={handleButtonClick} // Call handleButtonClick on click
               >
@@ -276,7 +276,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/about"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${isActive("/about")}`}
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-500 md:p-0 ${isActive("/about")}`}
                 onClick={handleButtonClick} // Call handleButtonClick on click
               >
                 About
@@ -285,7 +285,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/#testimonials" // Target location of the link
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${activeMenuItem === "testimonials" ? "text-red-700" : ""}`} // Dynamically generated CSS classes
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-500 md:p-0 ${activeMenuItem === "testimonials" ? "text-red-500" : ""}`}
                 onClick={() =>
                   scrollToElement("testimonialsRef", "testimonials")
                 } // Function to execute on click (scroll to testimonials section)
@@ -296,7 +296,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/contact"
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${isActive("/contact")}`}
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-500 md:p-0 ${isActive("/contact")}`}
                 onClick={handleButtonClick} // Call handleButtonClick on click
               >
                 Contact
