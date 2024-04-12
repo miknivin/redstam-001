@@ -285,7 +285,7 @@ const HeaderRe = () => {
             <li>
               <Link
                 to="/#testimonials" // Target location of the link
-                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${activeMenuItem === "testimonials" ? "text-pink-700" : ""}`} // Dynamically generated CSS classes
+                className={`block py-2 px-3 rounded md:bg-transparent md:hover:text-red-700 md:p-0 ${activeMenuItem === "testimonials" ? "text-red-700" : ""}`} // Dynamically generated CSS classes
                 onClick={() =>
                   scrollToElement("testimonialsRef", "testimonials")
                 } // Function to execute on click (scroll to testimonials section)
