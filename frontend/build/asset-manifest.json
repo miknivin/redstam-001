@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.b7882295.css",
-    "main.js": "/static/js/main.e85dfed8.js",
+    "main.css": "/static/css/main.c7c1a74c.css",
+    "main.js": "/static/js/main.04545ebd.js",
     "static/js/703.6dfb15a3.chunk.js": "/static/js/703.6dfb15a3.chunk.js",
     "static/js/198.6aed746e.chunk.js": "/static/js/198.6aed746e.chunk.js",
     "static/media/calibri.woff": "/static/media/calibri.b8683d8691fe238b139d.woff",
     "static/media/bahnschrift.woff2": "/static/media/bahnschrift.26e68e1bb99f7b5c7936.woff2",
     "static/media/bahnschrift.woff": "/static/media/bahnschrift.093504c1306fd9aaf848.woff",
     "index.html": "/index.html",
-    "main.b7882295.css.map": "/static/css/main.b7882295.css.map",
-    "main.e85dfed8.js.map": "/static/js/main.e85dfed8.js.map",
+    "main.c7c1a74c.css.map": "/static/css/main.c7c1a74c.css.map",
+    "main.04545ebd.js.map": "/static/js/main.04545ebd.js.map",
     "703.6dfb15a3.chunk.js.map": "/static/js/703.6dfb15a3.chunk.js.map",
     "198.6aed746e.chunk.js.map": "/static/js/198.6aed746e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b7882295.css",
-    "static/js/main.e85dfed8.js"
+    "static/css/main.c7c1a74c.css",
+    "static/js/main.04545ebd.js"
   ]
 }
