@@ -106,7 +106,7 @@ const About = () => {
             </motion.p>
             <motion.button
               variants={item}
-              className="bt relative inline-flex items-center justify-center p-0.5 my-4 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-800 to-red-600 group-hover:from-pink-700 group-hover:to-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+              className="bt relative inline-flex items-center justify-center p-0.5 my-4 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-600 group-hover:from-red-700 group-hover:to-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
               onClick={() => setShowMore(!showMore)}
             >
               <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-50 text-gray-900  rounded-md group-hover:bg-opacity-0 group-hover:text-white font-calibri">

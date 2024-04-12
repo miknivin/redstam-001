@@ -35,14 +35,14 @@ const Mission = () => {
         variants={variants}
         initial={"hidden"}
         whileInView={"show"}
-        class="text-center block relative z-20 mx-auto pt-8 bg-gradient-to-b from-gray-100 via-slate-50 to-red-100"
+        class="text-center block relative z-20 mx-auto pt-8 bg-gradient-to-b from-gray-100 via-slate-50 to-gray-300"
       >
-        <motion.h1 variants={item} class="text-5xl font-light my-2">
+        <motion.h1 variants={item} class="text-5xl font-light my-2 text-gray-900">
           Empowering Wellness Through Nature
         </motion.h1>
         <motion.p
           variants={item}
-          className="text-lg w-full md:w-3/4 mx-auto font-light p-3"
+          className="text-lg w-full md:w-3/4 mx-auto font-light p-3 text-gray-800"
         >
           At REDSTAM, we fuse ancient wisdom with modern science to unlock
           nature's secrets for vibrant living. Our ethical practices ensure
