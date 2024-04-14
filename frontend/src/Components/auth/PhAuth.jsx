@@ -13,25 +13,16 @@ import {
 import { toast, Toaster } from "react-hot-toast";
 import { useLoginMutation } from "../../redux/api/authApi";
 import { useNavigate } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { calculateAge } from "../../helpers/helper";
 
 const PhAuth = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const navigate = useNavigate();
   const [login] = useLoginMutation();
 
   async function onSignup() {
-    const userAge = calculateAge(selectedDate);
-    if (userAge < 18) {
-      toast.error("You must be at least 18 years old to sign up.");
-      return;
-    }
     try {
       setLoading(true);
       const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {});
@@ -68,11 +59,6 @@ const PhAuth = () => {
 
   const SignUpUsingGoogle = () => {
     const provider = new GoogleAuthProvider();
-    const userAge = calculateAge(selectedDate);
-    if (userAge < 18) {
-      toast.error("You must be at least 18 years old to sign up.");
-      return;
-    }
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const user = result.user;
@@ -177,14 +163,6 @@ const PhAuth = () => {
                 </label>
                 <PhoneInput country={"in"} value={ph} onChange={setPh} />
                 <div className="mt-1 mb-0">Date of birth</div>
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
-                  maxDate={new Date()}
-                  showYearDropdown
-                  scrollableMonthYearDropdown
-                  scrollableYearDropdown
-                />
                 <div className="mt-5" id="recaptcha"></div>
                 <button
                   onClick={onSignup}
