@@ -18,7 +18,7 @@ const Contact = () => {
           <div className="lg:mt-0 lg:col-span-5 lg:flex my-3">
             <ul class="mb-6 md:mb-0 pt-5 md:pt-14 font-calibri">
               <li class="flex">
-                <div class="flex h-10 w-10 items-center justify-center rounded bg-red-600 text-gray-50">
+                <div class="flex p-2 h-10 w-10 items-center justify-center rounded bg-red-600 text-gray-50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -40,10 +40,13 @@ const Contact = () => {
                     Our Address
                   </h3>
                   <p class="text-gray-700 dark:text-slate-700  normal-case">
-                    37/3489 - Fifth Floor, Manjooran Estate
+                  GENFOR GLOBAL PVT LTD. M/s Vibgyor Net-Connections No.57,
+                  </p>
+                  <p class="text-gray-700 dark:text-slate-700  normal-case">
+                  13th Cross ECS 6906904430, Hosur Road Anepalya,
                   </p>
                   <p class="text-gray-700 dark:text-slate-700 normal-case">
-                    Edapally, Kochi, Kerala
+                   Banglore-560047, Karnataka
                   </p>
                 </div>
               </li>
