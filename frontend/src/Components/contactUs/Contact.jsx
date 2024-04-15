@@ -74,10 +74,10 @@ const Contact = () => {
                     Contact
                   </h3>
                   <p class="text-gray-700 dark:text-slate-700 ">
-                    Mobile:+91 8075 666 099
+                    Mobile:07902 922 229
                   </p>
                   <p class="text-gray-700 dark:text-slate-700 ">
-                    Mail: info@redstam.com
+                    Email: info@redstam.com
                   </p>
                 </div>
               </li>
