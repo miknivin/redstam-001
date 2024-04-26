@@ -67,9 +67,9 @@ function Footer() {
         </nav>
         <nav>
           <h6 className="footer-title">Contact</h6>
-          <a href="tel:8075 666 099" className="link link-hover">
+          <a href="tel:07902 922 229" className="link link-hover">
             <span>
-              <i className="fa-solid fa-phone me-1"></i>+91 8075 666 099
+              <i className="fa-solid fa-phone me-1"></i>07902 922 229
             </span>
           </a>
           <a href="mailto:info@redstam.com" className="link link-hover">
