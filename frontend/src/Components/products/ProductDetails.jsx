@@ -97,7 +97,7 @@ const ProductDetails = () => {
   }
   return (
     <div>
-      <div className="bg-base-100 dark:bg-gray-900 text-gray-950 dark:text-gray-50 py-6 sm:py-8 lg:py-12">
+      <div className="bg-gray-100  text-gray-950 py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-xl px-4 md:px-8">
           <div className="grid gap-12 md:grid-cols-2">
             {/* images - start */}
@@ -122,7 +122,7 @@ const ProductDetails = () => {
                   src={activeImg}
                   loading="lazy"
                   alt="by Himanshu Dewangan"
-                  className="h-full w-full object-cover object-center aspect-square border-2 rounded-md"
+                  className="h-full max-h-[80vh] w-full object-cover object-center aspect-square border-2 rounded-md"
                 />
                 {/* <span className="absolute left-0 top-0 rounded-br-lg bg-red-500 px-3 py-1.5 text-sm uppercase tracking-wider text-white">
                 sale
@@ -284,8 +284,8 @@ const ProductDetails = () => {
               </div>
               {/* buttons - end */}
               <div className="flex flex-col my-5">
-                <p className={`${readMore ? "" : "line-clamp-4"}`}>
-                  {product?.description}
+                <p className={`${readMore ? "" : "line-clamp-4"} whitespace-break-spaces`}>
+                  {product?.longDescription||product?.description}
                 </p>
                 <span
                   onClick={() => setReadMore(!readMore)}
@@ -297,7 +297,9 @@ const ProductDetails = () => {
             </div>
             {/* content - end */}
           </div>
-          <Testimonials />
+          <div className="my-4">
+            <Testimonials />
+          </div>
           {/* <div className="my-2">
             {isAuthenticated && canReview ? (
               <div className="w-full flex justify-center">

@@ -4,16 +4,21 @@ const productSchema = new mongoose.Schema({
     name:{
         type: String,
         required: [ true, "Please enter product name"],
-        maxLength: [200, "Product name cannot Exceeds 200 charcters"]
+        maxLength: [200, "Product name cannot exceed 200 characters"]
     },
     price:{
         type:Number,
-        required: [ true, "Please enter product name"],
+        required: [ true, "Please enter product price"],
     },
-    description:{
+    shortDescription:{
         type: String,
-        required: [ true, "Please enter product name"],
-        maxLength: [1000, "Description name cannot Exceeds 1000 charcters"]
+        required: [ true, "Please enter short product description"],
+        maxLength: [500, "Short description cannot exceed 500 characters"]
+    },
+    longDescription:{
+        type: String,
+        required: [ true, "Please enter long product description"],
+        maxLength: [2500, "Long description cannot exceed 1200 characters"]
     },
     ratings:{
         type: Number,
@@ -36,8 +41,8 @@ const productSchema = new mongoose.Schema({
         required: [true, "Please enter product category"],
         enum: {
           values: [
-            "Soaps",
-            "Tea",
+            "For Men",
+            "For Women",
             "Wellbeing"
           ],
           message: "Please select correct category",
@@ -45,7 +50,7 @@ const productSchema = new mongoose.Schema({
     },
     seller:{
         type: String,
-        required:[false]
+        required:false
     },
     stock:{
         type:Number,
@@ -77,8 +82,8 @@ const productSchema = new mongoose.Schema({
         ref:"User",
         required:false
     },
-}, {timestamps:true})
+}, {timestamps:true});
 
-const products = mongoose.model('Product',productSchema)
+const Product = mongoose.model('Product', productSchema);
 
-export default products
+export default Product;

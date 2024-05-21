@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useLazyLogoutQuery } from "../../redux/api/authApi";
 import { useGetMeQuery } from "../../redux/api/userApi";
 import toast from "react-hot-toast";
+import CategoryFilter from "./CategoryFilter";
 
 const HeaderRe = () => {
   const [isHidden, setIsHidden] = useState(true);
@@ -168,12 +169,9 @@ const HeaderRe = () => {
               >
                 <div
                   onClick={() => setShowDropDown(!showDropDown)}
-                  className="w-8 rounded-full"
+                  className=" w-8 rounded-full border"
                 >
-                  <img
-                    alt="user"
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  />
+                  <i className="fa-regular fa-user p-2"></i>
                 </div>
               </div>
               {/* </Link> */}
@@ -213,7 +211,7 @@ const HeaderRe = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -282,6 +280,7 @@ const HeaderRe = () => {
                 About
               </Link>
             </li>
+
             <li>
               <Link
                 to="/#testimonials" // Target location of the link
@@ -292,6 +291,9 @@ const HeaderRe = () => {
               >
                 Testimonials
               </Link>
+            </li>
+            <li>
+              <CategoryFilter/>
             </li>
             <li>
               <Link

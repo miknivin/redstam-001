@@ -4,22 +4,33 @@ import { PRODUCT_CATEGORIES } from "../../Constants/constants";
 
 const CategoryFilter = () => {
   const navigate = useNavigate();
-  let [searchParams] = useSearchParams();
 
-  const [activeCategory, setActiveCategory] = useState("Tea");
+
+  const [activeCategory, setActiveCategory] = useState("All Products");
+  const [allCategories, setAllCategories] = useState([]);
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    // Run only once after the component mounts
+    setAllCategories(["All Products", ...PRODUCT_CATEGORIES]);
+  }, []);
 
   useEffect(() => {
     // Check if 'category' parameter exists in the URL
     const categoryParam = searchParams.get("category");
-    if (!categoryParam) {
+    console.log(categoryParam);
+
+    if (!categoryParam || categoryParam==="All Products") {
       // If 'category' parameter doesn't exist, set it to 'Tea'
-      searchParams.set("category", "Tea");
-      navigate(`?${searchParams.toString()}`);
+      setActiveCategory("All Products")
+      searchParams.delete("category");
+      setSearchParams(searchParams);
+      console.log(categoryParam);
     } else {
       // If 'category' parameter exists, set the activeCategory state to its value
       setActiveCategory(categoryParam);
     }
-  }, [navigate, searchParams]);
+  }, [activeCategory, navigate, searchParams, setSearchParams]);
 
   const handleClick = (checkbox) => {
     const checkboxes = document.getElementsByName(checkbox.name);
@@ -53,27 +64,19 @@ const CategoryFilter = () => {
   // };
 
   return (
-    <div className=" bg-base-100 dark:bg-gray-950 ">
-      <div className="max-w-screen-xl mx-auto">
-        <div className="heading py-8 px-4 flex justify-between">
-          <h1 className="text-4xl lg:text-6xl text-gray-900 dark:text-gray-300 font-light text-start">
-            Shop By Categories
-            <div className=" h-[1.2px] w-32 bg-slate-200 mt-3 rounded-2xl"></div>
-          </h1>
-
           <div className="dropdown dropdown-hover">
             <div
               tabIndex={0}
               role="button"
-              className="btn m-1 bg-gray-200 text-gray-900 hover:bg-gray-200/70 text-xl min-w-[6rem]"
+              className=" text-gray-200 block py-2 px-3 rounded md:bg-transparent md:hover:text-red-500 md:p-0 font-bold"
             >
-              {activeCategory}
+              {activeCategory}<i className="fa-solid fa-chevron-down text-sm ms-2"></i>
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[15] menu p-2 shadow rounded-box bg-base-300"
+              className="dropdown-content z-[15] menu p-2 shadow rounded-box bg-base-300 min-w-[200px]"
             >
-              {PRODUCT_CATEGORIES.map((category) => (
+              {allCategories.map((category) => (
                 <div class="form-control" key={category}>
                   <label class="label cursor-pointer p-2">
                     <span class="label-text text-sm me-2">{category}</span>
@@ -81,7 +84,7 @@ const CategoryFilter = () => {
                       type="checkbox"
                       name="category"
                       value={category}
-                      class="checkbox checkbox-primary"
+                      class="checkbox checkbox-error"
                       checked={category === activeCategory}
                       // defaultChecked={defaultCheckHandler("category", category)}
                       onClick={(e) => handleClick(e.target)}
@@ -91,9 +94,6 @@ const CategoryFilter = () => {
               ))}
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
   );
 };
 

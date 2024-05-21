@@ -103,7 +103,7 @@ function ProductItem({ product }) {
             variants={item}
             className="max-w-2xl mb-6 font-thin text-slate-900 lg:mb-8 md:text-lg  line-clamp-[8] font-calibri"
           >
-            {product.description}
+            {product?.shortDescription||product?.description}
           </motion.p>
           <div className="card-body items-start p-0 my-3">
             {/* <div className="price flex justify-around items-start gap-4 w-40">

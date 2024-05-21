@@ -105,12 +105,9 @@ function Header() {
             >
               <div
                 onClick={() => setShowDropDown(true)}
-                className="w-8 rounded-full"
+                className="w-8 rounded-full border"
               >
-                <img
-                  alt="user"
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
+                <i className="fa-regular fa-user"></i>
               </div>
             </div>
             {/* </Link> */}

@@ -82,6 +82,10 @@ const Login = () => {
     }
   }, [error, googleSignError, isAuthenticated, navigate]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
+  }, []);
+
   const submitHandler = (e) => {
     e.preventDefault();
 

@@ -1,1 +1,1 @@
-export const PRODUCT_CATEGORIES = ["Wellbeing"];
+export const PRODUCT_CATEGORIES = ["For Men","For Women"];

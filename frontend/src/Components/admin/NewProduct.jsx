@@ -10,7 +10,8 @@ const NewProduct = () => {
 
   const [product, setProduct] = useState({
     name: "",
-    description: "",
+    shortDescription: "",
+    longDescription: "",
     price: "",
     category: "",
     stock: "",
@@ -19,7 +20,7 @@ const NewProduct = () => {
 
   const [imagePreview, setImagePreview] = useState([]);
 
-  const { name, description, price, category, stock } = product;
+  const { name, shortDescription, longDescription, price, category, stock } = product;
 
   const [createProduct, { isLoading, error, isSuccess }] =
     useCreateProductMutation();
@@ -169,17 +170,34 @@ const NewProduct = () => {
             </div>
             <div className="sm:col-span-2">
               <label
-                htmlFor="description"
+                htmlFor="shortDescription"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                Description
+                Short Description
               </label>
               <textarea
-                id="description"
-                name="description"
-                value={description}
+                id="shortDescription"
+                name="shortDescription"
+                value={shortDescription}
                 onChange={onChange}
-                rows={4}
+                rows={3}
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="Write product description here"
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="longDescription"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Long Description
+              </label>
+              <textarea
+                id="longDescription"
+                name="longDescription"
+                value={longDescription}
+                onChange={onChange}
+                rows={5}
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Write product description here"
               />
