@@ -18,14 +18,14 @@ const CategoryFilter = () => {
   useEffect(() => {
     // Check if 'category' parameter exists in the URL
     const categoryParam = searchParams.get("category");
-    console.log(categoryParam);
+    //console.log(categoryParam);
 
     if (!categoryParam || categoryParam==="All Products") {
       // If 'category' parameter doesn't exist, set it to 'Tea'
       setActiveCategory("All Products")
       searchParams.delete("category");
       setSearchParams(searchParams);
-      console.log(categoryParam);
+      //console.log(categoryParam);
     } else {
       // If 'category' parameter exists, set the activeCategory state to its value
       setActiveCategory(categoryParam);

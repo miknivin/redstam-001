@@ -16,6 +16,7 @@ import CategoryFilter from "./Layouts/CategoryFilter.jsx";
 import SkeletonHero from "./utilities/SkeletonHero.jsx";
 import Benefits from "./extras/Benefits.jsx";
 import Testimonials from "./extras/Testimonials.jsx";
+import Loader from "./Layouts/Loader.jsx";
 function Home() {
   let [searchParams] = useSearchParams();
   const page = searchParams.get("page") || 1;
@@ -32,13 +33,19 @@ function Home() {
 
   const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
-  const { data, isError, error, refetch } = useGetProductsQuery(params);
+  const { data, isError, error, refetch, isLoading:fetchLoading } = useGetProductsQuery(params);
 
   useEffect(() => {
     if (isError) {
       toast.error("Error Getting Products try refreshing the page");
     }
-  }, [error?.data?.message, isError]);
+
+    if(fetchLoading){
+      setIsLoading(true)
+      return <Loader/>
+    }
+
+  }, [error?.data?.message, fetchLoading, isError]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -97,7 +104,7 @@ function Home() {
               </div>
             )} */}
             {isLoading ? (
-              <SkeletonHero />
+              <Loader />
             ) : (
               <div className={``}>
                 {data?.filteredProducts?.map((product) => (
