@@ -123,7 +123,7 @@ const HeaderRe = () => {
                 <div className="indicator">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -169,7 +169,7 @@ const HeaderRe = () => {
               >
                 <div
                   onClick={() => setShowDropDown(!showDropDown)}
-                  className=" w-8 rounded-full border"
+                  className=" w-8 rounded-full border border-gray-700 dark:border-gray-400"
                 >
                   <i className="fa-regular fa-user p-2"></i>
                 </div>

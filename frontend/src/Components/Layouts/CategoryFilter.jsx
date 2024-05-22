@@ -68,7 +68,7 @@ const CategoryFilter = () => {
             <div
               tabIndex={0}
               role="button"
-              className=" text-gray-200 block py-2 px-3 rounded md:bg-transparent md:hover:text-red-500 md:p-0 font-bold"
+              className=" text-gray-800 dark:text-gray-200 block p-0 rounded md:bg-transparent md:hover:text-red-500 md:p-0 font-bcf"
             >
               {activeCategory}<i className="fa-solid fa-chevron-down text-sm ms-2"></i>
             </div>
