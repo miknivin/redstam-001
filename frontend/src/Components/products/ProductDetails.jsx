@@ -284,8 +284,10 @@ const ProductDetails = () => {
               </div>
               {/* buttons - end */}
               <div className="flex flex-col my-5">
-                <p className={`${readMore ? "" : "line-clamp-4"} whitespace-break-spaces`}>
-                  {product?.longDescription||product?.description}
+                <p
+                  className={`${readMore ? "" : "line-clamp-4"} whitespace-break-spaces`}
+                >
+                  {product?.longDescription || product?.description}
                 </p>
                 <span
                   onClick={() => setReadMore(!readMore)}

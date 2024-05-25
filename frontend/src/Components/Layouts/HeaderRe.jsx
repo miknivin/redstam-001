@@ -293,7 +293,7 @@ const HeaderRe = () => {
               </Link>
             </li>
             <li>
-              <CategoryFilter/>
+              <CategoryFilter />
             </li>
             <li>
               <Link

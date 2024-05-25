@@ -18,7 +18,8 @@ const UpdateProduct = ({ productId, closeModal }) => {
     stock: "",
   });
 
-  const { name, shortDescription, longDescription, price, category, stock } = product;
+  const { name, shortDescription, longDescription, price, category, stock } =
+    product;
 
   const { data, isLoading: isDetailsLoading } =
     useGetProductDetailsQuery(productId);

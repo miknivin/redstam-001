@@ -20,7 +20,8 @@ const NewProduct = () => {
 
   const [imagePreview, setImagePreview] = useState([]);
 
-  const { name, shortDescription, longDescription, price, category, stock } = product;
+  const { name, shortDescription, longDescription, price, category, stock } =
+    product;
 
   const [createProduct, { isLoading, error, isSuccess }] =
     useCreateProductMutation();

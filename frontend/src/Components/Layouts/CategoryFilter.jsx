@@ -5,7 +5,6 @@ import { PRODUCT_CATEGORIES } from "../../Constants/constants";
 const CategoryFilter = () => {
   const navigate = useNavigate();
 
-
   const [activeCategory, setActiveCategory] = useState("All Products");
   const [allCategories, setAllCategories] = useState([]);
   let [searchParams, setSearchParams] = useSearchParams();
@@ -20,9 +19,9 @@ const CategoryFilter = () => {
     const categoryParam = searchParams.get("category");
     //console.log(categoryParam);
 
-    if (!categoryParam || categoryParam==="All Products") {
+    if (!categoryParam || categoryParam === "All Products") {
       // If 'category' parameter doesn't exist, set it to 'Tea'
-      setActiveCategory("All Products")
+      setActiveCategory("All Products");
       searchParams.delete("category");
       setSearchParams(searchParams);
       //console.log(categoryParam);
@@ -64,36 +63,37 @@ const CategoryFilter = () => {
   // };
 
   return (
-          <div className="dropdown dropdown-hover">
-            <div
-              tabIndex={0}
-              role="button"
-              className=" text-gray-800 dark:text-gray-200 block p-0 rounded md:bg-transparent md:hover:text-red-500 md:p-0 font-bcf"
-            >
-              {activeCategory}<i className="fa-solid fa-chevron-down text-sm ms-2"></i>
-            </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[15] menu p-2 shadow rounded-box bg-base-300 min-w-[200px]"
-            >
-              {allCategories.map((category) => (
-                <div class="form-control" key={category}>
-                  <label class="label cursor-pointer p-2">
-                    <span class="label-text text-sm me-2">{category}</span>
-                    <input
-                      type="checkbox"
-                      name="category"
-                      value={category}
-                      class="checkbox checkbox-error"
-                      checked={category === activeCategory}
-                      // defaultChecked={defaultCheckHandler("category", category)}
-                      onClick={(e) => handleClick(e.target)}
-                    />
-                  </label>
-                </div>
-              ))}
-            </ul>
+    <div className="dropdown dropdown-hover">
+      <div
+        tabIndex={0}
+        role="button"
+        className=" text-gray-800 dark:text-gray-200 block p-0 rounded md:bg-transparent md:hover:text-red-500 md:p-0 font-bcf"
+      >
+        {activeCategory}
+        <i className="fa-solid fa-chevron-down text-sm ms-2"></i>
+      </div>
+      <ul
+        tabIndex={0}
+        className="dropdown-content z-[15] menu p-2 shadow rounded-box bg-base-300 min-w-[200px]"
+      >
+        {allCategories.map((category) => (
+          <div class="form-control" key={category}>
+            <label class="label cursor-pointer p-2">
+              <span class="label-text text-sm me-2">{category}</span>
+              <input
+                type="checkbox"
+                name="category"
+                value={category}
+                class="checkbox checkbox-error"
+                checked={category === activeCategory}
+                // defaultChecked={defaultCheckHandler("category", category)}
+                onClick={(e) => handleClick(e.target)}
+              />
+            </label>
           </div>
+        ))}
+      </ul>
+    </div>
   );
 };
 

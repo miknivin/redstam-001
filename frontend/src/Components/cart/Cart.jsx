@@ -15,7 +15,8 @@ const Cart = () => {
   );
   const taxes = subtotal * 0.18;
   const shipping = 0;
-  const total = subtotal + taxes + shipping;
+  const total = subtotal - subtotal * 0.18 + taxes + shipping;
+
   const increseQty = (item, quantity) => {
     const newQty = quantity + 1;
 
@@ -56,7 +57,6 @@ const Cart = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
   }, []);
-
   return (
     <>
       <Metadata title={"Your Cart"} />
@@ -154,7 +154,7 @@ const Cart = () => {
                     <h2 className="text-lg font-semibold mb-4">Summary</h2>
                     <div className="flex justify-between mb-2">
                       <span>Subtotal</span>
-                      <span>₹{subtotal.toFixed(2)}</span>
+                      <span>₹{(subtotal - subtotal * 0.18).toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between mb-2">
                       <span>Taxes</span>

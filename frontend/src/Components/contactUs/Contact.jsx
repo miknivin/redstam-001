@@ -40,13 +40,13 @@ const Contact = () => {
                     Our Address
                   </h3>
                   <p class="text-gray-700 dark:text-slate-700  normal-case">
-                  GENFOR GLOBAL PVT LTD. M/s Vibgyor Net-Connections No.57,
+                    GENFOR GLOBAL PVT LTD. M/s Vibgyor Net-Connections No.57,
                   </p>
                   <p class="text-gray-700 dark:text-slate-700  normal-case">
-                  13th Cross ECS 6906904430, Hosur Road Anepalya,
+                    13th Cross ECS 6906904430, Hosur Road Anepalya,
                   </p>
                   <p class="text-gray-700 dark:text-slate-700 normal-case">
-                   Banglore-560047, Karnataka
+                    Banglore-560047, Karnataka
                   </p>
                 </div>
               </li>

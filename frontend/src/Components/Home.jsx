@@ -33,18 +33,23 @@ function Home() {
 
   const [isLoading, setIsLoading] = useState(false); // Add isLoading state
 
-  const { data, isError, error, refetch,isLoading:fetchLaoding } = useGetProductsQuery(params);
+  const {
+    data,
+    isError,
+    error,
+    refetch,
+    isLoading: fetchLaoding,
+  } = useGetProductsQuery(params);
 
   useEffect(() => {
     if (isError) {
       toast.error("Error Getting Products try refreshing the page");
     }
     if (fetchLaoding) {
-      setIsLoading(true)
-    }else{
-      setIsLoading(false)
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
     }
-
   }, [error?.data.message, fetchLaoding, isError]);
 
   useEffect(() => {
@@ -66,7 +71,7 @@ function Home() {
   //       });
   //   }
   // }, [category, refetch]);
-   if (isLoading) return <Loader />;
+  if (isLoading) return <Loader />;
   if (!isLoading && data?.filteredProducts.length === 0)
     return <NoResultPage />;
   return (

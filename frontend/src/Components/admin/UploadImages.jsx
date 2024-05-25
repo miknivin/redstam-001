@@ -100,13 +100,12 @@ const UploadImages = ({ productId, productName, closeModal }) => {
   const deleteImage = (imgId) => {
     if (uploadedImages.length === 1) {
       toast.error("There are no images to preview");
-      closeModal()
+      closeModal();
       return;
     }
     deleteProductImage({ id: productId, body: { imgId } });
     setDeletedImageId(imgId);
   };
-  
 
   return (
     <div>
@@ -163,7 +162,7 @@ const UploadImages = ({ productId, productName, closeModal }) => {
             {uploadedImages?.map((img, index) => (
               <div key={index} className="relative indicator">
                 <button
-                  disabled={isLoading || isDeleteLoading }
+                  disabled={isLoading || isDeleteLoading}
                   onClick={() => deleteImage(img?.public_id)}
                   className="badge indicator-item bg-transparent border-none cursor-pointer"
                 >
